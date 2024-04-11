@@ -9,7 +9,7 @@
 
 #define NB_ATOM_NAMES 119
 
-char *atom_name[NB_ATOM_NAMES];
+extern char *atom_name[NB_ATOM_NAMES];
 
 
 struct graphe{
@@ -20,7 +20,7 @@ struct graphe{
 	struct couplet *aretes;
 	int **matrice_cycles_type;
 	int **matrice_cycles_poids;
-}graphe;
+}extern graphe;
 
 
 struct molecule{
@@ -32,7 +32,7 @@ struct molecule{
 	struct liaison *liste_liaisons;
 	struct graphe g;
 	int g_def;
-} molecule;
+}extern molecule;
 
 struct nom_at { char c1, c2; };
 struct liaison { int A1, A2; int l_type; };
@@ -40,20 +40,20 @@ struct liaison { int A1, A2; int l_type; };
 struct cycle{
 	int poids;
 	int *c;
-}cycle;
+}extern cycle;
 
 struct isthme
 {
 	struct liaison l;
 	int id_composant;
-}isthme;
+}extern isthme;
 typedef struct isthme isthmes;
 struct couple
 {
 	int a1;
 	int a2;
 
-}couple;
+}extern couple;
 struct uncycle
 {
 	int nb_atomes;
@@ -64,7 +64,7 @@ struct uncycle
 	int pere;
 	int *sommets;
 	int id_cycle;
-}uncycle;
+}extern uncycle;
 
 typedef struct uncycle cycles;
 
@@ -73,32 +73,32 @@ struct liste_voisins{
 	int nb_voisins;
 	int *id_voisins;
 		
-}liste_voisins;
+}extern liste_voisins;
 
 struct couplet{
 	int a1;
 	int a2;
 	int poids;
 	int type; //1 s'il s'agit d'une liaison distance et 0 si les deux cycles partagent des liaison
-}couplet;
+}extern couplet;
 
 struct lesommet{
 	int id;
 	int taille;
-}lesommet;
+}extern lesommet;
 
 
 struct type_arete{
 	int type;
 	int poids;
-}type_arete;
+}extern type_arete;
 struct arete_base
 {
 	int id1;
 	int id2;
 	int type;
 	int poids;
-}arete_base;
+}extern arete_base;
 typedef struct arete_base ARETE;
 
 struct unsommet
@@ -108,7 +108,7 @@ struct unsommet
 	int type; // si contraction bouboule (0) ou non (1)
 	char* poids_bouboule;
 
-}unsommet;
+}extern unsommet;
 typedef struct unsommet SOMMET;
 
 struct graphe_cycle
@@ -117,7 +117,7 @@ struct graphe_cycle
 	int nb_aretes;
 	ARETE *liste_aretes;
 	SOMMET *liste_sommets;
-}graphe_cycle;
+}extern graphe_cycle;
 
 
 struct graphemoleculaire
@@ -130,17 +130,17 @@ struct graphemoleculaire
 	int **matrice_liaisons;
 	int nb_connexe;
 	int pere;//son numero de generation : 0 graphe de la molécule initial 1 : composantes connexe du grape initial 2: sousgraphes obentus en retirant les isthmes
-}graphemoleculaire;
+}extern graphemoleculaire;
 
 typedef struct graphemoleculaire graphemol;
 
 typedef struct graphe_cycle GRAPHE_CYCLE;
-int nb_arete_base;
-int taille_base;
-ARETE *base_aretes;
-int *arete_cycle;
-int **arete_liste;
-cycles *labase;
+extern int nb_arete_base;
+extern int taille_base;
+extern ARETE *base_aretes;
+extern int *arete_cycle;
+extern int **arete_liste;
+extern cycles *labase;
 
 
 // structure pour le graphe Ur

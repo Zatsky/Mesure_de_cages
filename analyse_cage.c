@@ -227,7 +227,6 @@ int coin_pas_ouvert(GRAPHE_CYCLE cy, int* store, struct molecule m)
 	cycles* cycle1 = malloc(sizeof(cycles));
 	cycles* cycle2 = malloc(sizeof(cycles));
 	cycles* cycle3 = malloc(sizeof(cycles));
-	
 	for(i=0;i<taille_base;i++)
 	{
 		if(labase[i].id_cycle == store[0]) (*cycle1) = labase[i];
@@ -496,7 +495,7 @@ int findCliquesToCount(GRAPHE_CYCLE cy, int i, int l, int s, int *degre, int *st
                 }
                 // Size is met
                 else{
-					
+						printf("\n\n\n\n\\n\n\n\n");
 						if (is_bouboule(cy, store))
 						{
 							type = 0;
@@ -765,6 +764,7 @@ void genere_dot_file_cycles(GRAPHE_CYCLE cy, char* name, int taille)
 	fprintf(F1, "}");
 	fclose(F1);
 	
+	printf("\n\n\n\n\n\n\n");
 	// Exporter en png
 	F2 = fopen("scripts/genere_images_g_cycles.sh","a");
 	char* name_file_png = malloc((taille_file_dot+taille+1)*sizeof(char));
@@ -841,12 +841,6 @@ void liberer_graphe_coin(GRAPHE_COIN c)
 
 int main(int argc, char *argv[])
 {
-	struct dirent *lecture;
-    DIR *rep;
-    int i;
-    
-    char *name = NULL;
-    char *name_file_mol = NULL;
 	int taille;
     
     int taille_mol = strlen(FILES_SMI);
@@ -881,23 +875,22 @@ int main(int argc, char *argv[])
 		exit(6);
 	}
 	
-	
-    rep = opendir("data/smi_files_reduit"); // les .smi (SMILES notations) et les .mol (fichiers 3D pour input des constructions de graphes moléculaires) sont stockés dans le dossier smi_files_reduit
-    
+	int i;
+    DIR *rep = opendir("data/smi_files_reduit"); // les .smi (SMILES notations) et les .mol (fichiers 3D pour input des constructions de graphes moléculaires) sont stockés dans le dossier smi_files_reduit
+    struct dirent *lecture;
     // initialise la classification des chimistes en cage, precage, non cage
     classification = malloc(NB_MOL * sizeof(MOL_CARAC));
     init_cage_non_cage(); 
-    
     while ((lecture = readdir(rep))) {
         printf("%s\n", lecture->d_name);
+
         // problème avec l'arsenichin A, SMILES non géré par OpenBabel
         if (strstr(lecture->d_name, ".mol") && strcmp(lecture->d_name, "arsenicin_A.mol")){ // !strcmp(lecture->d_name, "tabernabovine_B.mol")){
-		
 			taille = strlen(lecture->d_name);
 			//printf("%d\n", taille);
 			// allocation de memoire
-			name = malloc((taille-3) * sizeof(char));
-			name_file_mol = malloc((taille_mol+taille+1) * sizeof(char));
+			char* name = malloc((taille-3) * sizeof(char));
+			char* name_file_mol = malloc((taille_mol+taille+1) * sizeof(char));
 			
 			// affectation des noms des fichiers
 			strncpy(name, lecture->d_name, taille-4);
@@ -911,12 +904,10 @@ int main(int argc, char *argv[])
 				printf("Impossible d'ouvrir le fichier %s", name_file_mol);
 				exit(2);
 			}
-			
 			fprintf(F_out, "%s,", name);
 			fprintf(F_out_type, "%s,", name);
 			fprintf(f_out_dl, "%s,", name);
 			fprintf(f_liste, "%s,",name);
-			
 			for(i=0;i<NB_MOL;i++)
 			{
 				if(!strcmp(name, classification[i].name))

@@ -3,6 +3,15 @@
 #include "lecture_molecule_sdf.h"
 #include <dirent.h>
 
+int nb_arete_base;
+int taille_base;
+ARETE *base_aretes;
+int *arete_cycle;
+int **arete_liste;
+cycles *labase;
+
+char *atom_name[NB_ATOM_NAMES];
+
 #define NB_MOL 81
 #define NB_TAB 20
 

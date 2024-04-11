@@ -1,4 +1,5 @@
 import csv
+import os
 
 with open("results/results_cliques_type_compte_reduit.csv", "w") as fic:
 	csvwriter = csv.writer(fic)
@@ -25,4 +26,4 @@ with open("results/results_cliques_type_compte_reduit.csv", "w") as fic:
 				elif int(row[i]) == 4 :
 					c_coin_ouvert_mais_dl += 1
 				i += 1
-			csvwriter.writerow([row[0], row[1], c_bouboule, c_coin_bouboule, c_coin_pas_ouvert, c_coin_ouvert_mais_dl, c_coin_ouvert]) 
+			csvwriter.writerow([row[0], row[1], c_bouboule, c_coin_bouboule, c_coin_pas_ouvert, c_coin_ouvert_mais_dl, c_coin_ouvert])

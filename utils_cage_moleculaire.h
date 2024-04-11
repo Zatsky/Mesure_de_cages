@@ -1,3 +1,5 @@
+#ifndef NOM_D2
+#define NOM_D2
 #include "graphe_cycles.h"
 
 struct mol_carac{
@@ -7,7 +9,7 @@ struct mol_carac{
 
 typedef struct mol_carac MOL_CARAC;
 
-MOL_CARAC *classification;
+extern MOL_CARAC *classification;
 
 struct arete
 {
@@ -97,7 +99,8 @@ int type_arete_dans_molecule(struct molecule m, int sommet1, int sommet2);
 // Returns the number of common vertices between two cliques in the graph of cycles (stored in the "ids" field of vertices in the graph of corners)
 int nb_common_cycles(SOMMET_COIN sommet1, SOMMET_COIN sommet2, int taille_cliques);
 
-// Returns 1 if the vertex with the id num_sommet is in a bouboule 
+// Returns 1 if the vertex with the id num_sommet is in a bouboule fopenmp -O3
 // and 0 otherwise 
 int sommet_dans_bouboule(GRAPHE_CYCLE cy, int num_sommet, int* bouboule, int taille_bouboule);
 
+#endif 

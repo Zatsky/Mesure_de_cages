@@ -202,12 +202,13 @@ struct molecule lire_molecule_mol(FILE *F)
 
 	lire_fin_molecule(F);
 	//remplissage de la matrice liaison
-	
+	/*
 	for (i=0 ; i<M.nb_atomes ; i++)
 	{
 		for (j=0 ; j<M.nb_atomes; j++)
 			M.matrice_liaisons[i][j] = 0;
 	}
+	*/
 	for (l=0 ; l<M.nb_liaisons ; l++)
 	{
 		//printf("%d %d\n",M.liste_liaisons[l].A1,M.liste_liaisons[l].A2 );
