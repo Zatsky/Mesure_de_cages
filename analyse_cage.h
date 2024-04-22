@@ -2,6 +2,8 @@
 #include "graphe_cycles.h"
 #include "lecture_molecule_sdf.h"
 #include <dirent.h>
+#include <stdio.h>
+#include <math.h>
 
 int nb_arete_base;
 int taille_base;
@@ -25,3 +27,4 @@ char *atom_name[NB_ATOM_NAMES];
 #define RESULTS_TYPE_CLIQUES "results/results_cliques_type_reduit.csv" 
 #define RESULTS_DL_CLIQUES "results/results_clique_dl_reduit.csv"
 #define RESULTS_LISTE_COINS "results/liste_coins_reduit.csv"
+#define RESULTS_LISTE_MESURE "results/liste_mesure_alpha.csv"

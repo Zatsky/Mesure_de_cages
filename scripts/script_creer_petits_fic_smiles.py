@@ -4,7 +4,6 @@ import sys
 import os
 
 file_data = sys.argv[1]
-
 with open("scripts/script_smi_to_mol.sh", "w") as f_script :
 	with open(file_data, 'r') as f :
 		csvreader = csv.reader(f)
