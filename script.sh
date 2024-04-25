@@ -13,18 +13,19 @@ do
 done
 
 #on cree les fichiers smi (nom_mol smiles) a partir des smiles du fichier d entree
-echo "creation des fichiers smi et mol si pas encore fait"
+#echo "creation des fichiers smi et mol si pas encore fait"
 #python scripts/script_creer_petits_fic_smiles.py data/lot_cageV2.csv
 #python scripts/script_CHEBI.py
 #python scripts/script_sdf_csv.py
 
 ## calcul des fichiers .mol (positions 3D et liaisons) a partir des fichiers .smi 
-echo "fichiers mol: peut prendre un peu de temps"
-bash scripts/script_smi_to_mol.sh
+#echo "fichiers mol: peut prendre un peu de temps"
+#bash scripts/script_smi_to_mol.sh
  
 ## on lance le programme
-make run_cage ## calcul les graphes de cycles et graphes de coins du dataset lot_cageV2.csv
-make clean
+#make run_cage ## calcul les graphes de cycles et graphes de coins du dataset lot_cageV2.csv
+#make clean
+bash scripts/script_supp_mol_vide.sh
 
 python scripts/script_compter_cliques.py ## compter les cliques de chaque type
 bash scripts/genere_images_g_cycles.sh ## creer les fichiers png des graphes de cycles

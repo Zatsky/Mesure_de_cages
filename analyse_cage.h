@@ -23,7 +23,7 @@ char *atom_name[NB_ATOM_NAMES];
 #define FILES_PNG_GCYCLES "data/png_files_reduit/graphes_cycles/"
 #define FILES_PNG_GCOINS "data/png_files_reduit/graphes_coins/"
 
-#define CHEBI ""
+#define CHEBI "data/chebi_smi/"
 
 #define RESULTS_ENS_CLIQUES "results/results_cliques_reduit.csv"
 #define RESULTS_TYPE_CLIQUES "results/results_cliques_type_reduit.csv" 

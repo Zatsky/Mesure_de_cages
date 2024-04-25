@@ -1,0 +1,6 @@
+graph G {
+	0 [label="5"];
+	1 [label="4"];
+	2 [label="6"];
+	1 -- 2 [label="1", color=blue];
+}

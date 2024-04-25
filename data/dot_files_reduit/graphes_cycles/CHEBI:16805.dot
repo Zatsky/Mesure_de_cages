@@ -1,0 +1,4 @@
+graph G {
+	0 [label="5"];
+	1 [label="5"];
+}

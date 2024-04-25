@@ -1098,6 +1098,7 @@ int main(int argc, char *argv[])
 		FILE* f_classification = fopen(CHEBI,"w");
 		cage_ou_precage(moy,f_classification,alpha);
 		fclose(f_classification);
+
 		exit(0);
 	}
 
@@ -1136,16 +1137,17 @@ int main(int argc, char *argv[])
 	}
 	
 	int i;
-    DIR *rep = opendir("data/smi_files_reduit"); // les .smi (SMILES notations) et les .mol (fichiers 3D pour input des constructions de graphes moléculaires) sont stockés dans le dossier smi_files_reduit
-    struct dirent *lecture;
+    //DIR *rep = opendir("data/smi_files_reduit"); // les .smi (SMILES notations) et les .mol (fichiers 3D pour input des constructions de graphes moléculaires) sont stockés dans le dossier smi_files_reduit
+    DIR *rep = opendir("data/chebi_smi");
+	struct dirent *lecture;
     // initialise la classification des chimistes en cage, precage, non cage
     classification = malloc(NB_MOL * sizeof(MOL_CARAC));
     init_cage_non_cage(); 
     while ((lecture = readdir(rep))) {
         printf("%s\n", lecture->d_name);
-
         // problème avec l'arsenichin A, SMILES non géré par OpenBabel
-        if (strstr(lecture->d_name, ".mol") && strcmp(lecture->d_name, "arsenicin_A.mol")){ // !strcmp(lecture->d_name, "tabernabovine_B.mol")){
+        if (strstr(lecture->d_name, ".mol")){
+			// !strcmp(lecture->d_name, "tabernabovine_B.mol")){
 			taille = strlen(lecture->d_name);
 			//printf("%d\n", taille);
 			// allocation de memoire
@@ -1156,7 +1158,7 @@ int main(int argc, char *argv[])
 			strncpy(name, lecture->d_name, taille-4);
 			name[taille-4] = '\0'; // il faut ajouter le caractère de fin de chaines
 
-			strcat(strcpy(name_file_mol, FILES_SMI), lecture->d_name);
+			strcat(strcpy(name_file_mol, CHEBI), lecture->d_name);
 			
 			// remplissage fichiers avec nom molécule et cage/précage/non cage
 			F = fopen(name_file_mol,"r");

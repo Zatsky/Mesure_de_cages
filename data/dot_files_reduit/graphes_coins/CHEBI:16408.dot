@@ -1,0 +1,5 @@
+graph G {
+	0 [label=<5 6 6 <BR/> <FONT COLOR="BLUE">1 2 1 </FONT>>];
+	1 [label=<5 6 6 <BR/> <FONT COLOR="BLUE">2 2 1 </FONT>>];
+	0 -- 1 [label="2"];
+}

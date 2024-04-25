@@ -1,0 +1,9 @@
+graph G {
+	0 [label="5"];
+	1 [label="6"];
+	2 [label="7"];
+	3 [label="6"];
+	4 [label="5"];
+	5 [label="6"];
+	6 [label="6"];
+}

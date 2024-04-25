@@ -123,4 +123,4 @@ with open("scripts/script_smi_to_mol.sh", "w") as f_script:
                     output_file.write(smi_content)
                 
                 # Ajouter une ligne dans le script_smi_to_mol.sh pour convertir .smi en .mol
-                f_script.write("obgen " + output_file_name + " > " + molfile + "\n")
+                f_script.write("obgen -h " + output_file_name + " > " + molfile + "\n")
