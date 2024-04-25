@@ -952,17 +952,63 @@ float comparator(float* moy, FILE *f, float alpha) {
     return rate / nb;
 }
 
+void cage_ou_precage(float* moy, FILE *f, float alpha) {
+    char line[1000];
+    char *comma_ptr;
+    float temp = 0.0;
+	float diff1 = 0.0;
+	float diff2 = 0.0;
+	float diff3 = 0.0;
+    size_t length;
+	float nb =0.0;
+    while (fgets(line, sizeof(line), f) != NULL) {
+        comma_ptr = strchr(line, ',');
+        if (comma_ptr != NULL) {
+            comma_ptr = strchr(comma_ptr + 1, ',');
+            if (comma_ptr != NULL) {
+                // Calculer la longueur de la partie à écrire
+                size_t start_index = comma_ptr - line + 1;
+                size_t end_index = strlen(line) - 1; // Exclure le '\n' à la fin de la ligne
+                // Extrait le texte après la deuxième virgule
+                char extracted_text[1000];
+                strncpy(extracted_text, line + start_index, end_index - start_index);
+                extracted_text[end_index - start_index] = '\0'; // Ajouter la terminaison de la chaîne
+
+                // Convertir le texte extrait en float
+                sscanf(extracted_text, "%f", &temp);
+                // Calcul du taux en fonction du critère de comparaison
+				diff1 = fabs(temp - moy[0]);
+				diff2 = fabs(temp - moy[1]);
+				diff3 = fabs(temp - moy[2]);
+				//printf("is cage = %d  val = %f , diff=  %f et %f\n",cage , temp ,diff1, diff2);
+                if ((diff1 <= diff2) && diff1 <= diff3) {
+                    fprintf(f,"cage,");
+                }
+				else if ((diff2 <= diff1) && diff2 <= diff3) {
+                    fprintf(f,"pre cage,");
+                }
+				else {
+					fprintf(f,"non cage,");
+				}
+            }
+        
+        }
+    }
+}
+
 
 int main(int argc, char *argv[])
-{
-	if (argc > 1 && strcmp(argv[1], "mesure") == 0) {
-		float alpha = 4.0;
+{	
+	if (argc > 2 && strcmp(argv[1], "mesurement") == 0) {
+		float alpha = 3.75; //à partir de 3.8 stabilisation à 87.5 pour mult
 		float cage = 0.0;
 		float pcage = 0.0;
+		float ncage = 0.0;
 		float temp = 0.0;
 		float rate = 0.0;
 		float cmoy = 0.0;
 		float pmoy = 0.0;
+		float nmoy = 0.0;
 		FILE *f_mesure,*f_liste;
 		char line[1000]; // Ou utilisez une taille suffisamment grande pour contenir la ligne entière
 		char *comma_ptr;
@@ -1030,21 +1076,28 @@ int main(int argc, char *argv[])
 							pcage = pcage + 1.0; 
 							pmoy += temp;
 						}
+						else {
+							ncage = ncage + 1.0; 
+							nmoy += temp;
+						}
 					}
 				}
 			}
 		}
-		float moy[2];
+		float moy[3];
 		moy[0] = cmoy /cage;
 		moy[1] = pmoy / pcage;
-		printf("%f \n%f \n",moy[0],moy[1]);
+		moy[2] = nmoy / ncage;
 		fclose(f_mesure);
-		f_mesure = fopen(RESULTS_LISTE_MESURE, "r"); // liste des coins par molécule (poids des sommets et poids des arêtes)
+		//f_mesure = fopen(RESULTS_LISTE_MESURE, "r"); // liste des coins par molécule (poids des sommets et poids des arêtes)
 		
-		rate = comparator(moy,f_mesure,alpha);
+		//rate = comparator(moy,f_mesure,alpha);
 		printf("%f ",rate);
 		fclose(f_liste);
-		fclose(f_mesure);
+		//fclose(f_mesure);
+		FILE* f_classification = fopen(CHEBI,"w");
+		cage_ou_precage(moy,f_classification,alpha);
+		fclose(f_classification);
 		exit(0);
 	}
 

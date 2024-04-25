@@ -9,7 +9,7 @@ with open("scripts/script_smi_to_mol.sh", "w") as f_script :
 		csvreader = csv.reader(f)
 		i = 0
 		for row in csvreader :
-			if row[1] != "name" :
+			if row[1] != "name":
 				petit_smile = row[6]
 				name = "_".join(row[1].split(" "))
 				if name+".mol" not in os.listdir("data/smi_files_reduit/") :

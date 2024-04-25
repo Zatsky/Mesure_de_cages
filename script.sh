@@ -14,7 +14,9 @@ done
 
 #on cree les fichiers smi (nom_mol smiles) a partir des smiles du fichier d entree
 echo "creation des fichiers smi et mol si pas encore fait"
-python scripts/script_creer_petits_fic_smiles.py data/lot_cageV2.csv
+#python scripts/script_creer_petits_fic_smiles.py data/lot_cageV2.csv
+#python scripts/script_CHEBI.py
+#python scripts/script_sdf_csv.py
 
 ## calcul des fichiers .mol (positions 3D et liaisons) a partir des fichiers .smi 
 echo "fichiers mol: peut prendre un peu de temps"

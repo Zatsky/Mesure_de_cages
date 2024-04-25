@@ -6,6 +6,10 @@ run_cage_mesure: analyse_cage
 	#valgrind -v --leak-check=full --show-leak-kinds=all ./analyse_cage mesure mult
 	./analyse_cage mesure mult
 
+run_cage_mesure: analyse_cage
+	#valgrind -v --leak-check=full --show-leak-kinds=all ./analyse_cage mesure mult
+	./analyse_cage mesurement mult
+
 run_cage: analyse_cage
 	#valgrind -v --leak-check=full --show-leak-kinds=all ./analyse_cage
 	./analyse_cage
