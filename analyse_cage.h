@@ -14,8 +14,8 @@ cycles *labase;
 
 char *atom_name[NB_ATOM_NAMES];
 
-#define NB_MOL 81
-#define NB_TAB 20
+#define NB_MOL 2863
+#define NB_TAB 200
 
 #define FILES_SMI "data/smi_files_reduit/"//"data/chebi_mol_smi"
 #define FILES_DOT_GCYCLES "data/dot_files_reduit/graphes_cycles/"

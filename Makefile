@@ -7,8 +7,8 @@ run_cage_mesure: analyse_cage
 	./analyse_cage mesure mult
 
 run_cage: analyse_cage
-	valgrind -v --leak-check=full --show-leak-kinds=all ./analyse_cage
-	#./analyse_cage
+	#valgrind -v --leak-check=full --show-leak-kinds=all ./analyse_cage
+	./analyse_cage
 	#gdb ./analyse_cage
 
 analyse_cage: analyse_cage.o utils_cage_moleculaire.o lecture_molecule_sdf.o graphe_cycles.o

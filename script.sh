@@ -22,10 +22,11 @@ done
 #echo "fichiers mol: peut prendre un peu de temps"
 #bash scripts/script_smi_to_mol.sh
  
+bash scripts/script_supp_mol_vide.sh
+
 ## on lance le programme
 #make run_cage ## calcul les graphes de cycles et graphes de coins du dataset lot_cageV2.csv
 #make clean
-bash scripts/script_supp_mol_vide.sh
 
 python scripts/script_compter_cliques.py ## compter les cliques de chaque type
 bash scripts/genere_images_g_cycles.sh ## creer les fichiers png des graphes de cycles

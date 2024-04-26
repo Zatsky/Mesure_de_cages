@@ -172,10 +172,10 @@ void init_cage_non_cage()
 
 
 // Returns a 2 dimensions tabular containing nb_lignes and nb_col with -1 everywhere
-int** init_tab_deux_dimensions(int nb_lignes, int nb_col)
+long int** init_tab_deux_dimensions(long int nb_lignes, long int nb_col)
 {
-	int i,j;
-	int** tab =  malloc(nb_lignes*sizeof(int*));
+	long int i,j;
+	long int** tab =  malloc(nb_lignes*sizeof(long int*));
 	if(tab == NULL)
 	{
 		printf("Allocation échouée de tab bouboule\n");
@@ -184,10 +184,10 @@ int** init_tab_deux_dimensions(int nb_lignes, int nb_col)
 
 	for(i = 0; i < nb_lignes; ++i)
 	{
-		tab[i] = malloc(nb_col*sizeof(int));
+		tab[i] = malloc(nb_col*sizeof(long int));
 		if(tab[i] == NULL)
 		{
-			printf("Allocation échouée de tab bouboule %d\n", i);
+			printf("Allocation échouée de tab bouboule %ld\n", i);
 			exit(5);
 		}
 		for(j=0;j<nb_col;j++)

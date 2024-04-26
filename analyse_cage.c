@@ -420,12 +420,12 @@ int* nb_double_liaisons(GRAPHE_CYCLE cy, int* store, struct molecule m)
  * b : nb of bouboules found so far
 	Returns the number of bouboules found
  */
-int findCliquesToDetectBouboules(GRAPHE_CYCLE cy, int i, int l, int s, int *degre, int *store,  int** tab_bouboule, int b)
+long int findCliquesToDetectBouboules(GRAPHE_CYCLE cy, long int i, int l, int s, int *degre, int *store,  int** tab_bouboule, long int b)
 {
-	int n = cy.nb_sommets;
-	int j;
+    long int n = cy.nb_sommets;
+    long int j;
     for (j = i; j < n - (s - l); j++)
-	{ 
+    { 
         if (degre[cy.liste_sommets[j].id] >= s - 1) {
  
             // Add the vertex to store
@@ -443,13 +443,13 @@ int findCliquesToDetectBouboules(GRAPHE_CYCLE cy, int i, int l, int s, int *degr
                 }
                 // Size is met
                 else{
-					if (is_bouboule(cy, store)){
-						tab_bouboule[b][0] = store[0];
-						tab_bouboule[b][1] = store[1];
-						tab_bouboule[b][2] = store[2];
-						b ++;
-					}   
-				}
+                    if (is_bouboule(cy, store)){
+                        tab_bouboule[b][0] = store[0];
+                        tab_bouboule[b][1] = store[1];
+                        tab_bouboule[b][2] = store[2];
+                        b ++;
+                    }   
+                }
             }
         }
      }
@@ -1142,11 +1142,11 @@ int main(int argc, char *argv[])
 	struct dirent *lecture;
     // initialise la classification des chimistes en cage, precage, non cage
     classification = malloc(NB_MOL * sizeof(MOL_CARAC));
-    init_cage_non_cage(); 
+    //init_cage_non_cage(); 
     while ((lecture = readdir(rep))) {
-        printf("%s\n", lecture->d_name);
         // problème avec l'arsenichin A, SMILES non géré par OpenBabel
         if (strstr(lecture->d_name, ".mol")){
+			printf("%s\n", lecture->d_name);
 			// !strcmp(lecture->d_name, "tabernabovine_B.mol")){
 			taille = strlen(lecture->d_name);
 			//printf("%d\n", taille);
@@ -1170,6 +1170,7 @@ int main(int argc, char *argv[])
 			fprintf(F_out_type, "%s,", name);
 			fprintf(f_out_dl, "%s,", name);
 			fprintf(f_liste, "%s,",name);
+			/*
 			for(i=0;i<NB_MOL;i++)
 			{
 				if(!strcmp(name, classification[i].name))
@@ -1197,7 +1198,7 @@ int main(int argc, char *argv[])
 					}
 				}
 			}
-			
+			*/
 			/*
 			 *  Construction graphe cycle
 			 * 
@@ -1221,7 +1222,7 @@ int main(int argc, char *argv[])
 			int *store = malloc(cy.nb_sommets * sizeof(int));
 			int n; // nb de bouboules (= coins artificiels)
 			int c; // nb de coins qu'on garde
-			int** tab_bouboule = init_tab_deux_dimensions(NB_TAB, NB_TAB);
+			long int** tab_bouboule = init_tab_deux_dimensions(NB_TAB, NB_TAB);
 			
 			
 			// d'abord on cherche les cliques pour détecter les bouboules
