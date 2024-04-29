@@ -113,7 +113,6 @@ with open("scripts/script_smi_to_mol.sh", "w") as f_script:
 
                 chebi_id = chebi_id.replace('CHEBI:', '')
                 output_file_name = os.path.join(output_directory, f'{chebi_id}.smi')
-                molfile = os.path.join(output_directory, f'{chebi_id}.mol')
                 
                 # Générer le contenu du fichier .smi
                 smi_content = f"{smiles} {name}"
@@ -122,5 +121,3 @@ with open("scripts/script_smi_to_mol.sh", "w") as f_script:
                 with open(output_file_name, 'w') as output_file:
                     output_file.write(smi_content)
                 
-                # Ajouter une ligne dans le script_smi_to_mol.sh pour convertir .smi en .mol
-                f_script.write("obgen -h " + output_file_name + " > " + molfile + "\n")

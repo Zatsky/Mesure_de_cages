@@ -1,0 +1,9 @@
+ChEBI_lite_3star.sdf
+LOTUS_2021_03_simple.sdf
+LOTUS_2021_03.tsv
+LOTUS_DB_LATEST.zip
+test/
+data/CHEBI/
+data/LOTUS/
+*.smi
+*.mol

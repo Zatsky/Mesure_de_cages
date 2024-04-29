@@ -2,6 +2,13 @@ CFLAGS=-g -Wall
 CC=gcc
 CXX=g++
 
+run:
+	./scripts/smi2mol.sh
+	echo "nb de fichiers smi"
+	ls data/chebi_smi | wc -l
+	echo "nb de fichiers mol"
+	ls data/chebi_mol | wc -l
+
 run_cage_mesure: analyse_cage
 	#valgrind -v --leak-check=full --show-leak-kinds=all ./analyse_cage mesure mult
 	./analyse_cage mesure mult
