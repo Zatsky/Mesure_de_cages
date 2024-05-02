@@ -1,16 +1,15 @@
 echo "SMI"
-ls ./data/CHEBI/chebi_smi | wc -l
+ls ./data/$1/smi_files | wc -l
 
 echo "MOL"
-ls ./data/CHEBI/chebi_mol | wc -l
+ls ./data/$1/mol_files | wc -l
 
-for i in ./data/CHEBI/chebi_smi/*
+for i in ./data/$1/smi_files/*
 do
     inter=$(basename "$i" '.smi')
     nom="$inter.mol"
-    if ! test -f "./data/CHEBI/chebi_mol/$nom"; then
-        obgen "$i" > "./data/CHEBI/chebi_mol/$nom" 2> /dev/null
-        echo $nom
+    if ! test -f "./data/$1/mol_files/$nom"; then
+        obgen "$i" > "./data/$1/mol_files/$nom" 2> /dev/null
     fi
 done
 

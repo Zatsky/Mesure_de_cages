@@ -1,7 +1,0 @@
-graph G {
-	0 [label="6"];
-	1 [label="6"];
-	2 [label="5"];
-	3 [label="5"];
-	2 -- 3 [label="2", color=blue];
-}

@@ -1,5 +1,0 @@
-graph G {
-	0 [label=<5 5 7 <BR/> <FONT COLOR="BLUE">1 1 2 </FONT>>];
-	1 [label=<5 5 7 <BR/> <FONT COLOR="BLUE">2 1 1 </FONT>>];
-	0 -- 1 [label="2"];
-}

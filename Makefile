@@ -2,21 +2,24 @@ CFLAGS=-g -Wall
 CC=gcc
 CXX=g++
 
-run:
-	./scripts/smi2mol.sh
-	echo "nb de fichiers smi"
-	ls data/chebi_smi | wc -l
-	echo "nb de fichiers mol"
-	ls data/chebi_mol | wc -l
+run: analyse_cage cagitude
+	./scripts/script2.sh $(ARGS)
+	./analyse_cage $(ARGS)
+	./cagitude $(ARGS)
 
-run_cage_mesure: analyse_cage
-	#valgrind -v --leak-check=full --show-leak-kinds=all ./analyse_cage mesure mult
-	./analyse_cage mesure mult
+mesure: cagitude
+	./cagitude add CHEBI
+
+cagitude: cagitude.o
+	$(CC) $(CFLAGS) -o $@ $^
+
+cagitude.o: cagitude.c cagitude.h
+	$(CC) $(CFLAGS) -c $< -o $@
 
 run_cage: analyse_cage
 	#valgrind -v --leak-check=full --show-leak-kinds=all ./analyse_cage
-	./analyse_cage
-	#gdb ./analyse_cage
+	./analyse_cage CHEBI
+	#gdb ./analyse_cage 
 
 analyse_cage: analyse_cage.o utils_cage_moleculaire.o lecture_molecule_sdf.o graphe_cycles.o
 	$(CC) $(CFLAGS) -o $@ $^
@@ -39,7 +42,12 @@ clean:
 	rm -f *.o
 
 clean_results:
-	rm -rf results/
-	rm -rf data/smi_files_reduit/
-	rm -rf data/dot_files_reduit/
-	rm -rf data/png_files_reduit/
+	rm -rf data/DEFAULT/results/
+	rm -rf data/CHEBI/results/
+	rm -rf data/LOTUS/results/
+	rm -rf data/DEFAULT/dot_files_reduit/
+	rm -rf data/CHEBI/dot_files_reduit/
+	rm -rf data/LOTUS/dot_files_reduit/
+	rm -rf data/DEFAULT/png_files_reduit/
+	rm -rf data/CHEBI/png_files_reduit/
+	rm -rf data/LOTUS/png_files_reduit/

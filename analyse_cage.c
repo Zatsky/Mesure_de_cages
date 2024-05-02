@@ -738,7 +738,7 @@ void afficheInfosGrapheCoin(GRAPHE_COIN c)
 	}
 }
 
-void genere_dot_file_cycles(GRAPHE_CYCLE cy, char* name, int taille)
+void genere_dot_file_cycles(GRAPHE_CYCLE cy, char* name, int taille,char * FILES_DOT_GCYCLES,char * FILES_PNG_GCYCLES)
 {
 	int i;
 	FILE* F1, *F2;
@@ -777,7 +777,7 @@ void genere_dot_file_cycles(GRAPHE_CYCLE cy, char* name, int taille)
 	free(name_file_png);
 }
 
-void genere_dot_file_coins(GRAPHE_COIN gc, char* name, int taille)
+void genere_dot_file_coins(GRAPHE_COIN gc, char* name, int taille, char * FILES_DOT_GCOINS, char * FILES_PNG_GCOINS)
 {
 	FILE* F1, *F2;
 	// Exporter pour Graphviz
@@ -839,277 +839,51 @@ void liberer_graphe_coin(GRAPHE_COIN c)
 	
 }
 
-float calcul_mesure_coins_add(int length, char* line,float alpha){
-    float total = 0.0;
-    char c;
-    int x = 0;
-    int i = length; // Utilisez une variable pour itérer à travers les caractères de la ligne
-
-    while (line[i] != '\0') {
-        c = line[i];
-        if (c == ' ') {
-            x = 1;
-        }
-        if (c == ',') {
-            x = 0;
-        }
-        if (x == 1) { // Vous pouvez directement vérifier ici si c est '1' ou '2'
-            if (c == '1') {
-                total += 1.0;
-            } else if (c == '2') {
-                total += alpha;
-            }
-        }
-        i++; // Passer au caractère suivant
-    }
-	return total;
-}
-float calcul_mesure_coins_mult(int length, char* line,float alpha){
-	float mesure[3];
-    float total = 0.0;
-    char c;
-    int x = 0;
-    int i = length; // Utilisez une variable pour itérer à travers les caractères de la ligne
-	int y = 0;
-    while (line[i] != '\0') {
-        c = line[i];
-        if (c == ',') {
-            x = 0;
-        }
-        if (x == 1) { // Vous pouvez directement vérifier ici si c est '1' ou '2'
-            if (c == '1') {
-                mesure[y] = 1.0;
-				y++;
-            } else if (c == '2') {
-                mesure[y] = alpha;
-				y++;
-            }
-			else if(c == '3'){
-				mesure[y] = 1.0;
-				y++;
-			}
-			if(y>2){
-			y = 0;
-			total += (mesure[0] * mesure[1] * mesure[2]);
-			}
-        }
-        if (c == ' ') {
-            x = 1;
-        }
-        i++; // Passer au caractère suivant
-    }
-	return total;
-}
-
-
-float comparator(float* moy, FILE *f, float alpha) {
-    char line[1000];
-    char *comma_ptr;
-    float temp = 0.0;
-    float rate = 0.0;
-    int cage = 0;
-	float diff1 = 0.0;
-	float diff2 = 0.0;
-    size_t length;
-	float nb =0.0;
-    while (fgets(line, sizeof(line), f) != NULL) {
-        comma_ptr = strchr(line, ',');
-        if (comma_ptr != NULL) {
-            length = comma_ptr - line + 1;
-            if (line[length] == 'c') {
-                cage = 1;
-				nb ++;
-            }
-			else if(line[length] == 'p'){
-                cage = 2;
-				nb ++;
-			}
-            comma_ptr = strchr(comma_ptr + 1, ',');
-			
-            if (comma_ptr != NULL) {
-                // Calculer la longueur de la partie à écrire
-                size_t start_index = comma_ptr - line + 1;
-                size_t end_index = strlen(line) - 1; // Exclure le '\n' à la fin de la ligne
-                // Extrait le texte après la deuxième virgule
-                char extracted_text[1000];
-                strncpy(extracted_text, line + start_index, end_index - start_index);
-                extracted_text[end_index - start_index] = '\0'; // Ajouter la terminaison de la chaîne
-
-                // Convertir le texte extrait en float
-                sscanf(extracted_text, "%f", &temp);
-                // Calcul du taux en fonction du critère de comparaison
-				diff1 = fabs(temp - moy[0]);
-				diff2 = fabs(temp - moy[1]);
-				//printf("is cage = %d  val = %f , diff=  %f et %f\n",cage , temp ,diff1, diff2);
-                if (((cage == 1) && diff1 <= diff2) || ((cage == 2) && diff2 <= diff1)) {
-                    rate += 100;
-                }
-                cage = 0;
-            }
-        
-        }
-    }
-    return rate / nb;
-}
-
-void cage_ou_precage(float* moy, FILE *f, float alpha) {
-    char line[1000];
-    char *comma_ptr;
-    float temp = 0.0;
-	float diff1 = 0.0;
-	float diff2 = 0.0;
-	float diff3 = 0.0;
-    size_t length;
-	float nb =0.0;
-    while (fgets(line, sizeof(line), f) != NULL) {
-        comma_ptr = strchr(line, ',');
-        if (comma_ptr != NULL) {
-            comma_ptr = strchr(comma_ptr + 1, ',');
-            if (comma_ptr != NULL) {
-                // Calculer la longueur de la partie à écrire
-                size_t start_index = comma_ptr - line + 1;
-                size_t end_index = strlen(line) - 1; // Exclure le '\n' à la fin de la ligne
-                // Extrait le texte après la deuxième virgule
-                char extracted_text[1000];
-                strncpy(extracted_text, line + start_index, end_index - start_index);
-                extracted_text[end_index - start_index] = '\0'; // Ajouter la terminaison de la chaîne
-
-                // Convertir le texte extrait en float
-                sscanf(extracted_text, "%f", &temp);
-                // Calcul du taux en fonction du critère de comparaison
-				diff1 = fabs(temp - moy[0]);
-				diff2 = fabs(temp - moy[1]);
-				diff3 = fabs(temp - moy[2]);
-				//printf("is cage = %d  val = %f , diff=  %f et %f\n",cage , temp ,diff1, diff2);
-                if ((diff1 <= diff2) && diff1 <= diff3) {
-                    fprintf(f,"cage,");
-                }
-				else if ((diff2 <= diff1) && diff2 <= diff3) {
-                    fprintf(f,"pre cage,");
-                }
-				else {
-					fprintf(f,"non cage,");
-				}
-            }
-        
-        }
-    }
-}
-
-
 int main(int argc, char *argv[])
 {	
-	if (argc > 2 && strcmp(argv[1], "mesurement") == 0) {
-		float alpha = 3.75; //à partir de 3.8 stabilisation à 87.5 pour mult
-		float cage = 0.0;
-		float pcage = 0.0;
-		float ncage = 0.0;
-		float temp = 0.0;
-		float rate = 0.0;
-		float cmoy = 0.0;
-		float pmoy = 0.0;
-		float nmoy = 0.0;
-		FILE *f_mesure,*f_liste;
-		char line[1000]; // Ou utilisez une taille suffisamment grande pour contenir la ligne entière
-		char *comma_ptr;
-		f_liste = fopen(RESULTS_LISTE_COINS, "r"); // liste des coins par molécule (poids des sommets et poids des arêtes)
-		if(f_liste == NULL)
-		{
-			printf("Impossible d'ouvrir le fichier %s\n", RESULTS_LISTE_COINS);
-			exit(2);
-		}
-		f_mesure = fopen(RESULTS_LISTE_MESURE, "w"); // liste des coins par molécule (poids des sommets et poids des arêtes)
-		if(f_mesure == NULL)
-		{
-			printf("Impossible d'ouvrir le fichier %s\n", RESULTS_LISTE_MESURE);
-			exit(3);
-		}
-		if (argc > 2 && strcmp(argv[2], "add") == 0){
-			while (fgets(line, sizeof(line), f_liste) != NULL) {
-				comma_ptr = strchr(line, ',');
-				if (comma_ptr != NULL) {
-					size_t length1 = comma_ptr - line + 1;
-					comma_ptr = strchr(comma_ptr + 1, ',');
-					if (comma_ptr != NULL) {
-						// Calculer la longueur de la partie à écrire
-						size_t length = comma_ptr - line + 1;
-						// Écrire la partie dans le fichier de sortie
-						comma_ptr = strchr(comma_ptr + 1, ',');
-						fwrite(line, sizeof(char), length, f_mesure);
-						// Appeler calcul_mesure_coins pour traiter cette ligne
-						temp =calcul_mesure_coins_add(length,line, alpha);
-						// Ajouter un retour à la ligne dans le fichier de sortie
-						fprintf(f_mesure, "%f,\n", temp);
-						if (line[length1] == 'c') {
-							cage = cage +1.0;
-							cmoy += temp;
-						}
-						else if(line[length1] == 'p'){
-							pcage = pcage + 1.0; 
-							pmoy += temp;
-						}
-					}
-				}
-			}
-		}
-		else if (argc > 2 && strcmp(argv[2], "mult") == 0){
-			while (fgets(line, sizeof(line), f_liste) != NULL) {
-				comma_ptr = strchr(line, ',');
-				if (comma_ptr != NULL) {
-					size_t length1 = comma_ptr - line + 1;
-					comma_ptr = strchr(comma_ptr + 1, ',');
-					if (comma_ptr != NULL) {
-						// Calculer la longueur de la partie à écrire
-						size_t length = comma_ptr - line + 1;
-						// Écrire la partie dans le fichier de sortie
-						comma_ptr = strchr(comma_ptr + 1, ',');
-						fwrite(line, sizeof(char), length, f_mesure);
-						// Appeler calcul_mesure_coins pour traiter cette ligne
-						temp =calcul_mesure_coins_mult(length,line, alpha);
-						// Ajouter un retour à la ligne dans le fichier de sortie
-						fprintf(f_mesure, "%f,\n", temp);
-						if (line[length1] == 'c') {
-							cage = cage +1.0;
-							cmoy += temp;
-						}
-						else if(line[length1] == 'p'){
-							pcage = pcage + 1.0; 
-							pmoy += temp;
-						}
-						else {
-							ncage = ncage + 1.0; 
-							nmoy += temp;
-						}
-					}
-				}
-			}
-		}
-		float moy[3];
-		moy[0] = cmoy /cage;
-		moy[1] = pmoy / pcage;
-		moy[2] = nmoy / ncage;
-		fclose(f_mesure);
-		//f_mesure = fopen(RESULTS_LISTE_MESURE, "r"); // liste des coins par molécule (poids des sommets et poids des arêtes)
-		
-		//rate = comparator(moy,f_mesure,alpha);
-		printf("%f ",rate);
-		fclose(f_liste);
-		//fclose(f_mesure);
-		FILE* f_classification = fopen(CHEBI,"w");
-		cage_ou_precage(moy,f_classification,alpha);
-		fclose(f_classification);
+    
+	char * FILES_MOL = "data/DEFAULT/mol_files/";
+	char * FILES_DOT_GCYCLES = "data/DEFAULT/dot_files_reduit/graphes_cycles/";
+	char * FILES_DOT_GCOINS = "data/DEFAULT/dot_files_reduit/graphes_coins/";
+	char * FILES_PNG_GCYCLES = "data/DEFAULT/png_files_reduit/graphes_cycles/";
+	char * FILES_PNG_GCOINS = "data/DEFAULT/png_files_reduit/graphes_coins/";
 
-		exit(0);
+	char * RESULTS_ENS_CLIQUES = "data/DEFAULT/results/results_cliques_reduit.csv";
+	char * RESULTS_TYPE_CLIQUES = "data/DEFAULT/results/results_cliques_type_reduit.csv";
+	char * RESULTS_DL_CLIQUES = "data/DEFAULT/results/results_clique_dl_reduit.csv";
+	char * RESULTS_LISTE_COINS = "data/DEFAULT/results/liste_coins_reduit.csv";
+
+	if (argc>1 && strcmp(argv[1], "CHEBI") == 0){ 
+		FILES_MOL = "data/CHEBI/mol_files/";
+		FILES_DOT_GCYCLES = "data/CHEBI/dot_files_reduit/graphes_cycles/";
+		FILES_DOT_GCOINS = "data/CHEBI/dot_files_reduit/graphes_coins/";
+		FILES_PNG_GCYCLES = "data/CHEBI/png_files_reduit/graphes_cycles/";
+		FILES_PNG_GCOINS = "data/CHEBI/png_files_reduit/graphes_coins/";
+
+		RESULTS_ENS_CLIQUES = "data/CHEBI/results/results_cliques_reduit.csv";
+		RESULTS_TYPE_CLIQUES = "data/CHEBI/results/results_cliques_type_reduit.csv";
+		RESULTS_DL_CLIQUES = "data/CHEBI/results/results_clique_dl_reduit.csv";
+		RESULTS_LISTE_COINS = "data/CHEBI/results/liste_coins_reduit.csv";
+	}
+	else if (argc>1 && strcmp(argv[1], "LOTUS") == 0){
+		FILES_MOL = "data/LOTUS/mol_files/";
+		FILES_DOT_GCYCLES = "data/LOTUS/dot_files_reduit/graphes_cycles/";
+		FILES_DOT_GCOINS = "data/LOTUS/dot_files_reduit/graphes_coins/";
+		FILES_PNG_GCYCLES = "data/LOTUS/png_files_reduit/graphes_cycles/";
+		FILES_PNG_GCOINS = "data/LOTUS/png_files_reduit/graphes_coins/";
+
+		RESULTS_ENS_CLIQUES = "data/LOTUS/results/results_cliques_reduit.csv";
+		RESULTS_TYPE_CLIQUES = "data/LOTUS/results/results_cliques_type_reduit.csv";
+		RESULTS_DL_CLIQUES = "data/LOTUS/results/results_clique_dl_reduit.csv";
+		RESULTS_LISTE_COINS = "data/LOTUS/results/liste_coins_reduit.csv";
 	}
 
 	int taille;
     
-    int taille_mol = strlen(FILES_SMI);
-    
-    /*
-     * Fichiers csv pour les résultats
-     * */
+    int taille_mol = strlen(FILES_MOL);
+
     FILE *F, *F_out, *F_out_type, *f_out_dl, *f_liste;
+	
     F_out = fopen(RESULTS_ENS_CLIQUES, "w"); //liste des cliques par molécule avec les infos (poids des sommets et des arêtes)
     if(F_out == NULL)
     {
@@ -1138,16 +912,16 @@ int main(int argc, char *argv[])
 	
 	int i;
     //DIR *rep = opendir("data/smi_files_reduit"); // les .smi (SMILES notations) et les .mol (fichiers 3D pour input des constructions de graphes moléculaires) sont stockés dans le dossier smi_files_reduit
-    DIR *rep = opendir("data/chebi_smi");
+    DIR *rep = opendir(FILES_MOL);
 	struct dirent *lecture;
     // initialise la classification des chimistes en cage, precage, non cage
-    classification = malloc(NB_MOL * sizeof(MOL_CARAC));
-    //init_cage_non_cage(); 
+	if (argc>1 && strcmp(argv[1], "DEFAULT") == 0){
+    	classification = malloc(NB_MOL * sizeof(MOL_CARAC));
+    	init_cage_non_cage(); 
+	}
     while ((lecture = readdir(rep))) {
-        // problème avec l'arsenichin A, SMILES non géré par OpenBabel
         if (strstr(lecture->d_name, ".mol")){
 			printf("%s\n", lecture->d_name);
-			// !strcmp(lecture->d_name, "tabernabovine_B.mol")){
 			taille = strlen(lecture->d_name);
 			//printf("%d\n", taille);
 			// allocation de memoire
@@ -1158,7 +932,7 @@ int main(int argc, char *argv[])
 			strncpy(name, lecture->d_name, taille-4);
 			name[taille-4] = '\0'; // il faut ajouter le caractère de fin de chaines
 
-			strcat(strcpy(name_file_mol, CHEBI), lecture->d_name);
+			strcat(strcpy(name_file_mol, FILES_MOL), lecture->d_name);
 			
 			// remplissage fichiers avec nom molécule et cage/précage/non cage
 			F = fopen(name_file_mol,"r");
@@ -1170,35 +944,36 @@ int main(int argc, char *argv[])
 			fprintf(F_out_type, "%s,", name);
 			fprintf(f_out_dl, "%s,", name);
 			fprintf(f_liste, "%s,",name);
-			/*
-			for(i=0;i<NB_MOL;i++)
-			{
-				if(!strcmp(name, classification[i].name))
+			if (argc>1 && strcmp(argv[1], "DEFAULT") == 0){
+				for(i=0;i<NB_MOL;i++)
 				{
-					if(classification[i].classe == 1)
+					if(!strcmp(name, classification[i].name))
 					{
-						fprintf(F_out, "%s,", "cage");
-						fprintf(F_out_type, "%s,", "cage");
-						fprintf(f_out_dl, "%s,", "cage");
-						fprintf(f_liste, "%s,", "cage");
-					}
-					else if(classification[i].classe == 2)
-					{
-						fprintf(F_out, "%s,", "pre cage");
-						fprintf(F_out_type, "%s,", "pre cage");
-						fprintf(f_out_dl, "%s,", "pre cage");
-						fprintf(f_liste, "%s,", "pre cage");
-					}
-					else
-					{
-						fprintf(F_out, "%s,", "non cage");
-						fprintf(F_out_type, "%s,", "non cage");
-						fprintf(f_out_dl, "%s,", "non cage");
-						fprintf(f_liste, "%s,", "non cage");
+						if(classification[i].classe == 1)
+						{
+							fprintf(F_out, "%s,", "cage");
+							fprintf(F_out_type, "%s,", "cage");
+							fprintf(f_out_dl, "%s,", "cage");
+							fprintf(f_liste, "%s,", "cage");
+						}
+						else if(classification[i].classe == 2)
+						{
+							fprintf(F_out, "%s,", "pre cage");
+							fprintf(F_out_type, "%s,", "pre cage");
+							fprintf(f_out_dl, "%s,", "pre cage");
+							fprintf(f_liste, "%s,", "pre cage");
+						}
+						else
+						{
+							fprintf(F_out, "%s,", "non cage");
+							fprintf(F_out_type, "%s,", "non cage");
+							fprintf(f_out_dl, "%s,", "non cage");
+							fprintf(f_liste, "%s,", "non cage");
+						}
 					}
 				}
 			}
-			*/
+			
 			/*
 			 *  Construction graphe cycle
 			 * 
@@ -1253,8 +1028,8 @@ int main(int argc, char *argv[])
 			 * 
 			 * */
 			
-			genere_dot_file_cycles(cy, name, taille);
-			genere_dot_file_coins(gc, name, taille);
+			genere_dot_file_cycles(cy, name, taille, FILES_DOT_GCYCLES, FILES_PNG_GCYCLES);
+			genere_dot_file_coins(gc, name, taille, FILES_DOT_GCOINS, FILES_PNG_GCOINS);
 			/*
 			 * 
 			 *  Lister les coins avec leurs caractéristiques (poids des sommets, poids des arêtes)

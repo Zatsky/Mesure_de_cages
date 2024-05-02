@@ -1,11 +1,10 @@
-repertoire="data/chebi_smi/"
-
 # Parcourez tous les fichiers .mol dans le répertoire
-find "$repertoire" -type f -name "*.mol" | while read fichier; do
+for i in ./data/$1/mol_files/*
+do
     # Vérifiez si le fichier est vide en utilisant la commande test -s
-    if [ ! -s "$fichier" ]; then
+    if [ ! -s "$i" ]; then
         # Supprimez le fichier s'il est vide
-        rm "$fichier"
-        echo "Fichier vide supprimé : $fichier"
+        rm "$i"
+        echo "Fichier vide supprimé : $i"
     fi
 done
