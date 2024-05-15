@@ -5,7 +5,7 @@ CXX=g++
 run: analyse_cage cagitude
 	./scripts/script2.sh $(ARGS)
 	./analyse_cage $(ARGS)
-	./cagitude $(ARGS)
+	./cagitude add $(ARGS)
 
 mesure: cagitude
 	./cagitude add CHEBI
@@ -17,8 +17,8 @@ cagitude.o: cagitude.c cagitude.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 run_cage: analyse_cage
-	#valgrind -v --leak-check=full --show-leak-kinds=all ./analyse_cage
-	./analyse_cage CHEBI
+	#valgrind -v --leak-check=full --show-leak-kinds=all ./analyse_cage $(ARGS)
+	./analyse_cage $(ARGS)
 	#gdb ./analyse_cage 
 
 analyse_cage: analyse_cage.o utils_cage_moleculaire.o lecture_molecule_sdf.o graphe_cycles.o

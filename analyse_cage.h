@@ -13,7 +13,5 @@ int **arete_liste;
 cycles *labase;
 
 char *atom_name[NB_ATOM_NAMES];
-
-#define NB_MOL 2863
 #define NB_TAB 200
 

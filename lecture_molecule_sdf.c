@@ -151,6 +151,7 @@ struct molecule lire_molecule_mol(FILE *F)
 	
 	// Nombre d'atomes et nombre de liaisons
 	M.nb_atomes = lire_entier_3(F);
+	//printf("nb atomes : %d\n",M.nb_atomes);
 	M.nb_liaisons = lire_entier_3(F);
 	//printf("%d %d\n",M.nb_atomes,M.nb_liaisons);
 	ligne_suivante(F);
@@ -199,8 +200,7 @@ struct molecule lire_molecule_mol(FILE *F)
 		M.liste_liaisons[l] = lire_liaison(F);
 		if(M.liste_liaisons[l].A1 > M.nb_atomes || M.liste_liaisons[l].A2 > M.nb_atomes){ fprintf(stderr,"numero de molecule non valide \n"); exit(4); }
 	}
-
-	lire_fin_molecule(F);
+	//lire_fin_molecule(F);
 	//remplissage de la matrice liaison
 	/*
 	for (i=0 ; i<M.nb_atomes ; i++)
@@ -215,7 +215,7 @@ struct molecule lire_molecule_mol(FILE *F)
 		M.matrice_liaisons[M.liste_liaisons[l].A1 -1][M.liste_liaisons[l].A2 -1] = M.liste_liaisons[l].l_type;
 		M.matrice_liaisons[M.liste_liaisons[l].A2 -1][M.liste_liaisons[l].A1 -1] = M.liste_liaisons[l].l_type;
 	}
-
+//printf("Fin lecture\n");
 	return M;
 }
 
@@ -296,13 +296,21 @@ struct liaison lire_liaison(FILE *F) {
 
 
 void lire_fin_molecule(FILE *F) {
-	while (fgetc(F) != '$') ;
-	ligne_suivante(F);
-}
+    while (fgetc(F) != 'M') ; // Recherche 'M' pour commencer
+    while (fgetc(F) != ' ') ; // Recherche ' ' après 'M'
+    while (fgetc(F) != 'E') ; // Recherche 'E' après ' '
+    while (fgetc(F) != 'N') ; // Recherche 'N' après 'E'
+    while (fgetc(F) != 'D') ; // Recherche 'D' après 'N'
+    ligne_suivante(F);
+} 
 
 void trouver_la_fin_de_M(FILE *F) {
-	while (fgetc(F)!='>')
-		ligne_suivante(F);
+    while (fgetc(F) != 'M') ; // Recherche 'M' pour commencer
+    while (fgetc(F) != ' ') ; // Recherche ' ' après 'M'
+    while (fgetc(F) != 'E') ; // Recherche 'E' après ' '
+    while (fgetc(F) != 'N') ; // Recherche 'N' après 'E'
+    while (fgetc(F) != 'D') ; // Recherche 'D' après 'N'
+    ligne_suivante(F); 
 }
 void liberer_molecule(struct molecule m)
 {

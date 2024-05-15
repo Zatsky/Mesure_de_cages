@@ -60,8 +60,10 @@ int position_graphemol(graphemol g,int element)
 	int pos = -1;
 	for ( i = 0; i < g.nb_atomes;i++)
 	{
+		//printf("listes atomes[i] = %d     element = %d\n",g.liste_atomes[i],element);
 		if(g.liste_atomes[i]== element)
 		{	pos = i;
+			//printf("trouver \n");
 			break;
 		}
 	}
@@ -951,9 +953,11 @@ int *plus_court_chemin(int sommet1,int sommet2,graphemol m)
 int *plus_court_chemin_precedant(int sommet1,int sommet2,graphemol m)
 {
 	int *chemin =  NULL;
-
+	//printf("1\n");
+	int pos1 = position_graphemol(m, sommet1);
+	int pos2 = position_graphemol(m, sommet2);
 	// deja, si sommet 2 est après sommet 1 dans l'ordre qu'on a défini, on peut sortir
-	if(position_graphemol(m, sommet1) <= position_graphemol(m, sommet2)) return NULL;
+	if( pos1 <= pos2) return NULL;
 	
 
 	struct liste_voisins *v = construction_voisinage_graphemol(m);
@@ -964,7 +968,7 @@ int *plus_court_chemin_precedant(int sommet1,int sommet2,graphemol m)
 	int mini, temp, pos_min;
 	int i,j,k;
 	
-	
+	//printf("2\n");
 	// ordonner le voisinage
 	for(i=0;i<m.nb_atomes;i++)
 	{
@@ -988,29 +992,33 @@ int *plus_court_chemin_precedant(int sommet1,int sommet2,graphemol m)
 			}
 		}
 	}
-	
+	//printf("3\n");
 	for (i = 0; i < m.nb_atomes; i++)
 	{
 		distance[i] = -1;
 		predecesseur[i] = -1;
 	}
 		
-	distance[position_graphemol(m,sommet1)] = 0;
-	predecesseur[position_graphemol(m,sommet1)] = position_graphemol(m,sommet1);
-
-	int pos = position_graphemol(m,sommet2);
+	distance[pos1] = 0;
+	predecesseur[pos1] = pos1;
+	//printf("4\n");
+	//printf("som2= %d < nb_atomes =%d \n",sommet2,m.nb_atomes);
+	int pos = pos2;
+	//printf("pos = %d < nb_atomes =%d \n",pos,m.nb_atomes);
 	int iteration = 0;
+	//printf("debut boucle nb atomes = %d \n",m.nb_atomes);
 	while(distance[pos] == -1)
 	{
 		for( i = 0; i < m.nb_atomes; i++)
 		{
 			if(distance[i] == iteration)
 			{
+				//printf("%d et nb voisins = %d\n",i,v[i].nb_voisins);
 				for(j = 0; j < v[i].nb_voisins;j++)
 				{
-					if(position_graphemol(m, v[i].id_voisins[j]) < position_graphemol(m, sommet1) && distance[position_graphemol(m,v[i].id_voisins[j])] == -1) // on ne modifie la distance que si le voisin est avant le sommet 1 dans l'ordre des sommets
+					if(position_graphemol(m, v[i].id_voisins[j]) < pos1 && distance[position_graphemol(m,v[i].id_voisins[j])] == -1) // on ne modifie la distance que si le voisin est avant le sommet 1 dans l'ordre des sommets
 					{
-						//printf("i: %d\n",m.liste_atomes[i]);
+						//printf("i: %d\n",m.liste_atomes[i]\n);
 						distance[position_graphemol(m,v[i].id_voisins[j])] = iteration + 1;
 						predecesseur[position_graphemol(m,v[i].id_voisins[j])] = m.liste_atomes[i];
 					}
@@ -1019,7 +1027,7 @@ int *plus_court_chemin_precedant(int sommet1,int sommet2,graphemol m)
 		}
 		iteration++;
 	}
-
+	//printf("fin boucle\n");
 	
 	chemin = malloc((distance[pos] +1) * sizeof(int));
 	int s  = 0;
@@ -1029,7 +1037,7 @@ int *plus_court_chemin_precedant(int sommet1,int sommet2,graphemol m)
 
 	for(i = 0; i < distance[pos] - 1;i++)
 	{
-		if(position_graphemol(m, pred) >= position_graphemol(m, sommet1))
+		if(position_graphemol(m, pred) >= pos1)
 		{
 			liberer_memoire_voisins(v,m);
 			free(chemin);
@@ -2153,6 +2161,7 @@ int est_dans_liste_sommets(SOMMET_VR* liste_s, int nb_sommet_vr, int x)
 
 void trouver_prototypes_cycles_vismara(graphemol t)
 {	
+	//printf(" 1 \n");
 
 	int* chemin;
 	int i,j,k,l,m,pos_k, pos_l, taille, nb_sommets_vr, nb_sommets_vr_temp;
@@ -2162,7 +2171,7 @@ void trouver_prototypes_cycles_vismara(graphemol t)
 	int* S; // ensemble de sommets
 	
 	struct liste_voisins *v = construction_voisinage_graphemol(t);
-	
+	//printf(" 1 \n");
 	cycles *liste = NULL;
 	cycles c;
 	int nb_cycles  = 0; 
@@ -2170,7 +2179,7 @@ void trouver_prototypes_cycles_vismara(graphemol t)
 	struct graphe_dr* g_dr = malloc(t.nb_atomes*sizeof(struct graphe_dr));
 	ARC* liste_arcs = NULL;
 	SOMMET_VR* liste_sommets_vr = NULL;
-	
+	//printf(" 3 \n");
 	int nb_voisins_i = 0;
 	for(i=0;i<t.nb_atomes;i++)
 	{
@@ -2186,9 +2195,10 @@ void trouver_prototypes_cycles_vismara(graphemol t)
 		// et calcul de l'ensemble Vr des sommets j ayant cette propriété
 		for(j=0;j<t.nb_atomes;j++)
 		{
+				//printf(" i = %d/%d,  j = %d/%d \n",i,t.nb_atomes,j,t.nb_atomes);
 				liste_chemins[j] = plus_court_chemin_precedant(t.liste_atomes[i], t.liste_atomes[j], t);
 				// stockage d'un plus court chemin dans liste_chemins[j] = [nb aretes du plus court chemin entre i et j, voisin de j dans le chemin, voisin du voisin de j, ..., voisin de i dans le chemin]
-
+				//printf(" i = %d/%d,  j = %d/%d \n",i,t.nb_atomes,j,t.nb_atomes);
 				if(liste_chemins[j] != NULL && liste_chemins[j][0] > 0)
 				{
 					liste_sommets[j] = 1;
@@ -2433,7 +2443,7 @@ void elimination_feuilles(struct molecule m)
 		deja_elimine[i] = 0;
 	int *degre = calcul_degre_mol(g);
 	g = modification_structure_mol(g,degre,deja_elimine);
-
+//printf("1\n");
 	int sommets  = g.nb_atomes;
 	for ( i = 0;  i < g.nb_atomes;i++)
 	{
@@ -2441,6 +2451,7 @@ void elimination_feuilles(struct molecule m)
 		if( deja_elimine[i] == 1)
 			sommets--;
 	}
+//printf("2\n");
 	int l;
 	
 	if ( sommets > 0)
@@ -2457,15 +2468,20 @@ void elimination_feuilles(struct molecule m)
 		 * Recherche tous les isthmes et les enlève
 		 * */
 		int nb_connexe = liste_connexe[0].nb_connexe;
+//printf("3\n");
 		int nb_isthmes = 0;
+//printf("4\n");
 		int *elimine;
 		for (i = 0; i < nb_connexe; i++)
 		{
+//printf("5\n");
 			//printf("i = %d\n", i + 1);
 			//affiche_graphemol(liste_connexe[i]);
 			elimine = malloc(liste_connexe[i].nb_atomes * sizeof(int));
+//printf("6\n");
 			for ( l = 0;  l < liste_connexe[i].nb_atomes;l++)
 			{	
+//printf("7 l = %d, lcat = %d\n",l,liste_connexe[i].nb_atomes);
 				elimine[l] = 0;
 			}
 
@@ -2473,16 +2489,20 @@ void elimination_feuilles(struct molecule m)
 			free(elimine);
 		}
 		
+//printf("8\n");
 		isthmes *liste_isthmes = malloc(nb_isthmes *sizeof(isthmes));
 		if( liste_isthmes == NULL)
 			probleme_memoire();
 
+//printf("9\n");
 		liste_isthmes = retrouver_tous_isthmes(liste_connexe,liste_isthmes,deja_elimine);
 
 		//for(i = 0; i< nb_isthmes;i++)
 		//	printf("%d - %d %d\n",i+1,liste_isthmes[i].l.A1,liste_isthmes[i].l.A2 );
+//printf("10\n");
 		graphemol h = enlever_tous_isthmes(g,deja_elimine,liste_isthmes,nb_isthmes);
 		
+//printf("11\n");
 		deja_elimine = realloc(deja_elimine,h.nb_atomes *sizeof(int));
 		for (i = 0; i < h.nb_atomes; i++)
 			deja_elimine[i] = 0;
@@ -2490,11 +2510,13 @@ void elimination_feuilles(struct molecule m)
 		/* 
 		 * Recalcule les composantes connexes après avoir enlevé les isthmes
 		 * */
+//printf("12\n");
 		 
 		graphemol *t = ensemble_connexe_graphemol(h,deja_elimine);
 		//printf("nb total composants bas niveau %d at = %d\n",t[0].nb_connexe,t[0].nb_atomes);
 		//printf("connexe de t = %d\n",t[0].nb_connexe);
 		//affiche_graphemol(t[0]);
+//printf("13\n");
 		
 		/*
 		 * Trouve l'union des bases de cycles (Vismara, 1997)
@@ -2505,6 +2527,7 @@ void elimination_feuilles(struct molecule m)
 			p = t[i].liste_atomes[0];
 			for( j = 0; j < nb_connexe;j++)
 			{
+//printf(" deb           %d %d\n",i,j);
 				if(sommet_dans_basniveau(liste_connexe[j],p))
 				{
 					//printf("p: %d est dans %d\n",p,j+1 );
@@ -2512,8 +2535,11 @@ void elimination_feuilles(struct molecule m)
 					break;
 				}
 			}
+//printf(" dmil           %d %d\n",i,j);
 			trouver_prototypes_cycles_vismara(t[i]);
+//printf(" fin           %d %d\n",i,j);
 		}
+//printf("14\n");
 		
 		//trouver le composant bas niveauu de chaque cycle de la base
 		//printf("taille de la base : %d \n",taille_base);
@@ -2621,7 +2647,6 @@ GRAPHE_CYCLE construction_graphe_cycles(struct molecule m)
 {
 	nb_arete_base=0;
 	taille_base=0;
-	
 	elimination_feuilles(m); // la recherche de cycles se fait dans cette fonction
 	GRAPHE_CYCLE c;
 	

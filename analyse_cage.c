@@ -495,7 +495,6 @@ int findCliquesToCount(GRAPHE_CYCLE cy, int i, int l, int s, int *degre, int *st
                 }
                 // Size is met
                 else{
-						printf("\n\n\n\n\\n\n\n\n");
 						if (is_bouboule(cy, store))
 						{
 							type = 0;
@@ -764,7 +763,7 @@ void genere_dot_file_cycles(GRAPHE_CYCLE cy, char* name, int taille,char * FILES
 	fprintf(F1, "}");
 	fclose(F1);
 	
-	printf("\n\n\n\n\n\n\n");
+	printf("\n\n");
 	// Exporter en png
 	F2 = fopen("scripts/genere_images_g_cycles.sh","a");
 	char* name_file_png = malloc((taille_file_dot+taille+1)*sizeof(char));
@@ -837,6 +836,17 @@ void liberer_graphe_coin(GRAPHE_COIN c)
 	if(c.liste_aretes != NULL)
 		free(c.liste_aretes);
 	
+}
+
+int test_graphe_vide(struct molecule m){
+	int val = 0;
+	for (int i  = 0; i<m.nb_atomes; i++){
+		for (int j = 0; j<m.nb_liaisons;j++){
+			if (m.matrice_liaisons[i][j]>0)
+			return 1;
+		}
+	}
+	return 0;
 }
 
 int main(int argc, char *argv[])
@@ -914,13 +924,30 @@ int main(int argc, char *argv[])
     //DIR *rep = opendir("data/smi_files_reduit"); // les .smi (SMILES notations) et les .mol (fichiers 3D pour input des constructions de graphes moléculaires) sont stockés dans le dossier smi_files_reduit
     DIR *rep = opendir(FILES_MOL);
 	struct dirent *lecture;
+	int NB_MOL = 0;
+	while ((lecture = readdir(rep)) != NULL) {
+        if (strstr(lecture->d_name,".mol")){ // Vérifier si l'entrée est un fichier régulier
+            NB_MOL++;
+        }	
+    }
+
+    closedir(rep);
+	rep = opendir(FILES_MOL);
     // initialise la classification des chimistes en cage, precage, non cage
 	if (argc>1 && strcmp(argv[1], "DEFAULT") == 0){
     	classification = malloc(NB_MOL * sizeof(MOL_CARAC));
     	init_cage_non_cage(); 
 	}
+	char search[10] = "";
+	if (argc>2){
+		strcat(search,argv[2]);
+	}
+	int xy = 0;
+	strcat(search,".mol");
+	//while ((lecture = readdir(rep))&& xy<100) {
     while ((lecture = readdir(rep))) {
-        if (strstr(lecture->d_name, ".mol")){
+        if (strstr(lecture->d_name, search)){
+			printf("%d / %d\n",xy+1,NB_MOL);
 			printf("%s\n", lecture->d_name);
 			taille = strlen(lecture->d_name);
 			//printf("%d\n", taille);
@@ -980,74 +1007,100 @@ int main(int argc, char *argv[])
 			 * */
 			init_atom_num(); // associe les numéros atomiques aux symboles chimiques
 			struct molecule m = lire_molecule_mol(F); // renvoie un graphe moléculaire à partir du fichier .mol
+			printf("nb atomes : %d   nb liaisons : %d\n",m.nb_atomes,m.nb_liaisons);
 			//afficheInfosGrapheMol(m);
-			GRAPHE_CYCLE cy = construction_graphe_cycles(m); // comme défini dans la thèse de Stefi (avec l'union des bases de cycles comme ensemble de sommets)
-			cy = remove_edges(cy); // supprime les arêtes de type 3 (chaîne entre 2 cycles, voir Thèse Stefi) et les arêtes de poids == 0 (cad juste un sommet en commun)
+			if (m.nb_atomes<35){
+				GRAPHE_CYCLE cy = construction_graphe_cycles(m); // comme défini dans la thèse de Stefi (avec l'union des bases de cycles comme ensemble de sommets)
+				cy = remove_edges(cy); // supprime les arêtes de type 3 (chaîne entre 2 cycles, voir Thèse Stefi) et les arêtes de poids == 0 (cad juste un sommet en commun)
+				
+				//printf("nb sommets: %d nb_aretes:%d\n", cy.nb_sommets, cy.nb_aretes);
 			
-			//printf("nb sommets: %d nb_aretes:%d\n", cy.nb_sommets, cy.nb_aretes);
-		
-			//afficheInfosGrapheCycle(cy);
-			
-			/*
-			 * 
-			 *  Calcul des cliques de taille 3 
-			 * 
-			 * */
-			int *degre = calcul_degre(cy);
-			int *store = malloc(cy.nb_sommets * sizeof(int));
-			int n; // nb de bouboules (= coins artificiels)
-			int c; // nb de coins qu'on garde
-			long int** tab_bouboule = init_tab_deux_dimensions(NB_TAB, NB_TAB);
-			
-			
-			// d'abord on cherche les cliques pour détecter les bouboules
-			n = findCliquesToDetectBouboules(cy, 0, 1, 3, degre, store, tab_bouboule, 0);
-			// puis on recherche les cliques pour les compter par type 
-			/* type 0: bouboule (coin artifciel)
-			 * type 1: coin bouboule (coin quasi-artificiel)
-			 * type 2: coin pas ouvert
-			 * type 4: coin avec double liaisons aux jonctions
-			 * type 3: tous les autres
-			 * */
-			c = findCliquesToCount(cy, 0, 1, 3, degre, store, F_out, F_out_type, f_out_dl, tab_bouboule, n, 0, m);
-			fprintf(F_out, ",");
-			
-			/*
-			 * 
-			 *  Construction du graphe de coins
-			 * 
-			 * */
-			GRAPHE_COIN gc;
-			gc = construct_graph_coin(cy, c, degre, store, tab_bouboule, n, m);
-			
-			//afficheInfosGrapheCycle(cy);
-			//afficheInfosGrapheCoin(gc);
-			
-			/*
-			 * Génération des fichiers de visualisation
-			 * 
-			 * */
-			
-			genere_dot_file_cycles(cy, name, taille, FILES_DOT_GCYCLES, FILES_PNG_GCYCLES);
-			genere_dot_file_coins(gc, name, taille, FILES_DOT_GCOINS, FILES_PNG_GCOINS);
-			/*
-			 * 
-			 *  Lister les coins avec leurs caractéristiques (poids des sommets, poids des arêtes)
-			 * */
+				//afficheInfosGrapheCycle(cy);
+				
+				/*
+				* 
+				*  Calcul des cliques de taille 3 
+				* 
+				* */
+				int *degre = calcul_degre(cy);
+				int *store = malloc(cy.nb_sommets * sizeof(int));
+				int n; // nb de bouboules (= coins artificiels)
+				int c; // nb de coins qu'on garde
+				int** tab_bouboule = init_tab_deux_dimensions(NB_TAB, NB_TAB);
 
-			for(i=0;i<gc.nb_sommets;i++)
-			{
-				fprintf(f_liste, "%d%d%d%s%d%d%d,", gc.liste_sommets[i].poids[0], gc.liste_sommets[i].poids[1], gc.liste_sommets[i].poids[2], " ", gc.liste_sommets[i].liaisons_communs[0], gc.liste_sommets[i].liaisons_communs[1], gc.liste_sommets[i].liaisons_communs[2]);
+				// d'abord on cherche les cliques pour détecter les bouboules
+				n = findCliquesToDetectBouboules(cy, 0, 1, 3, degre, store, tab_bouboule, 0);
+				// puis on recherche les cliques pour les compter par type 
+				/* type 0: bouboule (coin artifciel)
+				* type 1: coin bouboule (coin quasi-artificiel)
+				* type 2: coin pas ouvert
+				* type 4: coin avec double liaisons aux jonctions
+				* type 3: tous les autres
+				* */
+				c = findCliquesToCount(cy, 0, 1, 3, degre, store, F_out, F_out_type, f_out_dl, tab_bouboule, n, 0, m);
+				fprintf(F_out, ",");
+				
+				/*
+				* tio
+				*  Construction du graphe de coins
+				* 
+				* */
+				GRAPHE_COIN gc;
+				gc = construct_graph_coin(cy, c, degre, store, tab_bouboule, n, m);
+				
+				//afficheInfosGrapheCycle(cy);
+				//afficheInfosGrapheCoin(gc);
+				
+				/*
+				* Génération des fichiers de visualisation
+				* 
+				* */
+				
+				genere_dot_file_cycles(cy, name, taille, FILES_DOT_GCYCLES, FILES_PNG_GCYCLES);
+				genere_dot_file_coins(gc, name, taille, FILES_DOT_GCOINS, FILES_PNG_GCOINS);
+				/*
+				* 
+				*  Lister les coins avec leurs caractéristiques (poids des sommets, poids des arêtes)
+				* */
+				free(store);
+				free(degre);
+				
+				for(i=0;i<gc.nb_sommets;i++)
+				{
+					fprintf(f_liste, "%d%d%d%s%d%d%d,", gc.liste_sommets[i].poids[0], gc.liste_sommets[i].poids[1], gc.liste_sommets[i].poids[2], " ", gc.liste_sommets[i].liaisons_communs[0], gc.liste_sommets[i].liaisons_communs[1], gc.liste_sommets[i].liaisons_communs[2]);
+				}
+				for(i=0;i<NB_TAB;i++)
+				{
+					free(tab_bouboule[i]);
+				}
+				free(tab_bouboule);
+				
+				if(taille_base > 0)
+				{
+					for( i = 0; i < taille_base;i++)
+					{
+						liberer_un_cycle(labase[i]);
+					}
+					free(labase);
+					
+				}
+			
+			liberer_graphe_cycles(cy);
+			
+			liberer_graphe_coin(gc);
 			}
 			fprintf(f_liste, "\n");
 			
 			// Désallocation
-			free(store);
-			free(degre);
+			
 			
 			fprintf(F_out, "\n");
 			fprintf(F_out_type,"\n");
 			fprintf(f_out_dl, "\n");
+			fflush(F_out);
+			fflush(F_out_type);
+			fflush(f_out_dl);
+			fflush(f_liste);
 			//printf("\n");
 			
 			fclose(F);
@@ -1057,27 +1110,10 @@ int main(int argc, char *argv[])
 			free(name_file_mol);
 			
 			
-			for(i=0;i<NB_TAB;i++)
-			{
-				free(tab_bouboule[i]);
-			}
-			free(tab_bouboule);
 			
-			if(taille_base > 0)
-			{
-				for( i = 0; i < taille_base;i++)
-				{
-					liberer_un_cycle(labase[i]);
-				}
-				free(labase);
-				
-			}
 			
-			liberer_graphe_cycles(cy);
 			liberer_molecule(m);
-			liberer_graphe_coin(gc);
-			
-			
+			xy++;
 		}
 	}
 	fclose(F_out);

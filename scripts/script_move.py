@@ -2,8 +2,8 @@ import os
 import shutil
 
 # Répertoire source et destination
-repertoire_source = 'data/chebi_smi'
-repertoire_destination = 'data/chebi_mol'
+repertoire_source = 'data/DEFAULT/smi_files'
+repertoire_destination = 'data/DEFAULT/mol_files'
 
 # Parcourir le répertoire source
 for fichier in os.listdir(repertoire_source):

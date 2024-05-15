@@ -61,121 +61,119 @@ void init_cage_non_cage()
 	classification[26].classe = 3;
 	classification[27].name = "aconicumine_A";
 	classification[27].classe = 2;
-	classification[28].name = "arsenicin_A";
-	classification[28].classe = 1;
-	classification[29].name = "euphylonoid_A";
+	classification[28].name = "euphylonoid_A";
+	classification[28].classe = 2;
+	classification[29].name = "bislangduoid_A";
 	classification[29].classe = 2;
-	classification[30].name = "bislangduoid_A";
-	classification[30].classe = 2;
-	classification[31].name = "alstoscholarisine_K";
-	classification[31].classe = 1;
-	classification[32].name = "granatripodin_B";
-	classification[32].classe = 2;
-	classification[33].name = "meloyinnanine_A";
-	classification[33].classe = 2; // pre-cage finalement
-	classification[34].name = "longifolactone_F";
-	classification[34].classe = 2;
-	classification[35].name = "aplydactone";
-	classification[35].classe = 3;
-	classification[36].name = "tabernabovine_B";
-	classification[36].classe = 2;
-	classification[37].name = "asperazine_D";
+	classification[30].name = "alstoscholarisine_K";
+	classification[30].classe = 1;
+	classification[31].name = "granatripodin_B";
+	classification[31].classe = 2;
+	classification[32].name = "meloyinnanine_A";
+	classification[32].classe = 2; // pre-cage finalement
+	classification[33].name = "longifolactone_F";
+	classification[33].classe = 2;
+	classification[34].name = "aplydactone";
+	classification[34].classe = 3;
+	classification[35].name = "tabernabovine_B";
+	classification[35].classe = 2;
+	classification[36].name = "asperazine_D";
+	classification[36].classe = 3;
+	classification[37].name = "inaequalisine_A";
 	classification[37].classe = 3;
-	classification[38].name = "inaequalisine_A";
+	classification[38].name = "strepantibin_A";
 	classification[38].classe = 3;
-	classification[39].name = "strepantibin_A";
+	classification[39].name = "KB343";
 	classification[39].classe = 3;
-	classification[40].name = "KB343";
+	classification[40].name = "geopyxin_A";
 	classification[40].classe = 3;
-	classification[41].name = "geopyxin_A";
+	classification[41].name = "lobarialide_A";
 	classification[41].classe = 3;
-	classification[42].name = "lobarialide_A";
+	classification[42].name = "cycloaplysinopsin_A";
 	classification[42].classe = 3;
-	classification[43].name = "cycloaplysinopsin_A";
+	classification[43].name = "aleutianamine";
 	classification[43].classe = 3;
-	classification[44].name = "aleutianamine";
+	classification[44].name = "peshawaraquinone";
 	classification[44].classe = 3;
-	classification[45].name = "peshawaraquinone";
+	classification[45].name = "retigeranic_acid_A";
 	classification[45].classe = 3;
-	classification[46].name = "retigeranic_acid_A";
-	classification[46].classe = 3;
-	classification[47].name = "scabrolide_A";
-	classification[47].classe = 2; // pre cage finalement
-	classification[48].name = "greenwaylactam_A";
-	classification[48].classe = 3;
-	classification[49].name = "ineleganolide";
+	classification[46].name = "scabrolide_A";
+	classification[46].classe = 2; // pre cage finalement
+	classification[47].name = "greenwaylactam_A";
+	classification[47].classe = 3;
+	classification[48].name = "ineleganolide";
+	classification[48].classe = 2;
+	classification[49].name = "pedrolide";
 	classification[49].classe = 2;
-	classification[50].name = "pedrolide";
-	classification[50].classe = 2;
-	classification[51].name = "anislactone_B";
-	classification[51].classe = 3;
-	classification[52].name = "ceforalide_F";
-	classification[52].classe = 2;
-	classification[53].name = "malibatol_A";
+	classification[50].name = "anislactone_B";
+	classification[50].classe = 3;
+	classification[51].name = "ceforalide_F";
+	classification[51].classe = 2;
+	classification[52].name = "malibatol_A";
+	classification[52].classe = 3;
+	classification[53].name = "incargranine_A";
 	classification[53].classe = 3;
-	classification[54].name = "incargranine_A";
+	classification[54].name = "brevianamide_A";
 	classification[54].classe = 3;
-	classification[55].name = "brevianamide_A";
+	classification[55].name = "ulodione_A";
 	classification[55].classe = 3;
-	classification[56].name = "ulodione_A";
+	classification[56].name = "stemoamide";
 	classification[56].classe = 3;
-	classification[57].name = "stemoamide";
+	classification[57].name = "schweinfurthin_Q";
 	classification[57].classe = 3;
-	classification[58].name = "schweinfurthin_Q";
+	classification[58].name = "daphnodorin_A";
 	classification[58].classe = 3;
-	classification[59].name = "daphnodorin_A";
+	classification[59].name = "volvaltrate_A";
 	classification[59].classe = 3;
-	classification[60].name = "volvaltrate_A";
+	classification[60].name = "galanthamine";
 	classification[60].classe = 3;
-	classification[61].name = "galanthamine";
-	classification[61].classe = 3;
-	classification[62].name = "havellockate";
-	classification[62].classe = 2;
-	classification[63].name = "myriberine";
+	classification[61].name = "havellockate";
+	classification[61].classe = 2;
+	classification[62].name = "myriberine";
+	classification[62].classe = 3;
+	classification[63].name = "myrioxazine_A";
 	classification[63].classe = 3;
-	classification[64].name = "myrioxazine_A";
+	classification[64].name = "epicoccin_G";
 	classification[64].classe = 3;
-	classification[65].name = "epicoccin_G";
+	classification[65].name = "biyouyanagin_A";
 	classification[65].classe = 3;
-	classification[66].name = "biyouyanagin_A";
+	classification[66].name = "aberrarone";
 	classification[66].classe = 3;
-	classification[67].name = "aberrarone";
+	classification[67].name = "daphmanidin";
 	classification[67].classe = 3;
-	classification[68].name = "daphmanidin";
+	classification[68].name = "spirotryprostatin_B";
 	classification[68].classe = 3;
-	classification[69].name = "spirotryprostatin_B";
+	classification[69].name = "phorbol";
 	classification[69].classe = 3;
-	classification[70].name = "phorbol";
+	classification[70].name = "xiamycin_A";
 	classification[70].classe = 3;
-	classification[71].name = "xiamycin_A";
+	classification[71].name = "okaramine_N";
 	classification[71].classe = 3;
-	classification[72].name = "okaramine_N";
+	classification[72].name = "chartelline_C";
 	classification[72].classe = 3;
-	classification[73].name = "chartelline_C";
+	classification[73].name = "vinigrol";
 	classification[73].classe = 3;
-	classification[74].name = "vinigrol";
+	classification[74].name = "maoecrystal";
 	classification[74].classe = 3;
-	classification[75].name = "maoecrystal";
+	classification[75].name = "pallambin_C";
 	classification[75].classe = 3;
-	classification[76].name = "pallambin_C";
+	classification[76].name = "taxuyunnanine_D";
 	classification[76].classe = 3;
-	classification[77].name = "taxuyunnanine_D";
+	classification[77].name = "ingenol";
 	classification[77].classe = 3;
-	classification[78].name = "ingenol";
+	classification[78].name = "cortistatin_A";
 	classification[78].classe = 3;
-	classification[79].name = "cortistatin_A";
+	classification[79].name = "santonin";
 	classification[79].classe = 3;
-	classification[80].name = "santonin";
-	classification[80].classe = 3;
 }
 
 
 
 // Returns a 2 dimensions tabular containing nb_lignes and nb_col with -1 everywhere
-long int** init_tab_deux_dimensions(long int nb_lignes, long int nb_col)
+int** init_tab_deux_dimensions(int nb_lignes, int nb_col)
 {
-	long int i,j;
-	long int** tab =  malloc(nb_lignes*sizeof(long int*));
+	int i,j;
+	int** tab =  malloc(nb_lignes*sizeof(int*));
 	if(tab == NULL)
 	{
 		printf("Allocation échouée de tab bouboule\n");
@@ -184,10 +182,10 @@ long int** init_tab_deux_dimensions(long int nb_lignes, long int nb_col)
 
 	for(i = 0; i < nb_lignes; ++i)
 	{
-		tab[i] = malloc(nb_col*sizeof(long int));
+		tab[i] = malloc(nb_col*sizeof(int));
 		if(tab[i] == NULL)
 		{
-			printf("Allocation échouée de tab bouboule %ld\n", i);
+			printf("Allocation échouée de tab bouboule %d\n", i);
 			exit(5);
 		}
 		for(j=0;j<nb_col;j++)

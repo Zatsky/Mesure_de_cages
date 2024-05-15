@@ -57,7 +57,7 @@ void stack_delete(stack_s ** pp_stack); // supprimer la pile
 void init_cage_non_cage();
 
 // Returns a 2 dimensions tabular containing nb_lignes and nb_col with -1 everywhere
-long int** init_tab_deux_dimensions(long int nb_lignes, long int nb_col);
+int** init_tab_deux_dimensions(int nb_lignes, int nb_col);
 
 // Return the vertex a in which are copied the values of fields of the vertex b
 SOMMET copier_sommet(SOMMET a, SOMMET b);
