@@ -4,6 +4,16 @@
  * Calcul et étude des graphes de coins
  * 
  * */
+char* fichiers_bannis[] = {"40775.mol","4956.mol","52086.mol","6676.mol","37806.mol","32150.mol","40770.mol","32054.mol","40340.mol","40771.mol","CHEBI_40585.mol","CHEBI_90957.mol","CHEBI_90953.mol","CHEBI_90952.mol","CHEBI_495055.mol","CHEBI_495056.mol"};
+int est_fichier_banni(const char *nom_fichier) {
+    for (int i = 0; i < sizeof(fichiers_bannis) / sizeof(fichiers_bannis[0]); i++) {
+        if (strcmp(nom_fichier, fichiers_bannis[i]) == 0) {
+            return 1; // Le fichier est banni
+        }
+    }
+    return 0; // Le fichier n'est pas banni
+}
+
 
 
 // Returns the graph of cycles in which are removed the edges of type long and of weight 0
@@ -839,7 +849,6 @@ void liberer_graphe_coin(GRAPHE_COIN c)
 }
 
 int test_graphe_vide(struct molecule m){
-	int val = 0;
 	for (int i  = 0; i<m.nb_atomes; i++){
 		for (int j = 0; j<m.nb_liaisons;j++){
 			if (m.matrice_liaisons[i][j]>0)
@@ -921,6 +930,7 @@ int main(int argc, char *argv[])
 	}
 	
 	int i;
+	//FILES_MOL = "data/op/";
     //DIR *rep = opendir("data/smi_files_reduit"); // les .smi (SMILES notations) et les .mol (fichiers 3D pour input des constructions de graphes moléculaires) sont stockés dans le dossier smi_files_reduit
     DIR *rep = opendir(FILES_MOL);
 	struct dirent *lecture;
@@ -938,16 +948,19 @@ int main(int argc, char *argv[])
     	classification = malloc(NB_MOL * sizeof(MOL_CARAC));
     	init_cage_non_cage(); 
 	}
-	char search[10] = "";
+	char search[50] = "";
 	if (argc>2){
 		strcat(search,argv[2]);
 	}
 	int xy = 0;
+	int trop_gros = 0;
 	strcat(search,".mol");
 	//while ((lecture = readdir(rep))&& xy<100) {
     while ((lecture = readdir(rep))) {
-        if (strstr(lecture->d_name, search)){
-			printf("%d / %d\n",xy+1,NB_MOL);
+		if((argc>2 && strcmp(lecture->d_name, search) != 0) || est_fichier_banni(lecture->d_name)){
+		}
+        else if (strstr(lecture->d_name, ".mol")){
+			printf("%d / %d\n",xy-2,NB_MOL);
 			printf("%s\n", lecture->d_name);
 			taille = strlen(lecture->d_name);
 			//printf("%d\n", taille);
@@ -1009,7 +1022,7 @@ int main(int argc, char *argv[])
 			struct molecule m = lire_molecule_mol(F); // renvoie un graphe moléculaire à partir du fichier .mol
 			printf("nb atomes : %d   nb liaisons : %d\n",m.nb_atomes,m.nb_liaisons);
 			//afficheInfosGrapheMol(m);
-			if (m.nb_atomes<35){
+			if (m.nb_atomes<250 || argc>2){
 				GRAPHE_CYCLE cy = construction_graphe_cycles(m); // comme défini dans la thèse de Stefi (avec l'union des bases de cycles comme ensemble de sommets)
 				cy = remove_edges(cy); // supprime les arêtes de type 3 (chaîne entre 2 cycles, voir Thèse Stefi) et les arêtes de poids == 0 (cad juste un sommet en commun)
 				
@@ -1089,6 +1102,9 @@ int main(int argc, char *argv[])
 			
 			liberer_graphe_coin(gc);
 			}
+			else{
+				trop_gros++;
+			} 
 			fprintf(f_liste, "\n");
 			
 			// Désallocation
@@ -1113,9 +1129,20 @@ int main(int argc, char *argv[])
 			
 			
 			liberer_molecule(m);
-			xy++;
+			if (argc>2){
+				char commande[100] = "xdg-open ";
+				char fichier[50] = "";
+				strcat(fichier,FILES_MOL);
+				strcat(fichier,lecture->d_name);
+				snprintf(commande + strlen(commande), sizeof(commande) - strlen(commande), "%s ",fichier );
+				system(commande);
+				break;
+			}
 		}
+
+		xy++;
 	}
+	printf("%d fichiers non lus\n\n",trop_gros);
 	fclose(F_out);
 	fclose(F_out_type);
 	fclose(f_out_dl);

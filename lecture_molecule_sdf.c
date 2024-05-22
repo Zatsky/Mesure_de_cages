@@ -170,7 +170,7 @@ struct molecule lire_molecule_mol(FILE *F)
 		fprintf(stdout,"Cannot allocate memory  for M.liste_liaisons\n");
 		exit(56);
 	}
-	int l,i,j; 
+	int l; 
 	M.matrice_liaisons = malloc(M.nb_atomes *sizeof(int *));
 	for (l = 0; l < M.nb_atomes; l++)
 		M.matrice_liaisons[l] = malloc( M.nb_atomes *sizeof(int));

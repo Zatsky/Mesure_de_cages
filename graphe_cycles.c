@@ -919,7 +919,8 @@ int *plus_court_chemin(int sommet1,int sommet2,graphemol m)
 	while(distance[pos] == -1)
 	{
 		for( i = 0; i < m.nb_atomes; i++)
-		{
+		{	
+			//printf("%d et %d\n",distance[i],v[i].nb_voisins);
 			if(distance[i] == iteration)
 			{
 				for(j = 0; j < v[i].nb_voisins;j++)
@@ -1007,12 +1008,16 @@ int *plus_court_chemin_precedant(int sommet1,int sommet2,graphemol m)
 	//printf("pos = %d < nb_atomes =%d \n",pos,m.nb_atomes);
 	int iteration = 0;
 	//printf("debut boucle nb atomes = %d \n",m.nb_atomes);
+	int xy = 0;
 	while(distance[pos] == -1)
 	{
+		int trouver = 0;
 		for( i = 0; i < m.nb_atomes; i++)
 		{
+			//printf("i = %d à distance %d et avec %d voisins\n",i,distance[i],v[i].nb_voisins);
 			if(distance[i] == iteration)
 			{
+				
 				//printf("%d et nb voisins = %d\n",i,v[i].nb_voisins);
 				for(j = 0; j < v[i].nb_voisins;j++)
 				{
@@ -1020,11 +1025,15 @@ int *plus_court_chemin_precedant(int sommet1,int sommet2,graphemol m)
 					{
 						//printf("i: %d\n",m.liste_atomes[i]\n);
 						distance[position_graphemol(m,v[i].id_voisins[j])] = iteration + 1;
+						trouver = 1;
 						predecesseur[position_graphemol(m,v[i].id_voisins[j])] = m.liste_atomes[i];
 					}
 				}
 			}
 		}
+		if (!trouver) {
+            break; // Sortir de la boucle while si aucun sommet n'est mis à jour
+        }
 		iteration++;
 	}
 	//printf("fin boucle\n");

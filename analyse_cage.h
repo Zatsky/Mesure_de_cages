@@ -4,6 +4,7 @@
 #include <dirent.h>
 #include <stdio.h>
 #include <math.h>
+#include <string.h>
 
 int nb_arete_base;
 int taille_base;
