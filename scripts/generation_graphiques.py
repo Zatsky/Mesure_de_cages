@@ -1,14 +1,16 @@
-import csv
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+import csv
 from collections import defaultdict
-import sys
 import numpy as np
+
 # Fonction pour lire les données du fichier CSV
 def lire_donnees_csv(nom_fichier):
     mesures = []
     with open(nom_fichier, 'r') as fichier:
         lecteur_csv = csv.reader(fichier)
-        for i,ligne in enumerate(lecteur_csv):
+        for i, ligne in enumerate(lecteur_csv):
             try:
                 mesure = float(ligne[1])
                 mesures.append(mesure)
@@ -16,58 +18,84 @@ def lire_donnees_csv(nom_fichier):
                 pass
     return mesures
 
-arg1 = sys.argv[1]
 # Lire les données du fichier CSV
-result_dir = "data/" + arg1 + "/results/"
-mesures = lire_donnees_csv(result_dir + "liste_mesure_alpha.csv")
+def gen_graphique(arg1):
+    if arg1 == "CHEBI":
+        max_x1 = 100
+        max_x2 = 250
+        max_y1 = 50
+        max_y2 = 800
+    elif arg1 == "LOTUS":
+        max_x1 = 100
+        max_x2 = 250
+        max_y1 = 1000
+        max_y2 = 13000
+    else:
+        max_x1 = 100
+        max_x2 = 250
+        max_y1 = 50
+        max_y2 = 800
 
-# Compter le nombre de molécules pour chaque mesure
-nombre_molecules_par_mesure = defaultdict(int)
-for mesure in mesures:
-    nombre_molecules_par_mesure[mesure] += 1
+    result_dir = "data/" + arg1 + "/results/"
+    mesures = lire_donnees_csv(result_dir + "liste_mesure_alpha.csv")
 
-# Trier les mesures et le nombre de molécules par mesure
-mesures_triees = sorted(nombre_molecules_par_mesure.keys())
-nombres_molecules_cumulatifs = [0] * len(mesures_triees)
+    # Compter le nombre de molécules pour chaque mesure
+    nombre_molecules_par_mesure = defaultdict(int)
+    for mesure in mesures:
+        nombre_molecules_par_mesure[mesure] += 1
 
-nombres_molecules = [nombre_molecules_par_mesure[mesure] for mesure in mesures_triees]
+    # Trier les mesures et le nombre de molécules par mesure
+    mesures_triees = sorted(nombre_molecules_par_mesure.keys())
+    nombres_molecules_cumulatifs = [0] * len(mesures_triees)
 
-nombre_molecules_cumulatif = 0
-for i, mesure in enumerate(mesures_triees):
-    nombre_molecules_cumulatif += nombre_molecules_par_mesure[mesure]
-    nombres_molecules_cumulatifs[i] = nombre_molecules_cumulatif
-# Créer le graphique en barres
+    nombres_molecules = [nombre_molecules_par_mesure[mesure] for mesure in mesures_triees]
 
-bins = np.arange(0, 140 + 5, 5)
+    nombre_molecules_cumulatif = 0
+    for i, mesure in enumerate(mesures_triees):
+        nombre_molecules_cumulatif += nombre_molecules_par_mesure[mesure]
+        nombres_molecules_cumulatifs[i] = nombre_molecules_cumulatif
 
-# Utilisation de np.histogram pour regrouper les données par intervalles de 5
-hist, bin_edges = np.histogram(mesures, bins=bins)
+    # Créer le graphique en barres
+    bins = np.arange(0, 140 + 5, 5)
 
-# Création du graphique à barres
-plt.bar(bin_edges[:-1], hist, width=5, align='edge')
+    # Utilisation de np.histogram pour regrouper les données par intervalles de 5
+    hist, bin_edges = np.histogram(mesures, bins=bins)
 
-#plt.bar(mesures_triees,nombres_molecules)
-plt.grid(True)
+    # Création du graphique à barres
+    plt.plot(nombre_molecules_par_mesure, mesures_triees, align='edge')
+    plt.grid(True)
 
-plt.xlim(0, 140)  # Remplacez valeur_minimale_x et valeur_maximale_x par les valeurs minimale et maximale que vous souhaitez afficher sur l'axe des x
-plt.ylim(0, 300)
-# Ajouter des titres et des étiquettes
-plt.title("Nombre de molécules pour chaque mesure")
-plt.xlabel("Cagitude")
-plt.ylabel("Nombre de molécules")
+    plt.xlim(0, max_x1)
+    plt.ylim(0, max_y1)  # Fixer la limite supérieure de l'axe y
 
-plt.savefig(result_dir+"histogramme_discret.png")
-# Afficher le graphique
+    # Ajouter des flèches pour indiquer que certaines valeurs dépassent la limite supérieure
+    for i, count in enumerate(hist):
+        if count > max_y1:
+            plt.annotate(
+                '⬆',
+                (bin_edges[i], max_y1),
+                ha='center',
+                va='bottom',
+                fontsize=12,
+                color='red'
+            )
 
-plt.close()
-plt.plot(mesures_triees, nombres_molecules_cumulatifs)
+    plt.title("Nombre de molécules en fonction de la cagitude")
+    plt.xlabel("Cagitude")
+    plt.ylabel("Nombre de molécules")
 
-# Ajouter des titres et des étiquettes
-plt.title("Nombre de molécules inférieur ou égal à une mesure")
-plt.grid(True)
+    plt.savefig(result_dir + "histogramme_discret.png")
+    plt.close()
 
-plt.xlim(-1, 250)  # Remplacez valeur_minimale_x et valeur_maximale_x par les valeurs minimale et maximale que vous souhaitez afficher sur l'axe des x
-plt.ylim(-1, 750)
-plt.xlabel("Cagitude")
-plt.ylabel("Nombre de molécules")
-plt.savefig(result_dir+"graphique_distribution_cumulative.png")
+    # Créer le graphique de distribution cumulative
+    plt.plot(mesures_triees, nombres_molecules_cumulatifs)
+    plt.grid(True)
+
+    plt.xlim(-10, max_x2)
+    plt.ylim(-10, max_y2)  # Fixer la limite supérieure de l'axe y
+
+    plt.title("Nombre de molécules inférieur ou égal à une cagitude")
+    plt.xlabel("Cagitude")
+    plt.ylabel("Nombre de molécules")
+
+    plt.savefig(result_dir + "graphique_distribution_cumulative.png")

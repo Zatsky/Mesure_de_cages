@@ -51,3 +51,7 @@ clean_results:
 	rm -rf data/DEFAULT/png_files_reduit/
 	rm -rf data/CHEBI/png_files_reduit/
 	rm -rf data/LOTUS/png_files_reduit/
+
+
+clean_pdf:
+	rm -rf data/CHEBI/ID/*

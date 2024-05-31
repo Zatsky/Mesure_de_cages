@@ -201,13 +201,18 @@ int main(int argc, char *argv[])
 			printf("Impossible d'ouvrir le fichier %s\n", RESULTS_LISTE_MESURE);
 			exit(3);
 		}
+		int xz = 0;
 		while (fgets(line, sizeof(line), f_liste) != NULL) {
 			comma_ptr = strchr(line, ',');
 			if (comma_ptr != NULL) {
+				if (argc>2 && strcmp(argv[2], "DEFAULT") == 0){ 
+					comma_ptr = strchr(comma_ptr+1, ',');
+				}
 				// Calculer la longueur de la partie à écrire
 				size_t length = comma_ptr - line + 1;
 				// Écrire la partie dans le fichier de sortie
 				comma_ptr = strchr(comma_ptr + 1, ',');
+				printf(comma_ptr);
 				// Appeler calcul_mesure_coins pour traiter cette ligne
 				if (argc > 1 && strcmp(argv[1], "add") == 0){
 					temp =calcul_mesure_coins_add(length,line, alpha);
@@ -220,6 +225,9 @@ int main(int argc, char *argv[])
 					fwrite(line, sizeof(char), length, f_mesure);
                     fprintf(f_mesure, "%f,\n", temp);
                 }
+				else{
+					xz++;
+				}
 			}
 		}
 		fclose(f_mesure);
@@ -227,6 +235,7 @@ int main(int argc, char *argv[])
 		
 		//rate = comparator(moy,f_mesure,alpha);
 		fclose(f_liste);
+		printf("%d à 0\n",xz);
 		//fclose(f_mesure);
     
     /*
@@ -278,7 +287,8 @@ int main(int argc, char *argv[])
 						// Calculer la longueur de la partie à écrire
 						size_t length = comma_ptr - line + 1;
 						// Écrire la partie dans le fichier de sortie
-						comma_ptr = strchr(comma_ptr + 1, ',');
+						comma_ptr = strchr(comma_ptr + 1, 
+    # Compter le nombre de molécules pour chaque mesure',');
 						fwrite(line, sizeof(char), length, f_mesure);
 						// Appeler calcul_mesure_coins pour traiter cette ligne
 						temp =calcul_mesure_coins_add(length,line, alpha);

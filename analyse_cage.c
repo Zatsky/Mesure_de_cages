@@ -4,7 +4,10 @@
  * Calcul et étude des graphes de coins
  * 
  * */
-char* fichiers_bannis[] = {"40775.mol","4956.mol","52086.mol","6676.mol","37806.mol","32150.mol","40770.mol","32054.mol","40340.mol","40771.mol","CHEBI_40585.mol","CHEBI_90957.mol","CHEBI_90953.mol","CHEBI_90952.mol","CHEBI_495055.mol","CHEBI_495056.mol"};
+char* fichiers_bannis[] = {"CHEBI_40585.mol","CHEBI_90957.mol","CHEBI_90953.mol","CHEBI_90952.mol","CHEBI_495055.mol","CHEBI_495056.mol","LTS0052567.mol",
+"LTS0253454.mol","LTS0118519.mol","LTS0236279.mol","LTS0259804.mol","LTS0066778.mol","LTS0139005.mol","LTS0253710.mol","LTS0111313.mol","LTS0099024.mol",
+"LTS0033610.mol","LTS0024854.mol","LTS0253760.mol","LTS0271428.mol","LTS0145219.mol","LTS0005529.mol","LTS0099046.mol","LTS0171362.mol","LTS0248455.mol",
+"LTS0134390.mol","LTS0187733.mol","LTS0173187.mol","LTS0052190.mol","LTS0053884.mol","LTS0224971.mol","LTS0072623.mol","LTS0190263.mol"};
 int est_fichier_banni(const char *nom_fichier) {
     for (int i = 0; i < sizeof(fichiers_bannis) / sizeof(fichiers_bannis[0]); i++) {
         if (strcmp(nom_fichier, fichiers_bannis[i]) == 0) {
@@ -883,6 +886,7 @@ int main(int argc, char *argv[])
 		RESULTS_TYPE_CLIQUES = "data/CHEBI/results/results_cliques_type_reduit.csv";
 		RESULTS_DL_CLIQUES = "data/CHEBI/results/results_clique_dl_reduit.csv";
 		RESULTS_LISTE_COINS = "data/CHEBI/results/liste_coins_reduit.csv";
+
 	}
 	else if (argc>1 && strcmp(argv[1], "LOTUS") == 0){
 		FILES_MOL = "data/LOTUS/mol_files/";
@@ -955,9 +959,12 @@ int main(int argc, char *argv[])
 	int xy = 0;
 	int trop_gros = 0;
 	strcat(search,".mol");
+	int xz = 0;
 	//while ((lecture = readdir(rep))&& xy<100) {
+		
     while ((lecture = readdir(rep))) {
 		if((argc>2 && strcmp(lecture->d_name, search) != 0) || est_fichier_banni(lecture->d_name)){
+			xz++;
 		}
         else if (strstr(lecture->d_name, ".mol")){
 			printf("%d / %d\n",xy-2,NB_MOL);
@@ -1098,9 +1105,9 @@ int main(int argc, char *argv[])
 					
 				}
 			
-			liberer_graphe_cycles(cy);
-			
-			liberer_graphe_coin(gc);
+				liberer_graphe_cycles(cy);
+				
+				liberer_graphe_coin(gc);
 			}
 			else{
 				trop_gros++;
@@ -1142,7 +1149,8 @@ int main(int argc, char *argv[])
 
 		xy++;
 	}
-	printf("%d fichiers non lus\n\n",trop_gros);
+	printf("%d molécules + 250 atomes\n\n",trop_gros);
+	printf("%d molécules interdites", xz);
 	fclose(F_out);
 	fclose(F_out_type);
 	fclose(f_out_dl);
