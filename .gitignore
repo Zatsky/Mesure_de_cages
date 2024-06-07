@@ -6,5 +6,7 @@ test/
 data/CHEBI/
 data/LOTUS/
 data/DEFAULT/
+data/CHIMISTE/
 *.smi
 *.mol
+*.o

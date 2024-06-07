@@ -5,10 +5,12 @@ CXX=g++
 run: analyse_cage cagitude
 	./scripts/script2.sh $(ARGS)
 	./analyse_cage $(ARGS)
-	./cagitude add $(ARGS)
+	./cagitude $(ARGS) add
 
 mesure: cagitude
-	./cagitude add CHEBI
+	#valgrind -v --leak-check=full --show-leak-kinds=all --track-origins=yes ./cagitude DEFAULT add
+	./cagitude CHEBI add connexe
+
 
 cagitude: cagitude.o
 	$(CC) $(CFLAGS) -o $@ $^

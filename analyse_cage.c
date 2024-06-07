@@ -753,7 +753,7 @@ void afficheInfosGrapheCoin(GRAPHE_COIN c)
 void genere_dot_file_cycles(GRAPHE_CYCLE cy, char* name, int taille,char * FILES_DOT_GCYCLES,char * FILES_PNG_GCYCLES)
 {
 	int i;
-	FILE* F1, *F2;
+	FILE* F1;
 	int taille_file_dot = strlen(FILES_DOT_GCYCLES);
 	char* name_file_dot = malloc((taille_file_dot+taille+1) * sizeof(char));
 	strcat(strcpy(name_file_dot, FILES_DOT_GCYCLES), name);
@@ -778,20 +778,13 @@ void genere_dot_file_cycles(GRAPHE_CYCLE cy, char* name, int taille,char * FILES
 	
 	printf("\n\n");
 	// Exporter en png
-	F2 = fopen("scripts/genere_images_g_cycles.sh","a");
-	char* name_file_png = malloc((taille_file_dot+taille+1)*sizeof(char));
-	strcat(strcpy(name_file_png, FILES_PNG_GCYCLES), name);
-	strcat(name_file_png, ".png");
 	
-	fprintf(F2, "dot -Tpng %s -o %s\n", name_file_dot, name_file_png);
-	fclose(F2);
 	free(name_file_dot);
-	free(name_file_png);
 }
 
 void genere_dot_file_coins(GRAPHE_COIN gc, char* name, int taille, char * FILES_DOT_GCOINS, char * FILES_PNG_GCOINS)
 {
-	FILE* F1, *F2;
+	FILE* F1;
 	// Exporter pour Graphviz
 	int taille_file_dot = strlen(FILES_DOT_GCOINS);
 	char* name_file_dot = malloc((taille_file_dot+taille+1) * sizeof(char));
@@ -822,14 +815,6 @@ void genere_dot_file_coins(GRAPHE_COIN gc, char* name, int taille, char * FILES_
 	}
 	fprintf(F1, "}");
 	fclose(F1);
-	F2 = fopen("scripts/genere_images_g_coins.sh","a");
-	char* name_file_png = malloc((taille_file_dot+taille+1)*sizeof(char));
-	strcat(strcpy(name_file_png, FILES_PNG_GCOINS), name);
-	strcat(name_file_png, ".png");
-	
-	fprintf(F2, "dot -Tpng %s -o %s\n", name_file_dot, name_file_png);
-	fclose(F2);
-	free(name_file_png);
 	free(name_file_dot);
 }
 
@@ -859,6 +844,63 @@ int test_graphe_vide(struct molecule m){
 		}
 	}
 	return 0;
+}
+
+void genere_fichier_coins(GRAPHE_COIN c, char *arg1, char *nom) {
+	char file_path[256];
+    snprintf(file_path, sizeof(file_path), "data/%s/graphes_coins/%s.csv", arg1, nom);
+
+    FILE *fichier = fopen(file_path, "w");
+    if (fichier == NULL) {
+        perror("Erreur d'ouverture du fichier");
+        return;
+    }
+
+    // Écrire le nombre de sommets et le nombre d'arêtes
+    fprintf(fichier, "%d_%d\n", c.nb_sommets, c.nb_aretes);
+
+    // Écrire les informations des sommets
+    for (int j = 0; j < c.nb_sommets; j++) {
+        fprintf(fichier, "%d_", c.liste_sommets[j].id);
+
+        // Écrire les poids
+        for (int k = 0; k < 3; k++) {
+            fprintf(fichier, "%d", c.liste_sommets[j].poids[k]);
+            if (k < 2) {
+                fprintf(fichier, ",");
+            }
+        }
+        fprintf(fichier, "_");
+
+        // Écrire les ids
+        for (int k = 0; k < 3; k++) {
+            fprintf(fichier, "%d", c.liste_sommets[j].ids[k]);
+            if (k < 2) {
+                fprintf(fichier, ",");
+            }
+        }
+        fprintf(fichier, "_");
+
+        // Écrire les liaisons communes
+        for (int k = 0; k < 3; k++) {
+            fprintf(fichier, "%d", c.liste_sommets[j].liaisons_communs[k]);
+            if (k < 2) {
+                fprintf(fichier, ",");
+            }
+        }
+        fprintf(fichier, "\n");
+    }
+
+    // Écrire les informations des arêtes
+    for (int j = 0; j < c.nb_aretes; j++) {
+        fprintf(fichier, "%d_%d_%d\n", c.liste_aretes[j].id1, c.liste_aretes[j].id2, c.liste_aretes[j].poids);
+    }
+
+    // Écrire le dernier caractère pour identifier la fin du fichier
+    fprintf(fichier, "#");
+
+    // Fermer le fichier
+    fclose(fichier);
 }
 
 int main(int argc, char *argv[])
@@ -900,6 +942,19 @@ int main(int argc, char *argv[])
 		RESULTS_DL_CLIQUES = "data/LOTUS/results/results_clique_dl_reduit.csv";
 		RESULTS_LISTE_COINS = "data/LOTUS/results/liste_coins_reduit.csv";
 	}
+	else if (argc>1 && strcmp(argv[1], "CHIMISTE") == 0){
+		FILES_MOL = "data/CHIMISTE/mol_files/";
+		FILES_DOT_GCYCLES = "data/CHIMISTE/dot_files_reduit/graphes_cycles/";
+		FILES_DOT_GCOINS = "data/CHIMISTE/dot_files_reduit/graphes_coins/";
+		FILES_PNG_GCYCLES = "data/CHIMISTE/png_files_reduit/graphes_cycles/";
+		FILES_PNG_GCOINS = "data/CHIMISTE/png_files_reduit/graphes_coins/";
+
+		RESULTS_ENS_CLIQUES = "data/CHIMISTE/results/results_cliques_reduit.csv";
+		RESULTS_TYPE_CLIQUES = "data/CHIMISTE/results/results_cliques_type_reduit.csv";
+		RESULTS_DL_CLIQUES = "data/CHIMISTE/results/results_clique_dl_reduit.csv";
+		RESULTS_LISTE_COINS = "data/CHIMISTE/results/liste_coins_reduit.csv";
+	}
+	
 
 	int taille;
     
@@ -1067,6 +1122,9 @@ int main(int argc, char *argv[])
 				* */
 				GRAPHE_COIN gc;
 				gc = construct_graph_coin(cy, c, degre, store, tab_bouboule, n, m);
+				if (gc.nb_sommets>0){
+					genere_fichier_coins(gc,argv[1],name);
+				}
 				
 				//afficheInfosGrapheCycle(cy);
 				//afficheInfosGrapheCoin(gc);

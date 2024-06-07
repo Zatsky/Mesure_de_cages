@@ -9,8 +9,8 @@ with open(file_data, 'r') as f :
 	i = 0
 	for row in csvreader :
 		if row[1] != "name":
-			petit_smile = row[6]
+			petit_smile = row[2]
 			name = "_".join(row[1].split(" "))
-			with open("data/smi_files_reduit/%s.smi"%name, 'w') as f :
+			with open("data/CHIMISTE/smi_files/%s.smi"%name, 'w') as f :
 				f.write("%s %s\n"%(petit_smile, name))
 			i += 1

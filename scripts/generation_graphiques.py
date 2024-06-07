@@ -21,7 +21,7 @@ def lire_donnees_csv(nom_fichier):
 # Lire les données du fichier CSV
 def gen_graphique(arg1):
     if arg1 == "CHEBI":
-        max_x1 = 100
+        max_x1 = 1000
         max_x2 = 250
         max_y1 = 50
         max_y2 = 800
@@ -30,6 +30,11 @@ def gen_graphique(arg1):
         max_x2 = 250
         max_y1 = 1000
         max_y2 = 13000
+    elif arg1 == "CHIMISTE":
+        max_x1 = 50
+        max_x2 = 130
+        max_y1 = 30
+        max_y2 = 30
     else:
         max_x1 = 100
         max_x2 = 250
@@ -37,7 +42,7 @@ def gen_graphique(arg1):
         max_y2 = 800
 
     result_dir = "data/" + arg1 + "/results/"
-    mesures = lire_donnees_csv(result_dir + "liste_mesure_alpha.csv")
+    mesures = lire_donnees_csv(result_dir + "liste_mesure_alpha_connexe.csv")
 
     # Compter le nombre de molécules pour chaque mesure
     nombre_molecules_par_mesure = defaultdict(int)
@@ -55,14 +60,27 @@ def gen_graphique(arg1):
         nombre_molecules_cumulatif += nombre_molecules_par_mesure[mesure]
         nombres_molecules_cumulatifs[i] = nombre_molecules_cumulatif
 
+    plt.plot(mesures_triees, nombres_molecules_cumulatifs, drawstyle='steps-post')
+    plt.grid(True)
+
+    plt.xlim(0, max_x1)
+    plt.ylim(0, max_y1)  # Fixer la limite supérieure de l'axe y
+
+    plt.title("Nombre de molécules en fonction de la cagitude")
+    plt.xlabel("Cagitude")
+    plt.ylabel("Nombre de molécules")
+
+    plt.savefig(result_dir + "graphique_ligne.png")
+    plt.close()
+
     # Créer le graphique en barres
-    bins = np.arange(0, 140 + 5, 5)
+    bins = np.arange(0, 1200 + 5, 5)
 
     # Utilisation de np.histogram pour regrouper les données par intervalles de 5
     hist, bin_edges = np.histogram(mesures, bins=bins)
 
     # Création du graphique à barres
-    plt.plot(nombre_molecules_par_mesure, mesures_triees, align='edge')
+    plt.bar(bin_edges[:-1], hist, width=5, align='edge')
     plt.grid(True)
 
     plt.xlim(0, max_x1)
@@ -99,3 +117,5 @@ def gen_graphique(arg1):
     plt.ylabel("Nombre de molécules")
 
     plt.savefig(result_dir + "graphique_distribution_cumulative.png")
+    plt.close()
+gen_graphique("CHEBI")
