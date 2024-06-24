@@ -9,8 +9,16 @@ run: analyse_cage cagitude
 
 mesure: cagitude
 	#valgrind -v --leak-check=full --show-leak-kinds=all --track-origins=yes ./cagitude DEFAULT add
-	./cagitude CHEBI add connexe
+	./cagitude CHIMISTE_2 add
 
+cliques: find_4_cliques
+	./find_4_cliques
+
+find_4_cliques: find_4_cliques.o
+	$(CC) $(CFLAGS) -o $@ $^
+
+find_4_cliques.o: find_4_cliques.c find_4_cliques.h
+	$(CC) $(CFLAGS) -c $< -o $@
 
 cagitude: cagitude.o
 	$(CC) $(CFLAGS) -o $@ $^

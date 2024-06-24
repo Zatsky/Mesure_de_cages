@@ -5,8 +5,8 @@ LOTUS_DB_LATEST.zip
 test/
 data/CHEBI/
 data/LOTUS/
-data/DEFAULT/
-data/CHIMISTE/
+data/CHIMISTE_2/
+data/CHIMISTE_1/
 *.smi
 *.mol
 *.o

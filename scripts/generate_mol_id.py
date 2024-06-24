@@ -8,11 +8,32 @@ import sys
 from pymol import cmd
 import csv
 from rdkit import Chem
-from PIL import Image
-from PyPDF2 import PdfMerger
+from PIL import Image, ImageOps
 import pikepdf
 import generation_graphiques
 from pathlib import Path
+from openbabel import pybel
+import subprocess
+
+def get_4_cliques(arg1, arg2):
+    path = "data/" + arg1 + "/graphes_coins/" + arg2 + ".csv"
+    result = subprocess.run(['./find_4_cliques', path], capture_output=True, text=True)
+    output = result.stdout.strip()
+    return output
+
+
+def generate_pdf_safe(doc, pdf_path):
+    try:
+        doc.generate_pdf(pdf_path, compiler='latexmk', clean_tex=False)
+    except subprocess.CalledProcessError as e:
+        output = e.output
+        with open('error_log.txt', 'wb') as f:
+            f.write(output)
+        try:
+            print(output.decode('utf-8', errors='ignore'))
+        except UnicodeDecodeError:
+            print(output.decode('latin1', errors='ignore'))
+        raise
 
 def count_mol_files_with_more_than_250_atoms(arg1):
     count = 0
@@ -96,9 +117,10 @@ def optimize_pdf(input_pdf_path, output_pdf_path):
         print(f"Optimized PDF saved as: {output_pdf_path}")
 
 class donnee_csv:
-    def __init__(self,nom,cagitude):
+    def __init__(self,nom,cagitude,size):
         self.cagitude = cagitude
         self.nom = nom
+        self.size = size
 
     def other_cagitude(self,path):
         with open(path, 'r') as fichier:
@@ -139,11 +161,13 @@ def lire_donnees_csv(nom_fichier,arg1):
             try:
                 cage = int(float(ligne[1]))
                 #print(str(cage))
-                if get_arete_coins(arg1,ligne[0]) <1000:
-                    mesure = donnee_csv(ligne[0],cage)
-                    mesures.append(mesure)
+                if get_arete_coins(arg1,ligne[0]) <500:
+                    mesure = donnee_csv(ligne[0],cage,True)
+                    
                 else:
+                    mesure = donnee_csv(ligne[0],cage,False)
                     x+=1
+                mesures.append(mesure)
             except ValueError:
                 pass
     mesures.sort(key=lambda z: z.cagitude)
@@ -161,27 +185,13 @@ def lire_donnees_csv(nom_fichier,arg1):
 #Renvoie le smiles, le nombres d'atomes, ainsi que le nombres de liaisons d'une molécule
 def get_molecule_info(arg1,arg2):
     mol_file = 'data/' + arg1 + '/mol_files/'+ arg2 +'.mol'
-    try:
-        # Lire la molécule à partir du fichier .mol
-        mol = Chem.MolFromMolFile(mol_file)
-        if mol is None:
-            print(f"Erreur de lecture du fichier {mol_file}")
-            return None, None, None
-        
-        # Récupérer le SMILES
-        smiles = Chem.MolToSmiles(mol)
-        
-        # Récupérer le nombre d'atomes
-        num_atoms = mol.GetNumAtoms()
-        
-        # Récupérer le nombre de liaisons
-        num_bonds = mol.GetNumBonds()
-        
-        return smiles, num_atoms, num_bonds
-    except Exception as e:
-        print(f"Erreur: {e}")
-        return None, None, None
-    
+    mol = next(pybel.readfile("mol", mol_file))
+
+    # Extraire les informations
+    smiles = mol.write("can").strip()  # Utiliser le format canonique pour les SMILES
+    num_atoms = mol.OBMol.NumAtoms()
+    num_bonds = mol.OBMol.NumBonds()
+    return smiles, num_atoms, num_bonds 
 #Donne la valeur de cagitude pour une molécule donnée
 def get_cagitude(arg1,arg2):
     csv_file = 'data/' + arg1 + '/results/liste_mesure_alpha.csv'
@@ -201,32 +211,55 @@ def generate_image_mol(arg1, arg2):
     cmd.load("data/" + arg1 +"/mol_files/"+ arg2 +".mol")
     path = "data/" + arg1 +"/png_files_reduit/pymol/"+ arg2 +".png"
     # Sauvegarde de l'image au format PNG
-    cmd.png(path, width=200, height=200, dpi=300, ray=1)
+    cmd.png(path, width=930, height=650, dpi=300, ray=1)
     cmd.delete('all')
 
     convert_and_resize_image(path,path.replace('.png', '.jpg'))
+    
     return path.replace('.png', '.jpg')
 
 def escape_latex_special_chars(smiles):
     """Échappe les caractères spéciaux pour LaTeX dans une chaîne SMILES."""
     return smiles.replace('_', r'\_').replace('&', r'\&').replace('%', r'\%').replace('$', r'\$').replace('#', r'\#').replace('{', r'\{').replace('}', r'\}')
 
-def format_smiles(smiles, line_length=70):
+def format_smiles(smiles, line_length=118):
     """Formate une chaîne SMILES en insérant des sauts de ligne pour éviter qu'elle ne dépasse les marges."""
     escaped_smiles = escape_latex_special_chars(smiles)
     return '\n'.join([escaped_smiles[i:i+line_length] for i in range(0, len(escaped_smiles), line_length)])
 
-def convert_and_resize_image(image_path, output_path, quality=100, size=(200, 200)):
+def convert_and_resize_image(image_path, output_path, quality=100, target_size=(930, 650)):
     # Ouvrir l'image
     with Image.open(image_path) as img:
         # Convertir en JPEG avec la qualité spécifiée
         img = img.convert("RGB")
-        img.save(output_path, quality=quality)
-        print(f"Converted and saved image: {output_path}")
+        
+        # Calculer le ratio de l'image originale et du nouveau cadre
+        original_ratio = img.width / img.height
+        target_ratio = target_size[0] / target_size[1]
 
-        # Redimensionner l'image
-        img.thumbnail(size)
-        img.save(output_path)
+        if original_ratio > target_ratio:
+            # L'image est plus large par rapport à la cible
+            new_width = target_size[0]
+            new_height = int(target_size[0] / original_ratio)
+        else:
+            # L'image est plus haute par rapport à la cible
+            new_width = int(target_size[1] * original_ratio)
+            new_height = target_size[1]
+
+        # Redimensionner l'image tout en conservant le ratio
+        img = img.resize((new_width, new_height), Image.LANCZOS)
+        
+        # Créer une nouvelle image avec un fond blanc
+        new_img = Image.new("RGB", target_size, (255, 255, 255))
+        
+        # Calculer la position pour centrer l'image redimensionnée
+        left = (target_size[0] - new_width) // 2
+        top = (target_size[1] - new_height) // 2
+        new_img.paste(img, (left, top))
+        
+        # Enregistrer l'image finale
+        new_img.save(output_path, "JPEG", quality=quality)
+        print(f"Converted and saved image: {output_path}")
 
 #Genere les images des graphes  de cycles et des graphes de coins de la molécule arg2
 def generate_images(arg1, arg2):
@@ -249,7 +282,7 @@ def generate_images(arg1, arg2):
 
     return image_path_coin.replace('.png', '.jpg'), image_path_cycle.replace('.png', '.jpg')
 
-#Ecris le document latex contenant toute les données importantes de la molecule arg2
+
 def generate_latex_document(arg1, arg2):
     output_file = f'data/{arg1}/ID/{arg2}'
     doc = Document(documentclass='article', document_options='a4paper')
@@ -321,7 +354,7 @@ def create_bestiaire(arg1):
     
     # Ajouter les packages nécessaires
     doc.packages.append(Command('usepackage', 'hyperref'))
-    doc.packages.append(Command('usepackage', 'geometry'))
+    doc.packages.append(Package('geometry', options=['left=2cm', 'right=2cm']))
     doc.packages.append(Command('geometry', 'a4paper'))
     doc.packages.append(Command('usepackage', 'fancyhdr'))
     doc.packages.append(Package('xcolor', options='dvipsnames'))
@@ -338,6 +371,11 @@ def create_bestiaire(arg1):
     doc.packages.append(Command('usepackage', 'babel', options='french'))
     doc.preamble.append(NoEscape(r'\usepackage[french]{babel}'))
     doc.preamble.append(Command('hypersetup', NoEscape('colorlinks=true, linkcolor=blue, urlcolor=blue')))
+    doc.packages.append(NoEscape(r'\usepackage{newunicodechar}'))
+    doc.preamble.append(NoEscape(r'\newunicodechar{⁹}{\textsuperscript{9}}'))
+    doc.preamble.append(NoEscape(r'\newunicodechar{²}{\textsuperscript{2}}'))
+    doc.preamble.append(NoEscape(r'\newunicodechar{³}{\textsuperscript{3}}'))
+    
 
     if arg1 == "CHEBI":
         seg_fault = 6
@@ -361,7 +399,7 @@ def create_bestiaire(arg1):
         generation_graphiques.gen_graphique(arg1)
     graph_path = f'../results/histogramme_discret.png'
     with doc.create(Section('Introduction', numbering=False)):
-        doc.append("Ce document regroupe l'ensemble des molécules possédant au moins un coin et ayant moins de 250 atomes.")
+        doc.append("Ce document regroupe l'ensemble des molécules de la base " + arg1 + " possédant au moins un coin et ayant moins de 250 atomes.")
         doc.append(NoEscape(r'\begin{figure}[h!]'))
         doc.append(NoEscape(r'\centering'))
         doc.append(NoEscape(r'\includegraphics[width=0.8\textwidth]{' + graph_path + r'}'))
@@ -381,30 +419,32 @@ def create_bestiaire(arg1):
             with doc.create(Itemize()) as itemize:
                 if seg_fault>0:
                     if seg_fault == 1:
-                        pluriel[1] = ""
+                        pluriel[1] = r""
                     else:
-                        pluriel[1] = "s"
+                        pluriel[1] = r"s"
                     itemize.add_item(NoEscape(str(seg_fault)+r" molécule"+pluriel[1]+r" causant des segmentation fault."))
                 if too_big>0:
                     if too_big == 1:
-                        pluriel[1] = ""
+                        pluriel[1] = r""
                     else:
-                        pluriel[1] = "s"
+                        pluriel[1] = r"s"
                     itemize.add_item(NoEscape(str(too_big) + r" molécule"+pluriel[1]+r" ayant plus de 250 atomes, car leurs graphes de cycles est trop long à génerer."))
                 if no_corner>0:
                     if no_corner == 1:
-                        pluriel[1] = ""
+                        pluriel[1] = r""
                     else:
-                        pluriel[1] = "s"
+                        pluriel[1] = r"s"
                     itemize.add_item(NoEscape(str(no_corner) + r" molécule"+pluriel[1]+ r" n'ayant aucuns coins."))
                 if trop_gros>0:
                     if trop_gros == 1:
-                        pluriel[1] = ""
+                        pluriel[1] = r""
+                        pluriel[2] = r" et une molécule sans son graphe de cycles et sans son graphe de coins"
                     else:
-                        pluriel[1] = "s"
-                    itemize.add_item(NoEscape(str(trop_gros) + r" molécule"+pluriel[1]+r" avec plus de 1000 liaisons sur leurs graphes de coins, car l'image est trop grosse."))
-            doc.append(r'Et nous finissons donc avec '+str(len(mesures))+r' molécules.')
-            
+                        pluriel[1] = r"s"
+                        pluriel[2] = r" et "+ str(trop_gros) +r"molécules sans leurs graphe de cycles et sans leurs graphe de coins"
+                    itemize.add_item(NoEscape(str(trop_gros)+r" molécule"+pluriel[1]+r" avec plus de 500 liaisons sur leurs graphes de coins, car l'image est illisible et trop lourde."))
+            doc.append(r'Et nous finissons donc avec '+str(len(mesures))+r' molécules complètes'+ pluriel[2] + r'.')
+
     with doc.create(Section('Représentation', numbering=False)):
         doc.append("Chaque molécule possède une carte d'identité affichant les informations suivantes:")
         with doc.create(Itemize()) as itemize:
@@ -426,9 +466,12 @@ def create_bestiaire(arg1):
     cagitude = -1
     for mesure in mesures:
         doc.append(NoEscape(r'\newpage'))
-        image_coin, image_cycle = generate_images(arg1, mesure.nom)
         image_mol = generate_image_mol(arg1,mesure.nom)
-        images = [image_cycle, image_coin,image_mol]
+        images = [image_mol]
+        if mesure.size:
+            image_coin, image_cycle = generate_images(arg1, mesure.nom)
+            images.append(image_coin)
+            images.append(image_cycle)
         
 
         for image in images:
@@ -445,7 +488,7 @@ def create_bestiaire(arg1):
             with doc.create(Section(section_title)):
                 cagitude = mesure.cagitude
 
-        with doc.create(Subsection(f"{mesure.nom}'s ID")):
+        with doc.create(Subsection(f"{mesure.nom}")):
             # Ajouter un lien hypertexte pour revenir à la table des matières
             doc.append(NoEscape(r'\hyperlink{toc}{Retour à la table des matières}'))
             with doc.create(Itemize()) as itemize:
@@ -453,40 +496,42 @@ def create_bestiaire(arg1):
                 smiles, num_atoms, num_bonds = get_molecule_info(arg1, mesure.nom)
                 if smiles != None:
                     smiles = format_smiles(smiles)
-                    itemize.add_item(NoEscape(r"SMILES: \begin{verbatim}" + smiles + r"\end{verbatim}"))
-                itemize.add_item(f"Nombres d'atomes: {num_atoms}")
-                itemize.add_item(f"Nombres de liaisons: {num_bonds}")
+                    itemize.add_item(NoEscape(r"{\footnotesize SMILES: \begin{verbatim}" + smiles + r"\end{verbatim}}"))
+                itemize.add_item(r"Nombres d'atomes: "+ str(num_atoms))
+                itemize.add_item(r"Nombres de liaisons: "+ str(num_bonds))
                 value = str(mesure.cagitude)
                 value2 = str(mesure.other_cagitude(csv_file2))
-                itemize.add_item(f"Mesure connexe de cagitude = {value}; autre mesure = {value2}")
+                itemize.add_item(r"Nombres de cliques de taille 4: "+ str(get_4_cliques(arg1,mesure.nom)))
+                itemize.add_item(r"Mesure de cagitude de sommet = "+ str(value2) + r"; Mesure de cagitude d'arêtes= " + str(value))
                 if arg1 == "CHEBI":
                     mol = mesure.nom.replace("CHEBI_", "")
                     link = 'https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:' + mol
                     itemize.add_item(NoEscape(r"Lien: \href{" + link + r"}{" + link + r"}"))
+                elif arg1 == "LOTUS":
+                   link = 'https://lotus.naturalproducts.net/compound/lotus_id/' + mesure.nom
+                
 
             with doc.create(Figure(position='H')) as fig:
                 image_path_new = os.path.join('..', 'png_files_reduit', 'pymol', f'{mesure.nom}.jpg')
-                fig.add_image(image_path_new, width=NoEscape(r'0.4\textwidth'))
+                fig.add_image(image_path_new, width=NoEscape(r'0.6\textwidth'))
                 fig.add_caption("Molécule en 3D")
 
-            with doc.create(Figure(position='H')) as graph:
-                with doc.create(SubFigure(position='c', width=NoEscape(r'0.5\textwidth'))) as left_image:
-                    image_path_cycles = os.path.join('..', 'png_files_reduit', 'graphes_cycles', f'{mesure.nom}.jpg')
-                    left_image.append(NoEscape(r'\scalebox{1.0}{\includegraphics{'))
-                    left_image.append(image_path_cycles)
-                    left_image.append(NoEscape(r'}}'))
-                    left_image.add_caption("Graphe des Cycles")
+            if mesure.size:
+                with doc.create(Figure(position='H')) as graph:
+                    with doc.create(SubFigure(position='b', width=NoEscape(r'0.5\textwidth'))) as left_image:
+                        image_path_cycles = os.path.join('..', 'png_files_reduit', 'graphes_cycles', f'{mesure.nom}.jpg')
+                        left_image.add_image(image_path_cycles, width=NoEscape(r'\textwidth'))
+                        left_image.add_caption("Graphes des Cycles")
 
-                with doc.create(SubFigure(position='c', width=NoEscape(r'0.5\textwidth'))) as right_image:
-                    image_path_coins = os.path.join('..', 'png_files_reduit', 'graphes_coins', f'{mesure.nom}.jpg')
-                    right_image.append(NoEscape(r'\scalebox{1.0}{\includegraphics{'))
-                    right_image.append(image_path_coins)
-                    right_image.append(NoEscape(r'}}'))
-                    right_image.add_caption(NoEscape(r'\begin{minipage}{\linewidth}Graphe des Coins\end{minipage}'))
+                    with doc.create(SubFigure(position='b', width=NoEscape(r'0.5\textwidth'))) as right_image:
+                        image_path_coins = os.path.join('..', 'png_files_reduit', 'graphes_coins', f'{mesure.nom}.jpg')
+                        right_image.add_image(image_path_coins, width=NoEscape(r'\textwidth'))
+                        right_image.add_caption("Graphes des Coins")
 
 
     doc.generate_tex(pdf_path)
-    doc.generate_pdf(pdf_path, clean_tex=True)
+    #generate_pdf_safe(doc, pdf_path)
+    doc.generate_pdf(pdf_path, clean_tex=False)
     compress_pdf(pdf_path + '.pdf', compressed_path)
     optimize_pdf(compressed_path, opti_path)
 
