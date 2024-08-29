@@ -845,6 +845,38 @@ int test_graphe_vide(struct molecule m){
 	}
 	return 0;
 }
+void genere_fichier_cycles(GRAPHE_CYCLE c, char *arg1, char *nom) {
+	char file_path[256];
+    snprintf(file_path, sizeof(file_path), "data/%s/graphes_cycles/%s.csv", arg1, nom);
+
+
+    FILE *fichier = fopen(file_path, "w");
+    if (fichier == NULL) {
+        perror("Erreur d'ouverture du fichier");
+        return;
+    }
+
+    // Écrire le nombre de sommets et le nombre d'arêtes
+    fprintf(fichier, "%d_%d\n", c.nb_sommets, c.nb_aretes);
+
+    // Écrire les informations des sommets
+    for (int j = 0; j < c.nb_sommets; j++) {
+        fprintf(fichier, "%d_", c.liste_sommets[j].id);
+		fprintf(fichier, "%d", c.liste_sommets[j].poids);
+        fprintf(fichier, "\n");
+    }
+
+    // Écrire les informations des arêtes
+    for (int j = 0; j < c.nb_aretes; j++) {
+        fprintf(fichier, "%d_%d_%d\n", c.liste_aretes[j].id1, c.liste_aretes[j].id2, c.liste_aretes[j].poids);
+    }
+
+    // Écrire le dernier caractère pour identifier la fin du fichier
+    fprintf(fichier, "#");
+
+    // Fermer le fichier
+    fclose(fichier);
+}
 
 void genere_fichier_coins(GRAPHE_COIN c, char *arg1, char *nom) {
 	char file_path[256];
@@ -903,57 +935,93 @@ void genere_fichier_coins(GRAPHE_COIN c, char *arg1, char *nom) {
     fclose(fichier);
 }
 
+int union_abs(int* ids,GRAPHE_CYCLE c, struct molecule m){
+	int uni = 0;
+	m.matrice_liaisons;
+	return uni;
+}
+
+
+float * densite_coins(GRAPHE_COIN gc, GRAPHE_CYCLE c, struct molecule m){
+	int nb_couples = (gc.nb_sommets * (gc.nb_sommets-1))/2;
+	float * dens = malloc(nb_couples * sizeof(float));
+	int i = 0;
+	for(int coin_1=0;coin_1 <gc.nb_sommets -1; coin_1++){
+		int som1 = gc.liste_sommets[coin_1].ids;
+		for(int coin_2=coin_1+1;coin_2 <gc.nb_sommets -1; coin_2++){
+			int som1 = gc.liste_sommets[coin_1].ids;
+			dens[i] = som1/2;
+			i++;
+		}
+	}
+	return dens;
+}
+int ** create_matrice(struct molecule m){
+	int ** matrice;
+	matrice = malloc(m.nb_atomes * sizeof(int*));
+	for (int i = 0; i< m.nb_atomes; i++){
+		matrice[i] = malloc(m.nb_atomes * sizeof(int));
+	}
+	for (int i = 0; i< m.nb_liaisons; i++){
+		matrice[m.liste_liaisons[i].A1-1][m.liste_liaisons[i].A2-1] = 1;
+		matrice[m.liste_liaisons[i].A2-1][m.liste_liaisons[i].A1-1] = 1;
+	}
+	return matrice;
+}
+
+void free_matrice(int **matrice,int nb_atomes){
+	if (matrice != NULL){
+		for (int i = 0; i< nb_atomes; i++){
+			if (matrice[i] != NULL){
+				free(matrice[i]);
+			}
+		}
+		free(matrice);
+	}
+}
+
+void print_cycle(GRAPHE_CYCLE c,struct molecule m){
+	int ** matrice = create_matrice(m);
+	for (int i = 0; i< m.nb_atomes; i++){
+		for (int j = 0; j< m.nb_atomes; j++){
+			printf("[%d]",matrice[i][j]);
+		}
+		printf("\n");
+	}
+	for (int x = 0; x< c.nb_sommets; x++){
+		printf("\n");
+		printf("\n");
+		for (int i = 0; i< m.nb_atomes; i++){
+			for (int j = 0; j< m.nb_atomes; j++){
+				printf("[%d]",c.matrice[x].matrice[i][j]);
+			}
+			printf("\n");
+		}
+	}
+	free_matrice(matrice,m.nb_atomes);
+}
+
 int main(int argc, char *argv[])
 {	
-    
-	char * FILES_MOL = "data/DEFAULT/mol_files/";
-	char * FILES_DOT_GCYCLES = "data/DEFAULT/dot_files_reduit/graphes_cycles/";
-	char * FILES_DOT_GCOINS = "data/DEFAULT/dot_files_reduit/graphes_coins/";
-	char * FILES_PNG_GCYCLES = "data/DEFAULT/png_files_reduit/graphes_cycles/";
-	char * FILES_PNG_GCOINS = "data/DEFAULT/png_files_reduit/graphes_coins/";
+    char FILES_MOL[256];
+	snprintf(FILES_MOL, sizeof(FILES_MOL), "data/%s/mol_files/",argv[1]);
+	char FILES_DOT_GCYCLES[256];
+	snprintf(FILES_DOT_GCYCLES, sizeof(FILES_DOT_GCYCLES), "data/%s/dot_files_reduit/graphes_cycles/",argv[1]);
+	char FILES_DOT_GCOINS[256];
+	snprintf(FILES_DOT_GCOINS, sizeof(FILES_DOT_GCOINS), "data/%s/dot_files_reduit/graphes_coins/",argv[1]);
+	char FILES_PNG_GCYCLES[256];
+	snprintf(FILES_PNG_GCYCLES, sizeof(FILES_PNG_GCYCLES), "data/%s/png_files_reduit/graphes_cycles/",argv[1]);
+	char FILES_PNG_GCOINS[256];
+	snprintf(FILES_PNG_GCOINS, sizeof(FILES_PNG_GCOINS), "data/%s/png_files_reduit/graphes_coins/",argv[1]);
 
-	char * RESULTS_ENS_CLIQUES = "data/DEFAULT/results/results_cliques_reduit.csv";
-	char * RESULTS_TYPE_CLIQUES = "data/DEFAULT/results/results_cliques_type_reduit.csv";
-	char * RESULTS_DL_CLIQUES = "data/DEFAULT/results/results_clique_dl_reduit.csv";
-	char * RESULTS_LISTE_COINS = "data/DEFAULT/results/liste_coins_reduit.csv";
-
-	if (argc>1 && strcmp(argv[1], "CHEBI") == 0){ 
-		FILES_MOL = "data/CHEBI/mol_files/";
-		FILES_DOT_GCYCLES = "data/CHEBI/dot_files_reduit/graphes_cycles/";
-		FILES_DOT_GCOINS = "data/CHEBI/dot_files_reduit/graphes_coins/";
-		FILES_PNG_GCYCLES = "data/CHEBI/png_files_reduit/graphes_cycles/";
-		FILES_PNG_GCOINS = "data/CHEBI/png_files_reduit/graphes_coins/";
-
-		RESULTS_ENS_CLIQUES = "data/CHEBI/results/results_cliques_reduit.csv";
-		RESULTS_TYPE_CLIQUES = "data/CHEBI/results/results_cliques_type_reduit.csv";
-		RESULTS_DL_CLIQUES = "data/CHEBI/results/results_clique_dl_reduit.csv";
-		RESULTS_LISTE_COINS = "data/CHEBI/results/liste_coins_reduit.csv";
-
-	}
-	else if (argc>1 && strcmp(argv[1], "LOTUS") == 0){
-		FILES_MOL = "data/LOTUS/mol_files/";
-		FILES_DOT_GCYCLES = "data/LOTUS/dot_files_reduit/graphes_cycles/";
-		FILES_DOT_GCOINS = "data/LOTUS/dot_files_reduit/graphes_coins/";
-		FILES_PNG_GCYCLES = "data/LOTUS/png_files_reduit/graphes_cycles/";
-		FILES_PNG_GCOINS = "data/LOTUS/png_files_reduit/graphes_coins/";
-
-		RESULTS_ENS_CLIQUES = "data/LOTUS/results/results_cliques_reduit.csv";
-		RESULTS_TYPE_CLIQUES = "data/LOTUS/results/results_cliques_type_reduit.csv";
-		RESULTS_DL_CLIQUES = "data/LOTUS/results/results_clique_dl_reduit.csv";
-		RESULTS_LISTE_COINS = "data/LOTUS/results/liste_coins_reduit.csv";
-	}
-	else if (argc>1 && strcmp(argv[1], "CHIMISTE") == 0){
-		FILES_MOL = "data/CHIMISTE/mol_files/";
-		FILES_DOT_GCYCLES = "data/CHIMISTE/dot_files_reduit/graphes_cycles/";
-		FILES_DOT_GCOINS = "data/CHIMISTE/dot_files_reduit/graphes_coins/";
-		FILES_PNG_GCYCLES = "data/CHIMISTE/png_files_reduit/graphes_cycles/";
-		FILES_PNG_GCOINS = "data/CHIMISTE/png_files_reduit/graphes_coins/";
-
-		RESULTS_ENS_CLIQUES = "data/CHIMISTE/results/results_cliques_reduit.csv";
-		RESULTS_TYPE_CLIQUES = "data/CHIMISTE/results/results_cliques_type_reduit.csv";
-		RESULTS_DL_CLIQUES = "data/CHIMISTE/results/results_clique_dl_reduit.csv";
-		RESULTS_LISTE_COINS = "data/CHIMISTE/results/liste_coins_reduit.csv";
-	}
+	char RESULTS_ENS_CLIQUES[256];
+	snprintf(RESULTS_ENS_CLIQUES, sizeof(RESULTS_ENS_CLIQUES), "data/%s/results/results_cliques_reduit.csv",argv[1]);
+	char RESULTS_TYPE_CLIQUES[256];
+	snprintf(RESULTS_TYPE_CLIQUES, sizeof(RESULTS_TYPE_CLIQUES), "data/%s/results/results_cliques_type_reduit.csv",argv[1]);
+	char RESULTS_DL_CLIQUES[256];
+	snprintf(RESULTS_DL_CLIQUES, sizeof(RESULTS_DL_CLIQUES), "data/%s/results/results_clique_dl_reduit.csv",argv[1]);
+	char RESULTS_LISTE_COINS[256];
+	snprintf(RESULTS_LISTE_COINS, sizeof(RESULTS_LISTE_COINS), "data/%s/results/liste_coins_reduit.csv",argv[1]);
 	
 
 	int taille;
@@ -1087,6 +1155,9 @@ int main(int argc, char *argv[])
 			if (m.nb_atomes<250 || argc>2){
 				GRAPHE_CYCLE cy = construction_graphe_cycles(m); // comme défini dans la thèse de Stefi (avec l'union des bases de cycles comme ensemble de sommets)
 				cy = remove_edges(cy); // supprime les arêtes de type 3 (chaîne entre 2 cycles, voir Thèse Stefi) et les arêtes de poids == 0 (cad juste un sommet en commun)
+				if (cy.nb_sommets>0){
+					genere_fichier_cycles(cy,argv[1],name);
+				}
 				
 				//printf("nb sommets: %d nb_aretes:%d\n", cy.nb_sommets, cy.nb_aretes);
 			
@@ -1162,7 +1233,7 @@ int main(int argc, char *argv[])
 					free(labase);
 					
 				}
-			
+				print_cycle(cy,m);
 				liberer_graphe_cycles(cy);
 				
 				liberer_graphe_coin(gc);

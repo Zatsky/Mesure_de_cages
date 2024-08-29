@@ -1,50 +1,45 @@
-CFLAGS=-g -Wall
+CFLAGS=-g -Wall -fPIC
 CC=gcc
 CXX=g++
+OBJS = similarite.o numerotation.o affichage.o structure.o Chemins.o graphe_cycles.o utils_cage_moleculaire.o 
+OBJS2 = analyse_cage.o utils_cage_moleculaire.o lecture_molecule_sdf.o graphe_cycles.o structure.o
 
 run: analyse_cage cagitude
 	./scripts/script2.sh $(ARGS)
+	#valgrind -v --leak-check=full --show-leak-kinds=all ./analyse_cage $(ARGS)
 	./analyse_cage $(ARGS)
 	./cagitude $(ARGS) add
 
+python_lib: similarite.so
+
+comparaison: similarite
+	#valgrind -v --leak-check=full --show-leak-kinds=all --track-origins=yes ./similarite
+	./similarite
+
 mesure: cagitude
 	#valgrind -v --leak-check=full --show-leak-kinds=all --track-origins=yes ./cagitude DEFAULT add
-	./cagitude CHIMISTE_2 add
+	./cagitude CHEBI add connexe
 
 cliques: find_4_cliques
 	./find_4_cliques
-
-find_4_cliques: find_4_cliques.o
-	$(CC) $(CFLAGS) -o $@ $^
-
-find_4_cliques.o: find_4_cliques.c find_4_cliques.h
-	$(CC) $(CFLAGS) -c $< -o $@
-
-cagitude: cagitude.o
-	$(CC) $(CFLAGS) -o $@ $^
-
-cagitude.o: cagitude.c cagitude.h
-	$(CC) $(CFLAGS) -c $< -o $@
 
 run_cage: analyse_cage
 	#valgrind -v --leak-check=full --show-leak-kinds=all ./analyse_cage $(ARGS)
 	./analyse_cage $(ARGS)
 	#gdb ./analyse_cage 
 
-analyse_cage: analyse_cage.o utils_cage_moleculaire.o lecture_molecule_sdf.o graphe_cycles.o
-	$(CC) $(CFLAGS) -o $@ $^
+analyse_cage: $(OBJS2)
+	$(CC) -o $@ $^ -lm
 
-analyse_cage.o: analyse_cage.c analyse_cage.h
+similarite.so: $(OBJS)
+	$(CC) -shared -o $@ $^
+
+similarite: $(OBJS)
+	$(CC) -o $@ $^ -lm
+
+%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-utils_cage_moleculaire.o: utils_cage_moleculaire.c utils_cage_moleculaire.h structure.h
-	$(CC) $(CFLAGS) -c $< -o $@
-
-graphe_cycles.o: graphe_cycles.c graphe_cycles.h structure.h
-	$(CC) $(CFLAGS) -c $< -o $@
-	
-lecture_molecule_sdf.o: lecture_molecule_sdf.c lecture_molecule_sdf.h 
-	$(CC) $(CFLAGS) -c $< -o $@
 
 clean: 
 	rm -f analyse_cage

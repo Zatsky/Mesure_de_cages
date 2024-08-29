@@ -176,7 +176,10 @@ int main(int argc, char *argv[]) {
         if (strstr(lecture->d_name, ".csv")) {
             char file_path[512];
             snprintf(file_path, sizeof(file_path), "%s/%s", path, lecture->d_name);
-            temp = lire_fichier_coins(file_path, alpha, argv[2], arg3);
+            temp = (lire_fichier_coins(file_path, alpha, argv[2], arg3));
+            if(temp !=0){
+                temp =temp/3;
+            }
             char nom_fichier_sans_extension[256];
             strcpy(nom_fichier_sans_extension, lecture->d_name);
             char *ptr = strrchr(nom_fichier_sans_extension, '.');

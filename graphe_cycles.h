@@ -2,6 +2,36 @@
 #define NOM_D1
 #include "structure.h"
 
+/**
+ * @file GrapheDeCycles.h
+ * @brief interface relative aux Graphes de Cycles.
+ * 
+ * @param ARETE_SOM : valeur d'une arête d'un Graphe de Cycles, lorsque les cycles(sommets du GC) partagent au moins un sommet et pas d'arêtes.
+ * @param ARETE_ARETE : valeur d'une arête d'un Graphe de Cycles, lorsque les cycles(sommets du GC) partagent au moins une arête.
+ * 
+ * @param ARETE_2 : précise si on utilise les ARETE_SOM ou non : 0 signifie que l'on ne les utilises pas.
+ */
+
+#define ARETE_SOM -1
+#define ARETE_ARETE 1
+
+#define ARETE_2 0
+int nb_arete_base;
+int taille_base;
+ARETE *base_aretes;
+int *arete_cycle;
+int **arete_liste;
+cycles *labase;
+
+
+char *atom_name[119];
+#define NB_TAB 200
+
+void printGrapheDeCycles();
+
+GRAPHE_CYCLE * conversionGrapheDeCycle(cycle **Cycles, int nbCycles, int m);
+int cycleIdentique(cycle *C1, cycle *C2, int m);
+int grapheCyclesIdentique(GRAPHE_CYCLE *GC1, GRAPHE_CYCLE *GC2, int m);
 
 GRAPHE_CYCLE construction_graphe_cycles(struct molecule m);
 void elimination_feuilles(struct molecule m);
@@ -63,7 +93,8 @@ int nb_1_in_matrix(int** matrice, int i, int nb_col);
 void obtenir_la_base_prototype(cycles *liste,int nb_cycles, graphemol m, struct graphe_dr* g_dr_i);
 int *plus_court_chemin_precedant(int sommet1,int sommet2,graphemol m);
 void trouver_prototypes_cycles_vismara(graphemol t);
-
+int **initialiser_matrice(int taille);
+int **construire_cycle(cycles cycle, int m);
 
 #endif
 

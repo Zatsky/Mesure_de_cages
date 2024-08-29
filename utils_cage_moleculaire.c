@@ -372,3 +372,12 @@ int sommet_dans_bouboule(GRAPHE_CYCLE cy, int num_sommet, int* bouboule, int tai
 	}
 	return 0;
 }
+
+int meme_sommet(SOMMET_COIN i, SOMMET_COIN j){
+	if(i.poids[0] == j.poids[0] && i.poids[1] == j.poids[1] && i.poids[2] == j.poids[2]){
+		if(i.liaisons_communs[0] == j.liaisons_communs[0] && i.liaisons_communs[1] == j.liaisons_communs[1] && i.liaisons_communs[2] == j.liaisons_communs[2]){
+			return 1;
+		}
+	}
+	return 0;
+}

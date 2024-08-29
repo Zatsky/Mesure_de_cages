@@ -15,4 +15,3 @@ cycles *labase;
 
 char *atom_name[NB_ATOM_NAMES];
 #define NB_TAB 200
-

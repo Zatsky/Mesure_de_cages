@@ -11,16 +11,30 @@
 
 extern char *atom_name[NB_ATOM_NAMES];
 
-
 struct graphe{
 	int nb_sommets;
 	int nb_arete;
 	int nb_connexe;
 	struct lesommet *som;
 	struct couplet *aretes;
+	int *numerotation;
 	int **matrice_cycles_type;
 	int **matrice_cycles_poids;
-}extern graphe;
+	int ** adjacence;
+}typedef graphe;
+
+/**
+ * @struct GrapheProduit
+ * 
+ * représente un graphe produit modulaire.
+ */
+struct GrapheProduit {
+
+  int nbSommets;/**Nombre de sommets dans le graphe produit modulaire.*/
+  int **adjacence;/**Matrice d'adjacence du graphe produit modulaire.*/
+  struct couple *Sommets;/**Tableau des paires de sommets présente dans le graphe produit modulaire.*/
+
+}typedef GRAPHEPROD;
 
 
 struct molecule{
@@ -37,10 +51,6 @@ struct molecule{
 struct nom_at { char c1, c2; };
 struct liaison { int A1, A2; int l_type; };
 
-struct cycle{
-	int poids;
-	int *c;
-}extern cycle;
 
 struct isthme
 {
@@ -48,12 +58,14 @@ struct isthme
 	int id_composant;
 }extern isthme;
 typedef struct isthme isthmes;
+
 struct couple
 {
 	int a1;
 	int a2;
 
-}extern couple;
+}typedef couple;
+
 struct uncycle
 {
 	int nb_atomes;
@@ -111,14 +123,30 @@ struct unsommet
 }extern unsommet;
 typedef struct unsommet SOMMET;
 
+struct cycle{
+	int poids;
+	int taille;
+	int *sommets;
+	int * aretes;
+}typedef cycle;
+
+struct adj_cycle{
+	int nb_sommets;
+	int ** matrice;
+}typedef adj_cycle;
+
 struct graphe_cycle
 {
 	int nb_sommets;
 	int nb_aretes;
 	ARETE *liste_aretes;
 	SOMMET *liste_sommets;
-}extern graphe_cycle;
+	cycle ** Cycles;
+	int **adjacence;
+	int indice;
+	adj_cycle * matrice; 
 
+}typedef GRAPHE_CYCLE;
 
 struct graphemoleculaire
 {
@@ -165,5 +193,59 @@ struct graphe_dr
 	SOMMET_VR *liste_sommets;
 };
 
+/**
+ * @file structure.h
+ * @brief interface relative à la gestion des structures.
+ */
+
+/**
+ * @struct listval
+ * 
+ * représente une liste de valeurs.
+ */
+struct listval {
+  int occurence;/**Nombre d'occurence de la valeur.*/
+  float moySim;/**Valeur d'intérêt, ici une moyenne des scores en fonction des distance de degrés et des distance d'excentricités.*/
+  float ecartType;/**Écart-type des scores.*/
+  int distDeg;/**Distance des degrés entre deux numérotations.*/
+  int distEx;/**Distance des excentricités entre deux numérotations.*/
+  struct listval *suivant;
+}typedef LIST;
+
+struct listSim {
+  int indiceGC1;
+  int indiceGC2;
+  float sim;
+  struct listSim *suivant;
+}typedef LISTSIM;
+
+struct listGrapheCycles {
+  struct graphe_cycle *GC;
+  struct listGrapheCycles *suivant;
+}typedef LISTGC;
+
+void printStructure();
+
+graphe * initGraphe(int nbSom);
+void freeGraphe(graphe *G);
+void freeCycle(cycle *C);
+void freeGrapheCycle(GRAPHE_CYCLE *GC);
+void freeGrapheProd(GRAPHEPROD *Gp);
+LIST *initList(float valeur);
+LISTGC *initListGC();
+void freeList(LIST *liste);
+int insererGrapheCycles(LISTGC *liste, GRAPHE_CYCLE *GC, int nbGC, int m);
+void copierGrapheCycles(GRAPHE_CYCLE *copy, GRAPHE_CYCLE *paste, int m);
+void copierCycles(cycle *copy, cycle *paste, int m);
+void insererValeur(LIST *liste, float valeur);
+void insererValeurStats(LIST *liste, float valeur);
+void insererValeur2(LIST *liste, float valeur, int distDeg, int distEx, int exist, float EcartType);
+LISTSIM *initListSim(float valeur, int indiceGC1, int indiceGC2);
+float insererSim(LISTSIM *liste, GRAPHE_CYCLE *GC1, GRAPHE_CYCLE *GC2);
+
+void triFusionFloat(float *valeurs, long long int tailleTab);
+float * fusionFloat(float *tabA, long long int tailleA, float *tabB, long long int tailleB);
+float moyenneList(LIST *liste);
+float medianeList(LIST *liste);
 
 #endif

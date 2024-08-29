@@ -1,0 +1,2706 @@
+Rc files read:
+  /etc/LatexMk
+Latexmk: This is Latexmk, John Collins, 20 November 2021, version: 4.76.
+Rule 'lualatex': File changes, etc:
+   Changed files, or newly in use since previous run(s):
+      'Comparaison_CHEBI_cagitude_81.aux'
+------------
+Run number 1 of rule 'lualatex'
+------------
+------------
+Running 'lualatex  --interaction=nonstopmode -recorder  "/home/zatsky/Documents/Stage/Mesure_de_cages/data/CHEBI/ID/Comparaisons/Comparaison_CHEBI_cagitude_81.tex"'
+------------
+Latexmk: applying rule 'lualatex'...
+This is LuaHBTeX, Version 1.14.0 (TeX Live 2022/dev/Debian) 
+ restricted system commands enabled.
+
+(/home/zatsky/Documents/Stage/Mesure_de_cages/data/CHEBI/ID/Comparaisons/Compar
+aison_CHEBI_cagitude_81.tex
+LaTeX2e <2021-11-15> patch level 1
+ L3 programming layer <2022-01-21>
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo))
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/share/texmf/tex/latex/lm/t1lmr.fd))
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+
+Package inputenc Warning: inputenc package ignored with utf8 based engines.
+
+) (/usr/share/texmf/tex/latex/lm/lmodern.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/lastpage/lastpage.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref-langpatches.def)
+(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/etexcmds/etexcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hluatex.def
+(/usr/share/texlive/texmf-dist/tex/generic/stringenc/stringenc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/luatex.def)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/dvipsnam.def))
+(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+(/usr/share/texlive/texmf-dist/tex/generic/babel/luababel.def)
+(/usr/share/texlive/texmf-dist/tex/generic/babel/luababel.def)
+(/usr/share/texlive/texmf-dist/tex/generic/babel-french/french.ldf
+(/usr/share/texlive/texmf-dist/tex/generic/hyph-utf8/loadhyph/loadhyph-fr.tex
+UTF-8 French hyphenation patterns
+(/usr/share/texlive/texmf-dist/tex/generic/hyph-utf8/patterns/tex/hyph-fr.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/hyph-utf8/patterns/quote/hyph-quote-
+fr.tex)))) (/usr/share/texlive/texmf-dist/tex/latex/carlisle/scalefnt.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/newunicodechar/newunicodechar.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-luatex.def)
+(./Comparaison_CHEBI_cagitude_81.aux)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
+(./Comparaison_CHEBI_cagitude_81.out) (./Comparaison_CHEBI_cagitude_81.out)
+*geometry* driver: auto-detecting
+*geometry* detected driver: luatex
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+(/usr/share/texmf/tex/latex/lm/ot1lmr.fd)
+(/usr/share/texmf/tex/latex/lm/omllmm.fd)
+(/usr/share/texmf/tex/latex/lm/omslmsy.fd)
+(/usr/share/texmf/tex/latex/lm/omxlmex.fd) [1{/var/lib/texmf/fonts/map/pdftex/u
+pdmap/pdftex.map}] (./Comparaison_CHEBI_cagitude_81.toc
+Runaway argument?
+{\numberline {1.1}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.3 ...eserved@a \relax \let \reserved@d =[\def \par
+                                                   }{4}{subsection.1.1}%
+! Extra }, or forgotten \endgroup.
+l.3 ...erved@a \relax \let \reserved@d =[\def \par }
+                                                  {4}{subsection.1.1}%
+Runaway argument?
+{\numberline {1.2}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.4 ...eserved@a \relax \let \reserved@d =[\def \par
+                                                   }{5}{subsection.1.2}%
+! Extra }, or forgotten \endgroup.
+l.4 ...erved@a \relax \let \reserved@d =[\def \par }
+                                                  {5}{subsection.1.2}%
+Runaway argument?
+{\numberline {1.3}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.5 ...eserved@a \relax \let \reserved@d =[\def \par
+                                                   }{6}{subsection.1.3}%
+! Extra }, or forgotten \endgroup.
+l.5 ...erved@a \relax \let \reserved@d =[\def \par }
+                                                  {6}{subsection.1.3}%
+Runaway argument?
+{\numberline {1.4}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.6 ...eserved@a \relax \let \reserved@d =[\def \par
+                                                   }{7}{subsection.1.4}%
+! Extra }, or forgotten \endgroup.
+l.6 ...erved@a \relax \let \reserved@d =[\def \par }
+                                                  {7}{subsection.1.4}%
+Runaway argument?
+{\numberline {1.5}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.7 ...eserved@a \relax \let \reserved@d =[\def \par
+                                                   }{8}{subsection.1.5}%
+! Extra }, or forgotten \endgroup.
+l.7 ...erved@a \relax \let \reserved@d =[\def \par }
+                                                  {8}{subsection.1.5}%
+Runaway argument?
+{\numberline {1.6}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.8 ...eserved@a \relax \let \reserved@d =[\def \par
+                                                   }{9}{subsection.1.6}%
+! Extra }, or forgotten \endgroup.
+l.8 ...erved@a \relax \let \reserved@d =[\def \par }
+                                                  {9}{subsection.1.6}%
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.9 ...{\numberline {2}CHEBI\_132702}{10}{section.2}
+                                                  %
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.9 ...{\numberline {2}CHEBI\_132702}{10}{section.2}
+                                                  %
+Runaway argument?
+{\numberline {2.1}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.10 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{11}{subsection.2.1}%
+! Extra }, or forgotten \endgroup.
+l.10 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {11}{subsection.2.1}%
+Runaway argument?
+{\numberline {2.2}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.11 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{12}{subsection.2.2}%
+! Extra }, or forgotten \endgroup.
+l.11 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {12}{subsection.2.2}%
+Runaway argument?
+{\numberline {2.3}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.12 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{13}{subsection.2.3}%
+! Extra }, or forgotten \endgroup.
+l.12 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {13}{subsection.2.3}%
+Runaway argument?
+{\numberline {2.4}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.13 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{14}{subsection.2.4}%
+! Extra }, or forgotten \endgroup.
+l.13 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {14}{subsection.2.4}%
+Runaway argument?
+{\numberline {2.5}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.14 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{15}{subsection.2.5}%
+! Extra }, or forgotten \endgroup.
+l.14 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {15}{subsection.2.5}%
+Runaway argument?
+{\numberline {2.6}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.15 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{16}{subsection.2.6}%
+! Extra }, or forgotten \endgroup.
+l.15 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {16}{subsection.2.6}%
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.16 ...\numberline {3}CHEBI\_132699}{17}{section.3}
+                                                  %
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.16 ...\numberline {3}CHEBI\_132699}{17}{section.3}
+                                                  %
+Runaway argument?
+{\numberline {3.1}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.17 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{18}{subsection.3.1}%
+! Extra }, or forgotten \endgroup.
+l.17 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {18}{subsection.3.1}%
+Runaway argument?
+{\numberline {3.2}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.18 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{19}{subsection.3.2}%
+! Extra }, or forgotten \endgroup.
+l.18 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {19}{subsection.3.2}%
+Runaway argument?
+{\numberline {3.3}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.19 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{20}{subsection.3.3}%
+! Extra }, or forgotten \endgroup.
+l.19 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {20}{subsection.3.3}%
+Runaway argument?
+{\numberline {3.4}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.20 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{21}{subsection.3.4}%
+! Extra }, or forgotten \endgroup.
+l.20 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {21}{subsection.3.4}%
+Runaway argument?
+{\numberline {3.5}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.21 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{22}{subsection.3.5}%
+! Extra }, or forgotten \endgroup.
+l.21 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {22}{subsection.3.5}%
+Runaway argument?
+{\numberline {3.6}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.22 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{23}{subsection.3.6}%
+! Extra }, or forgotten \endgroup.
+l.22 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {23}{subsection.3.6}%
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.23 ...\numberline {4}CHEBI\_132668}{24}{section.4}
+                                                  %
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.23 ...\numberline {4}CHEBI\_132668}{24}{section.4}
+                                                  %
+Runaway argument?
+{\numberline {4.1}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.24 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{25}{subsection.4.1}%
+! Extra }, or forgotten \endgroup.
+l.24 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {25}{subsection.4.1}%
+Runaway argument?
+{\numberline {4.2}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.25 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{26}{subsection.4.2}%
+! Extra }, or forgotten \endgroup.
+l.25 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {26}{subsection.4.2}%
+Runaway argument?
+{\numberline {4.3}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.26 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{27}{subsection.4.3}%
+! Extra }, or forgotten \endgroup.
+l.26 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {27}{subsection.4.3}%
+Runaway argument?
+{\numberline {4.4}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.27 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{28}{subsection.4.4}%
+! Extra }, or forgotten \endgroup.
+l.27 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {28}{subsection.4.4}%
+Runaway argument?
+{\numberline {4.5}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.28 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{29}{subsection.4.5}%
+! Extra }, or forgotten \endgroup.
+l.28 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {29}{subsection.4.5}%
+Runaway argument?
+{\numberline {4.6}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.29 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{30}{subsection.4.6}%
+! Extra }, or forgotten \endgroup.
+l.29 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {30}{subsection.4.6}%
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.30 ...\numberline {5}CHEBI\_132669}{31}{section.5}
+                                                  %
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.30 ...\numberline {5}CHEBI\_132669}{31}{section.5}
+                                                  %
+Runaway argument?
+{\numberline {5.1}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.31 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{32}{subsection.5.1}%
+! Extra }, or forgotten \endgroup.
+l.31 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {32}{subsection.5.1}%
+Runaway argument?
+{\numberline {5.2}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.32 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{33}{subsection.5.2}%
+! Extra }, or forgotten \endgroup.
+l.32 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {33}{subsection.5.2}%
+Runaway argument?
+{\numberline {5.3}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.33 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{34}{subsection.5.3}%
+! Extra }, or forgotten \endgroup.
+l.33 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {34}{subsection.5.3}%
+Runaway argument?
+{\numberline {5.4}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.34 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{35}{subsection.5.4}%
+! Extra }, or forgotten \endgroup.
+l.34 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {35}{subsection.5.4}%
+Runaway argument?
+{\numberline {5.5}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.35 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{36}{subsection.5.5}%
+! Extra }, or forgotten \endgroup.
+l.35 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {36}{subsection.5.5}%
+Runaway argument?
+{\numberline {5.6}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.36 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{37}{subsection.5.6}%
+! Extra }, or forgotten \endgroup.
+l.36 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {37}{subsection.5.6}%
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.37 ...\numberline {6}CHEBI\_132700}{38}{section.6}
+                                                  %
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.37 ...\numberline {6}CHEBI\_132700}{38}{section.6}
+                                                  %
+Runaway argument?
+{\numberline {6.1}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.38 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{39}{subsection.6.1}%
+! Extra }, or forgotten \endgroup.
+l.38 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {39}{subsection.6.1}%
+Runaway argument?
+{\numberline {6.2}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.39 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{40}{subsection.6.2}%
+! Extra }, or forgotten \endgroup.
+l.39 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {40}{subsection.6.2}%
+Runaway argument?
+{\numberline {6.3}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.40 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{41}{subsection.6.3}%
+! Extra }, or forgotten \endgroup.
+l.40 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {41}{subsection.6.3}%
+Runaway argument?
+{\numberline {6.4}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.41 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{42}{subsection.6.4}%
+! Extra }, or forgotten \endgroup.
+l.41 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {42}{subsection.6.4}%
+Runaway argument?
+{\numberline {6.5}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.42 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{43}{subsection.6.5}%
+! Extra }, or forgotten \endgroup.
+l.42 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {43}{subsection.6.5}%
+Runaway argument?
+{\numberline {6.6}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.43 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{44}{subsection.6.6}%
+! Extra }, or forgotten \endgroup.
+l.43 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {44}{subsection.6.6}%
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.44 ...\numberline {7}CHEBI\_132707}{45}{section.7}
+                                                  %
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.44 ...\numberline {7}CHEBI\_132707}{45}{section.7}
+                                                  %
+Runaway argument?
+{\numberline {7.1}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.45 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{46}{subsection.7.1}%
+! Extra }, or forgotten \endgroup.
+l.45 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {46}{subsection.7.1}%
+Runaway argument?
+{\numberline {7.2}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.46 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{47}{subsection.7.2}%
+! Extra }, or forgotten \endgroup.
+l.46 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {47}{subsection.7.2}%
+Runaway argument?
+{\numberline {7.3}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.47 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{48}{subsection.7.3}%
+! Extra }, or forgotten \endgroup.
+l.47 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {48}{subsection.7.3}%
+Runaway argument?
+{\numberline {7.4}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.48 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{49}{subsection.7.4}%
+! Extra }, or forgotten \endgroup.
+l.48 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {49}{subsection.7.4}%
+Runaway argument?
+{\numberline {7.5}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.49 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{50}{subsection.7.5}%
+! Extra }, or forgotten \endgroup.
+l.49 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {50}{subsection.7.5}%
+Runaway argument?
+{\numberline {7.6}Comparaison de \let \Hy@reserved@a \relax \let \reserved@d \E
+TC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+\par 
+l.50 ...served@a \relax \let \reserved@d =[\def \par
+                                                   }{51}{subsection.7.6}%
+! Extra }, or forgotten \endgroup.
+l.50 ...rved@a \relax \let \reserved@d =[\def \par }
+                                                  {51}{subsection.7.6}%
+) [2] (/usr/share/texmf/tex/latex/lm/t1lmtt.fd) [3<../../png_files_reduit/pymol
+/CHEBI_132670.jpg><../../png_files_reduit/graphes_cycles/CHEBI_132670.jpg><../.
+./png_files_reduit/graphes_coins/CHEBI_132670.jpg>]
+! Missing $ inserted.
+<inserted text> 
+$
+l.87 ...} avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.87 ...} avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.87 ...} avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.87 ...} avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.87 ...} avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.87 ...} avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+[4<../../png_files_reduit/graphes_cycles/CHEBI_132702.jpg><../../png_files_redu
+it/graphes_coins/CHEBI_132702.jpg>]
+! Missing $ inserted.
+<inserted text> 
+$
+l.120 ... avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.120 ... avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 1.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.120 ... avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.120 ... avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.120 ... avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.120 ... avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.120 ... avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.120 ... avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.120 ... avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+[5<../../png_files_reduit/graphes_cycles/CHEBI_132699.jpg><../../png_files_redu
+it/graphes_coins/CHEBI_132699.jpg>]
+! Missing $ inserted.
+<inserted text> 
+$
+l.153 ... avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.153 ... avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 1.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.153 ... avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.153 ... avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.153 ... avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.153 ... avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.153 ... avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.153 ... avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.153 ... avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+[6<../../png_files_reduit/graphes_cycles/CHEBI_132668.jpg><../../png_files_redu
+it/graphes_coins/CHEBI_132668.jpg>]
+! Missing $ inserted.
+<inserted text> 
+$
+l.186 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.186 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 1.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.186 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.186 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.186 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.186 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.186 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.186 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.186 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+[7<../../png_files_reduit/graphes_cycles/CHEBI_132669.jpg><../../png_files_redu
+it/graphes_coins/CHEBI_132669.jpg>]
+! Missing $ inserted.
+<inserted text> 
+$
+l.219 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.219 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 1.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.219 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.219 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.219 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.219 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.219 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.219 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.219 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+[8<../../png_files_reduit/graphes_cycles/CHEBI_132700.jpg><../../png_files_redu
+it/graphes_coins/CHEBI_132700.jpg>]
+! Missing $ inserted.
+<inserted text> 
+$
+l.252 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.252 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 1.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.252 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.252 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.252 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.252 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.252 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.252 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.252 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+[9<../../png_files_reduit/graphes_cycles/CHEBI_132707.jpg><../../png_files_redu
+it/graphes_coins/CHEBI_132707.jpg>] [10<../../png_files_reduit/pymol/CHEBI_1327
+02.jpg>]
+! Missing $ inserted.
+<inserted text> 
+$
+l.325 ... avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.325 ... avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.325 ... avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.325 ... avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.325 ... avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.325 ... avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+[11]
+! Missing $ inserted.
+<inserted text> 
+$
+l.358 ... avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.358 ... avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 2.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.358 ... avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.358 ... avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.358 ... avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.358 ... avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.358 ... avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.358 ... avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.358 ... avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+[12]
+! Missing $ inserted.
+<inserted text> 
+$
+l.391 ... avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.391 ... avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 2.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.391 ... avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.391 ... avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.391 ... avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.391 ... avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.391 ... avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.391 ... avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.391 ... avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+[13]
+! Missing $ inserted.
+<inserted text> 
+$
+l.424 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.424 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 2.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.424 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.424 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.424 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.424 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.424 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.424 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.424 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+[14]
+! Missing $ inserted.
+<inserted text> 
+$
+l.457 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.457 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 2.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.457 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.457 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.457 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.457 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.457 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.457 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.457 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+[15]
+! Missing $ inserted.
+<inserted text> 
+$
+l.490 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.490 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 2.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.490 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.490 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.490 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.490 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.490 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.490 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.490 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+[16] [17<../../png_files_reduit/pymol/CHEBI_132699.jpg>]
+! Missing $ inserted.
+<inserted text> 
+$
+l.563 ... avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.563 ... avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.563 ... avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.563 ... avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.563 ... avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.563 ... avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+[18]
+! Missing $ inserted.
+<inserted text> 
+$
+l.596 ... avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.596 ... avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 3.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.596 ... avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.596 ... avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.596 ... avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.596 ... avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.596 ... avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.596 ... avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.596 ... avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+[19]
+! Missing $ inserted.
+<inserted text> 
+$
+l.629 ... avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.629 ... avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 3.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.629 ... avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.629 ... avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.629 ... avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.629 ... avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.629 ... avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.629 ... avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.629 ... avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+[20]
+! Missing $ inserted.
+<inserted text> 
+$
+l.662 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.662 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 3.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.662 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.662 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.662 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.662 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.662 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.662 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.662 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+[21]
+! Missing $ inserted.
+<inserted text> 
+$
+l.695 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.695 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 3.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.695 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.695 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.695 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.695 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.695 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.695 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.695 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+[22]
+! Missing $ inserted.
+<inserted text> 
+$
+l.728 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.728 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 3.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.728 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.728 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.728 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.728 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.728 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.728 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.728 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+[23] [24<../../png_files_reduit/pymol/CHEBI_132668.jpg>]
+! Missing $ inserted.
+<inserted text> 
+$
+l.801 ... avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.801 ... avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.801 ... avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.801 ... avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.801 ... avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.801 ... avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+[25]
+! Missing $ inserted.
+<inserted text> 
+$
+l.834 ... avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.834 ... avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 4.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.834 ... avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.834 ... avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.834 ... avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.834 ... avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.834 ... avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.834 ... avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.834 ... avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+[26]
+! Missing $ inserted.
+<inserted text> 
+$
+l.867 ... avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.867 ... avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 4.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.867 ... avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.867 ... avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.867 ... avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.867 ... avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.867 ... avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.867 ... avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.867 ... avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+[27]
+! Missing $ inserted.
+<inserted text> 
+$
+l.900 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.900 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 4.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.900 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.900 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.900 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.900 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.900 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.900 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.900 ... avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+[28]
+! Missing $ inserted.
+<inserted text> 
+$
+l.933 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.933 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 4.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.933 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.933 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.933 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.933 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.933 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.933 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.933 ... avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+[29]
+! Missing $ inserted.
+<inserted text> 
+$
+l.966 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.966 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 4.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.966 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.966 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.966 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.966 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.966 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.966 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.966 ... avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+[30] [31<../../png_files_reduit/pymol/CHEBI_132669.jpg>]
+! Missing $ inserted.
+<inserted text> 
+$
+l.1039 ...avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1039 ...avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.1039 ...avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.1039 ...avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.1039 ...avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.1039 ...avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+[32]
+! Missing $ inserted.
+<inserted text> 
+$
+l.1072 ...avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1072 ...avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 5.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.1072 ...avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.1072 ...avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.1072 ...avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1072 ...avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1072 ...avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.1072 ...avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.1072 ...avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+[33]
+! Missing $ inserted.
+<inserted text> 
+$
+l.1105 ...avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1105 ...avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 5.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.1105 ...avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.1105 ...avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.1105 ...avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1105 ...avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1105 ...avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.1105 ...avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.1105 ...avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+[34]
+! Missing $ inserted.
+<inserted text> 
+$
+l.1138 ...avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1138 ...avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 5.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.1138 ...avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.1138 ...avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.1138 ...avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1138 ...avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1138 ...avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.1138 ...avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.1138 ...avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+[35]
+! Missing $ inserted.
+<inserted text> 
+$
+l.1171 ...avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1171 ...avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 5.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.1171 ...avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.1171 ...avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.1171 ...avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1171 ...avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1171 ...avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.1171 ...avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.1171 ...avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+[36]
+! Missing $ inserted.
+<inserted text> 
+$
+l.1204 ...avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1204 ...avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 5.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.1204 ...avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.1204 ...avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.1204 ...avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1204 ...avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1204 ...avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.1204 ...avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.1204 ...avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+[37] [38<../../png_files_reduit/pymol/CHEBI_132700.jpg>]
+! Missing $ inserted.
+<inserted text> 
+$
+l.1277 ...avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1277 ...avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.1277 ...avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.1277 ...avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.1277 ...avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.1277 ...avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+[39]
+! Missing $ inserted.
+<inserted text> 
+$
+l.1310 ...avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1310 ...avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 6.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.1310 ...avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.1310 ...avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.1310 ...avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1310 ...avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1310 ...avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.1310 ...avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.1310 ...avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+[40]
+! Missing $ inserted.
+<inserted text> 
+$
+l.1343 ...avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1343 ...avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 6.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.1343 ...avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.1343 ...avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.1343 ...avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1343 ...avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1343 ...avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.1343 ...avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.1343 ...avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+[41]
+! Missing $ inserted.
+<inserted text> 
+$
+l.1376 ...avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1376 ...avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 6.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.1376 ...avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.1376 ...avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.1376 ...avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1376 ...avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1376 ...avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.1376 ...avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.1376 ...avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+[42]
+! Missing $ inserted.
+<inserted text> 
+$
+l.1409 ...avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1409 ...avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 6.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.1409 ...avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.1409 ...avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.1409 ...avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1409 ...avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1409 ...avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.1409 ...avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.1409 ...avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+[43]
+! Missing $ inserted.
+<inserted text> 
+$
+l.1442 ...avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1442 ...avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 6.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.1442 ...avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.1442 ...avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.1442 ...avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1442 ...avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1442 ...avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.1442 ...avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.1442 ...avec \hyperlink{CHEBI_132707}{mesure.nom}}
+                                                  %
+[44] [45<../../png_files_reduit/pymol/CHEBI_132707.jpg>]
+! Missing $ inserted.
+<inserted text> 
+$
+l.1515 ...avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1515 ...avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.1515 ...avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.1515 ...avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.1515 ...avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.1515 ...avec \hyperlink{CHEBI_132670}{mesure.nom}}
+                                                  %
+[46]
+! Missing $ inserted.
+<inserted text> 
+$
+l.1548 ...avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1548 ...avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 7.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.1548 ...avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.1548 ...avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.1548 ...avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1548 ...avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1548 ...avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.1548 ...avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.1548 ...avec \hyperlink{CHEBI_132702}{mesure.nom}}
+                                                  %
+[47]
+! Missing $ inserted.
+<inserted text> 
+$
+l.1581 ...avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1581 ...avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 7.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.1581 ...avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.1581 ...avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.1581 ...avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1581 ...avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1581 ...avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.1581 ...avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.1581 ...avec \hyperlink{CHEBI_132699}{mesure.nom}}
+                                                  %
+[48]
+! Missing $ inserted.
+<inserted text> 
+$
+l.1614 ...avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1614 ...avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 7.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.1614 ...avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.1614 ...avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.1614 ...avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1614 ...avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1614 ...avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.1614 ...avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.1614 ...avec \hyperlink{CHEBI_132668}{mesure.nom}}
+                                                  %
+[49]
+! Missing $ inserted.
+<inserted text> 
+$
+l.1647 ...avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1647 ...avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 7.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.1647 ...avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.1647 ...avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.1647 ...avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1647 ...avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1647 ...avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.1647 ...avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.1647 ...avec \hyperlink{CHEBI_132669}{mesure.nom}}
+                                                  %
+[50]
+! Missing $ inserted.
+<inserted text> 
+$
+l.1680 ...avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1680 ...avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+Runaway argument?
+{\protect \foreignlanguage {french}{\protect \bbl@restore@actives 7.1\ETC.
+! Paragraph ended before \@markright was complete.
+<to be read again> 
+\par 
+l.1680 ...avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...\relax \let \reserved@d =[\def \par }
+                                                  }
+l.1680 ...avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Extra }, or forgotten \endgroup.
+\@themark ...relax \let \reserved@d =[\def \par }}
+                                                  
+l.1680 ...avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1680 ...avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Missing $ inserted.
+<inserted text> 
+$
+l.1680 ...avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+! Argument of \ttl@assign@i has an extra }.
+<inserted text> 
+\par 
+l.1680 ...avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+Runaway argument?
+\def \reserved@b {\hyper@link@ [link]}\futurelet \@let@token \@ifnch \ETC.
+! Paragraph ended before \ttl@assign@i was complete.
+<to be read again> 
+\par 
+l.1680 ...avec \hyperlink{CHEBI_132700}{mesure.nom}}
+                                                  %
+
+AED: lastpage setting LastPage
+[51] (./Comparaison_CHEBI_cagitude_81.aux))
+(see the transcript file for additional information)
+ 1730 words of node memory still in use:
+   4 hlist, 1 vlist, 1 rule, 61 glue, 3 kern, 1 penalty, 2 glyph, 384 attribute
+, 53 glue_spec, 56 attribute_list, 2 write nodes
+   avail lists: 2:1732,3:160,4:66,5:85,6:107,7:2306,8:25,9:296,10:6,11:170
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvip
+s/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/t
+exmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/l
+mbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf
+/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi1
+2.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts
+/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></
+usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/p
+ublic/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share
+/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/l
+mtt8.pfb>
+Output written on Comparaison_CHEBI_cagitude_81.pdf (51 pages, 2145542 bytes).
+Transcript written on Comparaison_CHEBI_cagitude_81.log.
+Collected error summary (may duplicate other messages):
+  lualatex: Command for 'lualatex' gave return code 1
+      Refer to 'Comparaison_CHEBI_cagitude_81.log' for details
+Latexmk: Use the -f option to force complete processing,
+ unless error was exceeding maximum runs, or warnings treated as errors.
+Latexmk: Examining 'Comparaison_CHEBI_cagitude_81.log'
+=== TeX engine is 'LuaHBTeX'
+Latexmk: Errors, so I did not complete making targets

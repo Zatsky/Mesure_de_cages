@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "analyse_cage.h": "c",
+        "graphe_cycles.h": "c",
+        "structure.h": "c",
+        "similarite.h": "c"
+    }
+}

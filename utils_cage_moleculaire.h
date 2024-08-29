@@ -35,6 +35,7 @@ struct graphe_coin
 	int nb_aretes;
 	ARETE_COIN *liste_aretes;
 	SOMMET_COIN *liste_sommets;
+	int ** adjacence;
 };
 
 typedef struct graphe_coin GRAPHE_COIN;
@@ -102,5 +103,7 @@ int nb_common_cycles(SOMMET_COIN sommet1, SOMMET_COIN sommet2, int taille_clique
 // Returns 1 if the vertex with the id num_sommet is in a bouboule fopenmp -O3
 // and 0 otherwise 
 int sommet_dans_bouboule(GRAPHE_CYCLE cy, int num_sommet, int* bouboule, int taille_bouboule);
+
+int meme_sommet(SOMMET_COIN i, SOMMET_COIN j);
 
 #endif 

@@ -1125,6 +1125,30 @@ int chemin_independant(int *chemin1, int *chemin2,struct liaison l)
 	return resultat;
 }
 
+int **construire_cycle(cycles cycle, int m) {
+    int **matrice_cycle = initialiser_matrice(m+1);
+
+    // Ajouter les arêtes des chemins
+	for (int i = 0; i < cycle.nb_atomes-1;i++){
+		int u = cycle.sommets[i];
+		int v = cycle.sommets[i+1];
+		//printf("m = %d et u = %d et v = %d \n",m,u,v);
+		matrice_cycle[u][v] = 1;
+		matrice_cycle[v][u] = 1;
+	} 
+
+    return matrice_cycle;
+}
+
+int **initialiser_matrice(int taille) {
+    int **matrice = (int **)malloc(taille * sizeof(int *));
+    for (int i = 0; i < taille; i++) {
+        matrice[i] = (int *)calloc(taille, sizeof(int));
+    }
+    return matrice;
+}
+
+
 //cree le cycle qui passe le sommet et l'arete dans le graphe m
 cycles creer_un_cycle(graphemol m , int sommet, struct liaison l, int *chemin1,int *chemin2)
 {
@@ -2652,51 +2676,54 @@ ARETE copier_arete(ARETE a , ARETE b)
 	return a;
 }
 
-GRAPHE_CYCLE construction_graphe_cycles(struct molecule m)
-{
-	nb_arete_base=0;
-	taille_base=0;
-	elimination_feuilles(m); // la recherche de cycles se fait dans cette fonction
-	GRAPHE_CYCLE c;
-	
-	c.nb_sommets = taille_base;
-	c.nb_aretes = nb_arete_base;
-	int i;
-	c.liste_sommets = NULL;
-	c.liste_aretes  = NULL;
-	c.liste_sommets = malloc( c.nb_sommets * sizeof(SOMMET));
-	c.liste_aretes  = malloc(c.nb_aretes * sizeof(ARETE));
-	//printf("nb sommets %d et aretes %d\n", c.nb_sommets,c.nb_aretes);
-	for( i = 0; i < c.nb_sommets;i++)
-	{
-		//printf("%d id en cours %d\n",labase[i].id_cycle,labase[i].nb_atomes );
-		c.liste_sommets[i].id = labase[i].id_cycle;
-		c.liste_sommets[i].poids = labase[i].nb_atomes;
-		c.liste_sommets[i].type = 1;
-		c.liste_sommets[i].poids_bouboule = NULL;
+GRAPHE_CYCLE construction_graphe_cycles(struct molecule m) {
+    nb_arete_base = 0;
+    taille_base = 0;
+    elimination_feuilles(m); // la recherche de cycles se fait dans cette fonction
+    GRAPHE_CYCLE c;
 
-	}
-	for( i = 0; i < c.nb_aretes;i++)
-	{
-		c.liste_aretes[i] = copier_arete(c.liste_aretes[i],base_aretes[i]);
-	}
+    c.nb_sommets = taille_base;
+    c.nb_aretes = nb_arete_base;
+    c.liste_sommets = malloc(c.nb_sommets * sizeof(SOMMET));
+    c.liste_aretes = malloc(c.nb_aretes * sizeof(ARETE));
+    c.matrice = malloc(c.nb_sommets * sizeof(adj_cycle));
 
-	if(nb_arete_base > 0)
-	{
-		free(base_aretes);
-	}
+    for (int i = 0; i < c.nb_sommets; i++) {
+        c.liste_sommets[i].id = labase[i].id_cycle;
+        c.liste_sommets[i].poids = labase[i].nb_atomes;
+        c.liste_sommets[i].type = 1;
+        c.liste_sommets[i].poids_bouboule = NULL;
 
-	return c;
+        c.matrice[i].nb_sommets = m.nb_atomes+1;
+        c.matrice[i].matrice = construire_cycle(labase[i], m.nb_atomes);
+    }
+
+    for (int i = 0; i < c.nb_aretes; i++) {
+        c.liste_aretes[i] = copier_arete(c.liste_aretes[i], base_aretes[i]);
+    }
+
+    if (nb_arete_base > 0) {
+        free(base_aretes);
+    }
+    return c;
 }
 
-void liberer_graphe_cycles( GRAPHE_CYCLE c)
-{
-	//int i ; 
-	if(c.liste_sommets !=NULL)
-		free(c.liste_sommets);
-	if(c.liste_aretes !=NULL)
-	free(c.liste_aretes);
-	
+void liberer_graphe_cycles(GRAPHE_CYCLE c) {
+    if (c.liste_sommets != NULL)
+        free(c.liste_sommets);
+    if (c.liste_aretes != NULL)
+        free(c.liste_aretes);
+    if (c.matrice != NULL) {
+        for (int i = 0; i < c.nb_sommets; i++) {
+            if (c.matrice[i].matrice != NULL) {
+                for (int j = 0; j < c.matrice[i].nb_sommets; j++) {
+                    free(c.matrice[i].matrice[j]);
+                }
+                free(c.matrice[i].matrice);
+            }
+        }
+        free(c.matrice);
+    }
 }
 
 int min( int a , int b)
@@ -2704,4 +2731,132 @@ int min( int a , int b)
 	if ( a < b )
 		return a;
 	return b;
+}
+
+/**
+ * Prends en argument un tableau de cycles (généralement une base de cycles minimum d'un graphe G) et le nombre d'arêtes d'un graphe G,
+ * et renvoie le graphe de cycles correspondant du graphe G.
+ * 
+ * @param Cycles : Tableau de Cycle du graphe G, un cycle de ce tableau correspond à un sommet du graphe de Cycles.
+ * @param nbCycles : nombre de cycles du tableau précédent.
+ * @param m : nombre d'arête du graphe G.
+ * 
+ * @return Renvoie le graphe de cycles obtenu.
+ * 
+ * Step 1 : - initialise la matrice d'adjacence du graphe de cycle à 0.
+ * 
+ * Step 2 : - rempli la matrice d'adjacence avec des arêtes de type 1 ou -1
+ *            - -1 signifie que les deux cycles correspondant partage au moins un sommet et aucune arêtes.
+ *            - 1 signifie que les deux cycles correspondant partage au moins une arêtes. 
+ * 
+ * NB : 
+ *      - Alloue de la mémoire pour les arêtes du graphe de cycles, mais n'en initialise aucune.
+ *      - le tableau d'arêtes du graphe de cycle est donc vide.
+*/
+GRAPHE_CYCLE * conversionGrapheDeCycle(cycle ** Cycles, int nbCycles, int m) {
+
+  GRAPHE_CYCLE *GrapheCycle;
+
+  GrapheCycle = malloc(sizeof(GRAPHE_CYCLE));
+
+  GrapheCycle->nb_sommets = nbCycles;
+  GrapheCycle->Cycles = Cycles;
+  GrapheCycle->indice = 0;
+
+  GrapheCycle->adjacence = malloc(sizeof(int *) * nbCycles);
+  int compteurArete = 0;
+
+/* --- Step 1 --- */
+
+  for(int i = 0; i < nbCycles; i++) {
+    GrapheCycle->adjacence[i] = malloc(sizeof(int) * nbCycles);
+    for(int j = 0; j < nbCycles; j++) {
+      GrapheCycle->adjacence[i][j] = 0;
+    }
+  }
+
+  for(int i = 0; i < nbCycles; i++) {
+    //printCycle(Cycles[i], m);
+    for(int j = i+1; j < nbCycles; j++) {
+
+
+      /* --- Step 2 --- */
+      
+      for(int a = 0; a < m; a++) {
+        if((Cycles[i]->aretes[a] == 1) && (Cycles[j]->aretes[a] == 1)) {
+          compteurArete++;
+          GrapheCycle->adjacence[i][j] = ARETE_ARETE;
+          GrapheCycle->adjacence[j][i] = ARETE_ARETE;
+          a = m;
+        }
+      }
+
+      #if ARETE_2
+      if (GrapheCycle->adjacence[i][j] == 0) {
+        
+        for(int somi = 0; somi < Cycles[i]->taille; somi++) {
+          for(int somj = 0; somj < Cycles[j]->taille; somj++) {
+
+            if(Cycles[i]->sommets[somi] == Cycles[j]->sommets[somj]) {
+              compteurArete++;
+              GrapheCycle->adjacence[i][j] = ARETE_SOM;
+              GrapheCycle->adjacence[j][i] = ARETE_SOM;
+              somi = Cycles[i]->taille;
+              somj = Cycles[j]->taille;
+            }
+
+          }
+        }
+      }
+      #endif
+
+    }
+  }
+
+  GrapheCycle->nb_aretes = compteurArete;
+  GrapheCycle->liste_aretes = malloc(sizeof(ARETE) * GrapheCycle->nb_aretes);
+
+  return GrapheCycle;
+}
+
+int cycleIdentique(cycle *C1, cycle *C2, int m) {
+  
+  for(int i = 0; i < m; i++) {
+    if(C1->aretes[i] != C2->aretes[i]) {
+      return 0;
+    }
+  }
+
+  return 1;
+}
+
+int grapheCyclesIdentique(GRAPHE_CYCLE *GC1, GRAPHE_CYCLE *GC2, int m) {
+  
+  if(GC1->nb_sommets != GC2->nb_sommets) {
+    return 0;
+  }
+
+  if(GC1->nb_aretes != GC2->nb_aretes) {
+    return 0;
+  }
+
+  int n = GC1->nb_sommets;
+
+  for(int i = 0; i < n; i++) {
+    
+    int match = 0;
+
+    for(int j = 0; j < n; j++) {
+      if(cycleIdentique(GC1->Cycles[i], GC2->Cycles[j], m)) {
+        match = 1;
+      }
+    }
+
+    if(match == 0) {
+      return 0;
+    }
+    
+  }
+
+  return 1;
 }
