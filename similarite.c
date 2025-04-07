@@ -356,7 +356,7 @@ void cliqueRecursive(GRAPHEPROD *Gp, int *R, int *P, int *X, int **Cliques, int 
  * NB : 
  *      - Problème au niveau de l'allocation du tableau de Cliques (ligne 226 et 228) -> on ne sait pas combien de cliques maximales seront générées.
 */
-int * CliqueMax(GRAPHEPROD *Gp, int *tailleCliqueMaxtrouve, double bronKerboschComplexite) {
+int *   CliqueMax(GRAPHEPROD *Gp, int *tailleCliqueMaxtrouve, double bronKerboschComplexite) {
 
 
 /* --- Step 1 --- */

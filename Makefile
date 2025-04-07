@@ -8,7 +8,7 @@ run: analyse_cage cagitude
 	./scripts/script2.sh $(ARGS)
 	#valgrind -v --leak-check=full --show-leak-kinds=all ./analyse_cage $(ARGS)
 	./analyse_cage $(ARGS)
-	./cagitude $(ARGS) add
+	#./cagitude $(ARGS) add
 
 python_lib: similarite.so
 
@@ -18,7 +18,7 @@ comparaison: similarite
 
 mesure: cagitude
 	#valgrind -v --leak-check=full --show-leak-kinds=all --track-origins=yes ./cagitude DEFAULT add
-	./cagitude CHEBI add connexe
+	./cagitude LOTUS add connexe
 
 cliques: find_4_cliques
 	./find_4_cliques
@@ -47,16 +47,22 @@ clean:
 	rm -f *.o
 
 clean_results:
-	rm -rf data/DEFAULT/results/
-	rm -rf data/CHEBI/results/
-	rm -rf data/LOTUS/results/
-	rm -rf data/DEFAULT/dot_files_reduit/
-	rm -rf data/CHEBI/dot_files_reduit/
-	rm -rf data/LOTUS/dot_files_reduit/
-	rm -rf data/DEFAULT/png_files_reduit/
-	rm -rf data/CHEBI/png_files_reduit/
-	rm -rf data/LOTUS/png_files_reduit/
+	rm -rf data/CHEBI/results/*
+	rm -rf data/LOTUS/results/*
+	rm -rf data/CHEBI/dot_files_reduit/*
+	rm -rf data/LOTUS/dot_files_reduit/*
+	rm -rf data/CHEBI/png_files_reduit/*
+	rm -rf data/LOTUS/png_files_reduit/*
+	rm -rf data/CHIMISTE_1/results/*
+	rm -rf data/CHIMISTE_2/results/*
+	rm -rf data/CHIMISTE_1/dot_files_reduit/*
+	rm -rf data/CHIMISTE_2/dot_files_reduit/*
+	rm -rf data/CHIMISTE_1/png_files_reduit/*
+	rm -rf data/CHIMISTE_2/png_files_reduit/*
 
 
 clean_pdf:
 	rm -rf data/CHEBI/ID/*
+	rm -rf data/LOTUS/ID/*
+	rm -rf data/CHIMISTE_1/ID/*
+	rm -rf data/CHIMISTE_2/ID/*

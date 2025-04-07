@@ -1237,6 +1237,7 @@ int main(int argc, char *argv[])
 				liberer_graphe_cycles(cy);
 				
 				liberer_graphe_coin(gc);
+				
 			}
 			else{
 				trop_gros++;

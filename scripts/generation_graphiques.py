@@ -5,6 +5,8 @@ import csv
 from collections import defaultdict
 import numpy as np
 
+
+
 # Fonction pour lire les données du fichier CSV
 def lire_donnees_csv(nom_fichier):
     mesures = []
@@ -21,7 +23,7 @@ def lire_donnees_csv(nom_fichier):
 # Lire les données du fichier CSV
 def gen_graphique(arg1):
     if arg1 == "CHEBI":
-        max_x1 = 1000
+        max_x1 = 700
         max_x2 = 250
         max_y1 = 50
         max_y2 = 800
@@ -118,4 +120,6 @@ def gen_graphique(arg1):
 
     plt.savefig(result_dir + "graphique_distribution_cumulative.png")
     plt.close()
+
+
 gen_graphique("CHEBI")

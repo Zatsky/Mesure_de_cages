@@ -15,6 +15,11 @@ from pathlib import Path
 from openbabel import pybel
 import subprocess
 import ctypes
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+from collections import defaultdict
+import numpy as np
 
 def get_4_cliques(arg1, arg2):
     path = "data/" + arg1 + "/graphes_coins/" + arg2 + ".csv"
@@ -45,10 +50,11 @@ def generate_pdf_safe(doc, pdf_path):
 
 def count_mol_files_with_more_than_250_atoms(arg1):
     count = 0
+    cout =0
     dir_path = f"data/"+arg1+f"/mol_files"
-    # Parcourir tous les fichiers dans le répertoire
     for file_name in os.listdir(dir_path):
         if file_name.endswith('.mol'):
+            
             file_path = os.path.join(dir_path, file_name)
             
             # Lire le fichier .mol
@@ -60,7 +66,6 @@ def count_mol_files_with_more_than_250_atoms(arg1):
                     count += 1
             else:
                 print(f"Erreur de lecture du fichier : {file_name}")
-
     return count
 
 def count_files_in_directory(arg1):
@@ -487,6 +492,136 @@ def get_infos_csv(arg1, arg2):
         coins = [nombre1,nombre2]
     return cycles,coins
 
+def gen_graphique(arg1):
+    pathe = "data/CHEBI/results/liste_mesure_alpha_connexe.csv"
+    pathe2 = "data/CHEBI/results/liste_mesure_alpha_connexe_equivalence.csv"
+    mesures,nb_mesures,x = lire_donnees_csv(pathe,arg1)
+    for tab in nb_mesures: 
+        tab.tri_tableau_cycles(arg1)
+    with open(pathe, mode='r', newline='') as infile:
+        reader = csv.reader(infile)
+        
+        # Ouvrir le fichier de sortie pour écrire les lignes filtrées
+        with open(pathe2, mode='w', newline='') as outfile:
+            writer = csv.writer(outfile)
+            
+            for row in reader:
+                # Vérifier si la première partie est dans le tableau de références
+                for mesure in nb_mesures:
+                    for classe in mesure.tab:
+                        if row[0] == classe.nom:
+                            # Si oui, écrire cette ligne dans le fichier de sortie
+                            writer.writerow(row)
+
+    if arg1 == "CHEBI":
+        max_x1 = 700
+        max_x2 = 250
+        max_y1 = 30
+        max_y2 = 200
+    elif arg1 == "LOTUS":
+        max_x1 = 100
+        max_x2 = 250
+        max_y1 = 1000
+        max_y2 = 13000
+    elif arg1 == "CHIMISTE":
+        max_x1 = 50
+        max_x2 = 130
+        max_y1 = 30
+        max_y2 = 30
+    else:
+        max_x1 = 100
+        max_x2 = 250
+        max_y1 = 50
+        max_y2 = 800
+
+    result_dir = "data/" + arg1 + "/results/"
+
+    mesures = []
+    with open(pathe2, 'r') as fichier:
+        lecteur_csv = csv.reader(fichier)
+        for i, ligne in enumerate(lecteur_csv):
+            try:
+                mesure = float(ligne[1])
+                mesures.append(mesure)
+            except ValueError:
+                pass
+
+    # Compter le nombre de molécules pour chaque mesure
+    nombre_molecules_par_mesure = defaultdict(int)
+    for mesure in mesures:
+        nombre_molecules_par_mesure[mesure] += 1
+
+    # Trier les mesures et le nombre de molécules par mesure
+    mesures_triees = sorted(nombre_molecules_par_mesure.keys())
+    nombres_molecules_cumulatifs = [0] * len(mesures_triees)
+
+    nombres_molecules = [nombre_molecules_par_mesure[mesure] for mesure in mesures_triees]
+
+    nombre_molecules_cumulatif = 0
+    for i, mesure in enumerate(mesures_triees):
+        nombre_molecules_cumulatif += nombre_molecules_par_mesure[mesure]
+        nombres_molecules_cumulatifs[i] = nombre_molecules_cumulatif
+
+    plt.plot(mesures_triees, nombres_molecules_cumulatifs, drawstyle='steps-post')
+    plt.grid(True)
+
+    plt.xlim(0, max_x1)
+    plt.ylim(0, max_y1)  # Fixer la limite supérieure de l'axe y
+
+    plt.title("Nombre de classes d'équivalences en fonction de la cagitude")
+    plt.xlabel("Cagitude")
+    plt.ylabel("Nombre de classes d'équivalences")
+
+    plt.savefig(result_dir + "graphique_ligne.png")
+    plt.close()
+
+    # Créer le graphique en barres
+    bins = np.arange(0, 1200 + 5, 5)
+
+    # Utilisation de np.histogram pour regrouper les données par intervalles de 5
+    hist, bin_edges = np.histogram(mesures, bins=bins)
+
+    # Création du graphique à barres
+    plt.bar(bin_edges[:-1], hist, width=5, align='edge')
+    plt.grid(True)
+
+    plt.xlim(0, max_x1)
+    plt.ylim(0, max_y1)  # Fixer la limite supérieure de l'axe y
+
+    # Ajouter des flèches pour indiquer que certaines valeurs dépassent la limite supérieure
+    for i, count in enumerate(hist):
+        if count > max_y1:
+            plt.annotate(
+                '⬆',
+                (bin_edges[i], max_y1),
+                ha='center',
+                va='bottom',
+                fontsize=12,
+                color='red'
+            )
+
+    plt.title("Nombre de molécules en fonction de la cagitude")
+    plt.xlabel("Cagitude")
+    plt.ylabel("Nombre de molécules")
+
+    plt.savefig(result_dir + "histogramme_discret_equivalence.png")
+    plt.close()
+
+    # Créer le graphique de distribution cumulative
+    plt.plot(mesures_triees, nombres_molecules_cumulatifs)
+    plt.grid(True)
+
+    plt.xlim(-10, max_x2)
+    plt.ylim(-10, max_y2)  # Fixer la limite supérieure de l'axe y
+
+    plt.title("Nombre de molécules inférieur ou égal à une cagitude")
+    plt.xlabel("Cagitude")
+    plt.ylabel("Nombre de molécules")
+
+    plt.savefig(result_dir + "graphique_distribution_cumulative_equivalence.png")
+    plt.close()
+
+
 def generate_latex_document(arg1, arg2):
     output_file = f'data/{arg1}/ID/{arg2}'
     doc = Document(documentclass='article', document_options='a4paper')
@@ -909,7 +1044,7 @@ if __name__ == "__main__":
         #result = subprocess.run(['./similarite', "CHEBI" "CHEBI_140980", "CHEBI_40611"], capture_output=True, text=True)
         #output = result.stdout.strip()
         #print(str(output[0]) +""+ str(output[1]))
-        create_doc_comparaison("CHEBI")
+        gen_graphique("CHEBI")
 
     elif len(sys.argv) == 3:
         arg1 = sys.argv[1]
